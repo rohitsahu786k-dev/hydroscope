@@ -7,15 +7,13 @@ import { Card } from "./ui/card";
 export function ProductCard({ product }: { product: Product }) {
   return (
     <Card className="hydro-card-hover flex h-full min-h-[520px] flex-col overflow-hidden">
-      <div className="relative flex min-h-[240px] items-center justify-center overflow-hidden bg-gradient-to-br from-[#f1f8ff] via-[#eaf4ff] to-[#dcecff] p-6">
-        <div className="hydro-network absolute inset-0 opacity-30" />
-        <div className="absolute h-56 w-56 rounded-full bg-white/90 blur-sm" />
+      <div className="relative h-[240px] overflow-hidden">
         <Image
           src={product.featuredImage ?? "/images/seo/hydroscope-product-ecosystem-hydropure-hydrosense-hydrosure-banner.webp"}
           alt={`${product.title} by HYDROscope`}
-          width={520}
-          height={340}
-          className="relative h-[210px] w-full object-contain"
+          width={1672}
+          height={941}
+          className="h-full w-full object-cover"
         />
       </div>
       <div className="flex flex-1 flex-col p-6">
