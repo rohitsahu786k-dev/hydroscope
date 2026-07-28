@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blue: #1258b6;
+  --blue2: #1678e8;
+  --cyan: #26b9e8;
+  --ink: #101729;
+  --muted: #5c6574;
+  --line: #dbe4ef;
+  --soft: #f5f9ff;
+  --navy: #09244c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -4;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(38, 185, 232, 0.08), transparent 28%),
+    radial-gradient(circle at 86% 12%, rgba(18, 88, 182, 0.07), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f6fbff 52%, #ffffff 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(38, 185, 232, 0.28);
+}
+
+.hydro-network {
+  background-image:
+    linear-gradient(rgba(26, 111, 213, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 111, 213, 0.09) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+.hydro-section {
+  padding: 88px 0;
+}
+
+.hydro-gradient {
+  background: linear-gradient(135deg, var(--blue2), var(--blue));
+}
+
+.hydro-card-hover {
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.hydro-card-hover:hover {
+  transform: translateY(-6px);
+  border-color: #bcd4ef;
+  box-shadow: 0 24px 55px rgba(27, 77, 138, 0.14);
+}
+
+.water-animation {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.water-wave {
+  position: absolute;
+  left: -10vw;
+  width: 120vw;
+  height: 220px;
+  opacity: 0.18;
+  background:
+    radial-gradient(60% 75% at 50% 100%, rgba(38, 185, 232, 0.26), transparent 68%),
+    linear-gradient(90deg, transparent 0%, rgba(22, 120, 232, 0.24) 45%, transparent 100%);
+  filter: blur(18px);
+  transform: translate3d(0, 0, 0);
+  animation: water-wave-drift 18s ease-in-out infinite alternate;
+}
+
+.water-wave-1 {
+  top: 18%;
+  border-radius: 44% 56% 48% 52%;
+}
+
+.water-wave-2 {
+  bottom: 4%;
+  opacity: 0.14;
+  animation-duration: 24s;
+  animation-direction: alternate-reverse;
+}
+
+.water-bubble {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(38, 185, 232, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.38);
+  box-shadow: 0 0 20px rgba(38, 185, 232, 0.14);
+  animation: water-bubble-rise 12s linear infinite;
+}
+
+.water-bubble-1 {
+  left: 8%;
+  bottom: -24px;
+}
+
+.water-bubble-2 {
+  left: 31%;
+  bottom: -44px;
+  width: 16px;
+  height: 16px;
+  animation-duration: 16s;
+  animation-delay: -5s;
+}
+
+.water-bubble-3 {
+  right: 18%;
+  bottom: -28px;
+  width: 13px;
+  height: 13px;
+  animation-duration: 14s;
+  animation-delay: -8s;
+}
+
+.water-bubble-4 {
+  right: 7%;
+  bottom: -36px;
+  width: 20px;
+  height: 20px;
+  animation-duration: 19s;
+  animation-delay: -11s;
+}
+
+@keyframes water-wave-drift {
+  from {
+    transform: translateX(-3vw) translateY(0) rotate(-1deg);
+  }
+
+  to {
+    transform: translateX(3vw) translateY(22px) rotate(1deg);
+  }
+}
+
+@keyframes water-bubble-rise {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.72;
+  }
+
+  100% {
+    transform: translateY(-105vh) scale(1.25);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

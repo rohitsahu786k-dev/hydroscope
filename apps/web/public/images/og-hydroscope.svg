@@ -1,0 +1,10 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F5F9FF"/>
+  <path d="M0 500C180 420 280 575 450 450C620 325 760 330 910 430C1045 520 1110 385 1200 350V630H0V500Z" fill="#D9EDFB"/>
+  <text x="90" y="200" fill="#1258B6" font-family="Arial" font-size="74" font-weight="800">HYDROscope</text>
+  <text x="90" y="290" fill="#101729" font-family="Arial" font-size="52" font-weight="800">Smart Water Quality Monitoring</text>
+  <text x="90" y="355" fill="#5C6574" font-family="Arial" font-size="28">IoT monitoring, electro chlorination and AI water analytics.</text>
+  <rect x="820" y="118" width="260" height="360" rx="34" fill="#FFFFFF" stroke="#C8DDF4" stroke-width="8"/>
+  <rect x="862" y="168" width="176" height="80" rx="14" fill="#09244C"/>
+  <path d="M950 310C950 310 1004 367 1004 410C1004 440 980 464 950 464C920 464 896 440 896 410C896 367 950 310 950 310Z" fill="#1678E8"/>
+</svg>
