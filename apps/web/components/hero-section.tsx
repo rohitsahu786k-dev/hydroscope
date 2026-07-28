@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Gauge, ShieldCheck, Wifi } from "lucide-react";
 import { useEffect, useState } from "react";
 import { clsx } from "clsx";
 import { Container } from "./ui/container";
@@ -45,11 +45,11 @@ const slides = [
     secondary: { label: "Compare Products", href: "/products" }
   },
   {
-    image: "/images/seo/hydroscope-product-ecosystem-hydropure-hydrosense-hydrosure-banner.webp",
-    alt: "Hydroscope product ecosystem showing HydroPure HydroSense and HydroSure for water safety monitoring",
+    image: "/images/seo/hydropure-smart-chlorination-system-outdoor-utility-banner.webp",
+    alt: "HydroPure smart chlorination system installed at outdoor water utility site",
     eyebrow: "SMART WATER INFRASTRUCTURE",
-    title: "Hydroscope products for safer water networks.",
-    text: "HydroPure, HydroSense and HydroSure help teams automate disinfection, measure water quality and monitor every site from one dashboard.",
+    title: "Reliable chlorination for operating teams.",
+    text: "Give field teams cleaner dosing control, dashboard-backed visibility and a practical path away from manual chlorination.",
     primary: { label: "Talk to Technical Team", href: "/contact" },
     secondary: { label: "Download Resources", href: "/resources" }
   }
@@ -84,7 +84,7 @@ export function HeroSection(props: HeroSectionProps) {
   }
 
   return (
-    <section className="relative isolate min-h-[calc(100vh-96px)] overflow-hidden bg-hydro-navy text-white">
+    <section className="relative isolate min-h-[calc(100vh-88px)] overflow-hidden bg-hydro-navy text-white">
       {slides.map((item, index) => (
         <Image
           key={item.image}
@@ -99,9 +99,9 @@ export function HeroSection(props: HeroSectionProps) {
           )}
         />
       ))}
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,18,35,0.88)_0%,rgba(7,18,35,0.7)_30%,rgba(7,18,35,0.18)_60%,rgba(7,18,35,0)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,13,27,0.9)_0%,rgba(8,25,47,0.72)_33%,rgba(8,25,47,0.2)_66%,rgba(8,25,47,0)_100%)]" />
 
-      <Container className="relative z-10 flex min-h-[calc(100vh-96px)] items-center py-20">
+      <Container className="relative z-10 flex min-h-[calc(100vh-88px)] items-center py-20">
         <div className="max-w-[680px]">
           <span className="inline-flex border-l-4 border-[#44c8ef] pl-4 text-xs font-extrabold uppercase tracking-[0.18em] text-[#bde8ff]">
             {slide.eyebrow}
@@ -117,6 +117,19 @@ export function HeroSection(props: HeroSectionProps) {
             <HeroButton href={slide.secondary.href} variant="outline">
               {slide.secondary.label}
             </HeroButton>
+          </div>
+          <div className="mt-9 grid max-w-[640px] grid-cols-3 gap-3 max-sm:grid-cols-1">
+            {[
+              ["Automated", "Dosing", ShieldCheck],
+              ["Remote", "Monitoring", Wifi],
+              ["Smart", "Reports", Gauge]
+            ].map(([label, value, Icon]) => (
+              <div key={label as string} className="border border-white/15 bg-white/10 p-4 backdrop-blur-md">
+                <Icon aria-hidden="true" size={18} className="mb-3 text-[#67d6ff]" />
+                <strong className="block text-sm">{label as string}</strong>
+                <span className="text-xs text-[#bfd2ea]">{value as string}</span>
+              </div>
+            ))}
           </div>
         </div>
       </Container>

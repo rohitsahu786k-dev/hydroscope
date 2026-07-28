@@ -9,7 +9,7 @@ export function ProductCard({ product }: { product: Product }) {
     <Card className="hydro-card-hover flex h-full min-h-[520px] flex-col overflow-hidden">
       <div className="relative h-[240px] overflow-hidden">
         <Image
-          src={product.featuredImage ?? "/images/seo/hydroscope-product-ecosystem-hydropure-hydrosense-hydrosure-banner.webp"}
+          src={product.featuredImage ?? "/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp"}
           alt={`${product.title} by HYDROscope`}
           width={1672}
           height={941}

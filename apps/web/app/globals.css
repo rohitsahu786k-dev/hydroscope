@@ -23,21 +23,9 @@ html {
 
 body {
   margin: 0;
-  background: #fff;
+  background: #f8fbff;
   color: var(--ink);
   line-height: 1.5;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -4;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 12% 18%, rgba(38, 185, 232, 0.08), transparent 28%),
-    radial-gradient(circle at 86% 12%, rgba(18, 88, 182, 0.07), transparent 30%),
-    linear-gradient(180deg, #ffffff 0%, #f6fbff 52%, #ffffff 100%);
 }
 
 a {
@@ -69,7 +57,7 @@ select {
 }
 
 .hydro-section {
-  padding: 88px 0;
+  padding: 96px 0;
 }
 
 .hydro-gradient {
@@ -77,7 +65,7 @@ select {
 }
 
 .hydro-card-hover {
-  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
 }
 
 .hydro-card-hover:hover {

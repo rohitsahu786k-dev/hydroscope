@@ -26,9 +26,9 @@ export default async function ProductsPage() {
         />
         <div className="mb-8 overflow-hidden rounded-hydro border border-hydro-line bg-white p-3 shadow-hydro">
           <Image
-            src="/images/seo/hydroscope-product-ecosystem-hydropure-hydrosense-hydrosure-banner.webp"
-            alt="Hydroscope product ecosystem showing HydroPure HydroSense and HydroSure for water safety monitoring"
-            width={1915}
+            src="/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp"
+            alt="Hydroscope HydroPure HydroSense and HydroSure integrated rural water treatment and monitoring banner"
+            width={1916}
             height={821}
             className="h-auto w-full rounded-lg"
           />

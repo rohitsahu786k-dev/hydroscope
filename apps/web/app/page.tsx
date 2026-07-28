@@ -37,18 +37,20 @@ export default async function HomePage() {
               <ProductCard key={product.slug} product={product} />
             ))}
           </div>
-          <div className="mt-8 grid grid-cols-4 gap-0 rounded-hydro border border-hydro-line bg-hydro-soft p-7 max-lg:grid-cols-2 max-sm:grid-cols-1">
+          <div className="mt-8 grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
             {[
               ["On-Site Generation", "Generate disinfectant using salt, water and electricity.", ShieldCheck],
               ["Automatic Dosing", "Reduce manual dosing dependency with controlled operation.", Gauge],
               ["Live Monitoring", "HydroSure dashboards show alerts, reports and site status.", Cloud],
               ["Solar Compatible", "Built for rural, distributed and off-grid deployments.", Waypoints]
             ].map(([title, text, Icon]) => (
-              <article key={title as string} className="flex gap-3 border-r border-hydro-line px-5 last:border-0 max-lg:border-0 max-lg:p-4">
-                <Icon aria-hidden="true" className="mt-1 text-hydro-blue" />
+              <article key={title as string} className="group border border-hydro-line bg-white p-5 shadow-hydro transition hover:-translate-y-1 hover:border-[#b7d7f6] hover:shadow-hydroHover">
+                <span className="mb-5 grid h-11 w-11 place-items-center bg-[#eef7ff] text-hydro-blue transition group-hover:bg-hydro-blue group-hover:text-white">
+                  <Icon aria-hidden="true" size={20} />
+                </span>
                 <div>
-                  <h3 className="text-sm font-extrabold text-hydro-blue">{title as string}</h3>
-                  <p className="mt-1 text-xs text-hydro-muted">{text as string}</p>
+                  <h3 className="text-base font-extrabold text-hydro-ink">{title as string}</h3>
+                  <p className="mt-2 text-sm leading-6 text-hydro-muted">{text as string}</p>
                 </div>
               </article>
             ))}
@@ -84,9 +86,9 @@ export default async function HomePage() {
             </div>
             <Card className="overflow-hidden p-3">
               <Image
-                src="/images/seo/hydroscope-product-ecosystem-hydropure-hydrosense-hydrosure-banner.webp"
-                alt="Hydroscope product ecosystem showing HydroPure HydroSense and HydroSure for water safety monitoring"
-                width={1915}
+                src="/images/seo/hydropure-water-treatment-facility-village-tank-banner.webp"
+                alt="HydroPure water treatment facility with village tank and solar powered chlorination setup"
+                width={1916}
                 height={821}
                 className="h-auto w-full rounded-lg"
               />

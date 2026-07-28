@@ -303,7 +303,7 @@ export const blogPosts: BlogPost[] = [
     body:
       "This article topic is mapped from the Hydroscope SEO keyword and blog plan. Expand it with project-specific data, diagrams and verified technical details before final long-form publication.",
     status: "published" as const,
-    featuredImage: title.toLowerCase().includes("chlor") ? "/images/seo/hydropure-electrochlorinator-feature-marketing-image.webp" : "/images/seo/hydroscope-product-ecosystem-hydropure-hydrosense-hydrosure-banner.webp",
+    featuredImage: title.toLowerCase().includes("chlor") ? "/images/seo/hydropure-electrochlorinator-feature-marketing-image.webp" : "/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp",
     author: "Hydroscope Team",
     readingTime: "4 min read",
     tags: ["HydroPure", "HydroSense", "HydroSure"],

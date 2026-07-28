@@ -15,7 +15,7 @@ export async function Footer() {
       ];
 
   return (
-    <footer className="bg-hydro-navy py-12 text-white">
+    <footer className="border-t border-[#17345c] bg-[#061a33] py-14 text-white">
       <Container>
         <div className="grid grid-cols-[1.4fr_repeat(3,1fr)] gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1">
           <div>
@@ -30,14 +30,14 @@ export async function Footer() {
                 <small className="text-xs text-[#aabbd0]">{siteConfig.tagline}</small>
               </span>
             </Link>
-            <p className="max-w-sm text-sm text-[#aabbd0]">{footer.description}</p>
+            <p className="max-w-sm text-sm leading-7 text-[#aabbd0]">{footer.description}</p>
           </div>
           {columns.slice(0, 2).map((column) => (
             <div key={column.heading}>
               <h2 className="mb-4 text-sm font-bold">{column.heading}</h2>
               <div className="grid gap-2 text-xs text-[#aabbd0]">
                 {column.links.map((link) => (
-                  <Link key={link.href} href={link.href}>{link.label}</Link>
+                  <Link key={link.href} href={link.href} className="transition hover:text-white">{link.label}</Link>
                 ))}
               </div>
             </div>
@@ -51,7 +51,7 @@ export async function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-9 flex justify-between border-t border-[#1b3151] pt-4 text-[11px] text-[#8194ad] max-sm:flex-col max-sm:gap-2">
+        <div className="mt-10 flex justify-between border-t border-[#17345c] pt-5 text-[11px] text-[#8194ad] max-sm:flex-col max-sm:gap-2">
           <span>© 2026 HYDROscope. All rights reserved.</span>
           <span>{footer.bottomText}</span>
         </div>
