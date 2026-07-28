@@ -89,11 +89,11 @@ export async function getHomeData(): Promise<HomeData> {
     return home;
   }, {
     hero: {
-      eyebrow: "HYDROPURE • HYDROSENSE • HYDROSURE",
-      title: "Smart Off-Grid Electrochlorination, Powered by Solar & IoT",
-      subtitle: "Document-derived HYDROscope product platform for HydroPure electrochlorination, HydroSense sensing and HydroSure real-time monitoring.",
-      primaryCtaLabel: "Explore solutions",
-      primaryCtaUrl: "/solutions",
+      eyebrow: "ON-SITE CHLORINE GENERATION | IOT ENABLED | SOLAR COMPATIBLE",
+      title: "Intelligent Water Safety Infrastructure for India's Water Networks",
+      subtitle: "HydroPure generates disinfectant on-site using salt, water and electricity. It helps villages, municipalities and institutions automate chlorination with real-time monitoring.",
+      primaryCtaLabel: "Request demo",
+      primaryCtaUrl: "/request-demo",
       secondaryCtaLabel: "Request demo",
       secondaryCtaUrl: "/contact",
       dashboardPreview: true

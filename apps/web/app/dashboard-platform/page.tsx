@@ -6,8 +6,8 @@ import { Container } from "@/components/ui/container";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
-  title: "Cloud Dashboard & AI Water Analytics Platform | HYDROscope",
-  description: "HYDROscope dashboard platform for live intelligence, alerts, AI water analytics and cloud-based water monitoring operations.",
+  title: "HydroSure IoT Water Monitoring Dashboard | Real-Time Alerts",
+  description: "HydroSure is an IoT monitoring platform for live water-quality data, alerts, reports and multi-site visibility.",
   path: "/dashboard-platform"
 });
 
@@ -16,7 +16,11 @@ export default function DashboardPlatformPage() {
     <main className="hydro-section">
       <Container>
         <Breadcrumbs items={[{ label: "Dashboard / Platform" }]} />
-        <SectionHeading eyebrow="Dashboard / Platform" title="Cloud dashboards for source-to-tap water visibility" />
+        <SectionHeading
+          eyebrow="IoT water monitoring dashboard"
+          title="Monitor every site from one dashboard"
+          text="HydroSure connects chlorination units, sensors and field devices to a live dashboard for alerts, reports and multi-site visibility."
+        />
         <div className="grid grid-cols-[1.1fr_.8fr] gap-8 max-lg:grid-cols-1">
           <Card className="overflow-hidden p-3">
             <Image
@@ -29,10 +33,10 @@ export default function DashboardPlatformPage() {
           </Card>
           <div className="grid content-center gap-5">
             {[
-              "24/7 source-to-tap monitoring",
-              "30-minute response workflows",
-              "AI analytics from raw sensor streams",
-              "Operator, engineer, district and state access views"
+              "Live monitoring and residual chlorine tracking",
+              "Water usage, flow, pressure and tank-level status",
+              "Real-time alerts, reports and analytics",
+              "Operator, engineer, district and administrator roles"
             ].map((feature) => (
               <Card key={feature} className="p-6">
                 <h2 className="text-xl font-extrabold text-hydro-blue">{feature}</h2>
@@ -43,9 +47,9 @@ export default function DashboardPlatformPage() {
         </div>
         <section className="mt-12 grid grid-cols-3 gap-5 max-lg:grid-cols-1">
           {[
-            ["Raw sensor data", "Flow, pressure, residual chlorine, pH, conductivity, TDS, turbidity and temperature readings become the live operational foundation."],
-            ["Vector embeddings", "Time-series sensor data is converted into semantic relationships across sites, parameters and infrastructure events."],
-            ["AI insights and action", "The platform highlights anomalies, predicts risk patterns and supports alerts, escalation and maintenance decisions."]
+            ["Operators", "Site-level alerts and clear action prompts for faster local response."],
+            ["Engineers", "Diagnostics, performance data and system health visibility across sites."],
+            ["Officials", "Reports, compliance visibility and aggregate performance insights for distributed water infrastructure."]
           ].map(([title, text]) => (
             <Card key={title} className="p-6">
               <h2 className="text-xl font-extrabold">{title}</h2>

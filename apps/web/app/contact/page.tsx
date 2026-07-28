@@ -7,8 +7,8 @@ import { createMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = createMetadata({
-  title: "Contact HYDROscope | Request Demo or Product Details",
-  description: "Contact HYDROscope for IoT water quality monitoring, electro chlorination, AI water analytics, pilot deployments and partnerships.",
+  title: "Contact Hydroscope | Request HydroPure Demo",
+  description: "Contact Hydroscope to request a HydroPure demo, technical consultation, quotation or project discussion.",
   path: "/contact"
 });
 
@@ -17,10 +17,14 @@ export default function ContactPage() {
     <main className="hydro-section bg-hydro-soft">
       <Container>
         <Breadcrumbs items={[{ label: "Contact Us" }]} />
-        <SectionHeading eyebrow="Contact" title="Discuss a HYDROscope deployment or partnership" />
+        <SectionHeading
+          eyebrow="Contact Hydroscope"
+          title="Request a demo, quotation or technical consultation"
+          text="Share your project details and Hydroscope will help identify the right system, model and deployment approach."
+        />
         <div className="grid grid-cols-[.8fr_1.2fr] gap-8 max-lg:grid-cols-1">
           <Card className="p-6">
-            <h2 className="text-2xl font-extrabold">HYDROscope</h2>
+            <h2 className="text-2xl font-extrabold">Hydroscope Technology Pvt. Ltd.</h2>
             <div className="mt-5 grid gap-3 text-sm text-hydro-muted">
               <a href={`mailto:${siteConfig.email}`} className="font-bold text-hydro-blue">{siteConfig.email}</a>
               <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="font-bold text-hydro-blue">{siteConfig.phone}</a>

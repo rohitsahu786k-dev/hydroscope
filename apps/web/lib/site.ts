@@ -16,8 +16,9 @@ export const navItems = [
   { label: "About Us", href: "/about" },
   { label: "Products", href: "/products" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Applications", href: "/applications" },
+  { label: "How It Works", href: "/how-it-works" },
   { label: "Dashboard", href: "/dashboard-platform" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" }
+  { label: "Resources", href: "/resources" },
+  { label: "Contact", href: "/contact" },
+  { label: "Request Demo", href: "/request-demo" }
 ] as const;

@@ -4,7 +4,24 @@ import { absoluteUrl } from "@/lib/seo";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [products, solutions, blogPosts, caseStudies] = await Promise.all([getProducts(), getSolutions(), getBlogPosts(), getCaseStudies()]);
-  const staticPaths = ["/", "/about", "/products", "/solutions", "/applications", "/dashboard-platform", "/blog", "/case-studies", "/contact", "/privacy-policy", "/terms", "/sitemap-page"];
+  const staticPaths = [
+    "/",
+    "/about",
+    "/products",
+    "/solutions",
+    "/applications",
+    "/how-it-works",
+    "/dashboard-platform",
+    "/installation-maintenance",
+    "/resources",
+    "/request-demo",
+    "/blog",
+    "/case-studies",
+    "/contact",
+    "/privacy-policy",
+    "/terms",
+    "/sitemap-page"
+  ];
   const dynamicPaths = [
     ...products.map((item) => `/products/${item.slug}`),
     ...solutions.map((item) => `/solutions/${item.slug}`),

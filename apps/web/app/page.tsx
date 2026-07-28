@@ -13,9 +13,9 @@ import { getHomeData } from "@/lib/cms/globals";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
-  title: "HYDROscope | HydroPure, HydroSense & HydroSure",
+  title: "HydroPure Electrochlorinator | IoT Enabled Water Chlorination System",
   description:
-    "HYDROscope supplied product material for HydroPure electrochlorination, HydroSense sensing and HydroSure IoT real-time monitoring.",
+    "HydroPure by Hydroscope is an IoT-enabled electrochlorination system for on-site chlorine generation, automatic dosing, solar-compatible deployment and real-time monitoring.",
   path: "/"
 });
 
@@ -28,9 +28,9 @@ export default async function HomePage() {
       <section className="hydro-section">
         <Container>
           <SectionHeading
-            eyebrow="Our innovative products"
+            eyebrow="Hydroscope integrated solution"
             title="HydroPure, HydroSense and HydroSure"
-            text="A document-derived product ecosystem for electrochlorination, water-quality sensing and IoT real-time monitoring."
+            text="Hydroscope brings electrochlorination, water-quality sensing and dashboard monitoring into one ecosystem for distributed water networks."
           />
           <div className="grid grid-cols-3 gap-5 max-xl:grid-cols-1">
             {products.slice(0, 3).map((product) => (
@@ -39,10 +39,10 @@ export default async function HomePage() {
           </div>
           <div className="mt-8 grid grid-cols-4 gap-0 rounded-hydro border border-hydro-line bg-hydro-soft p-7 max-lg:grid-cols-2 max-sm:grid-cols-1">
             {[
-              ["Safe & Pure Water", "Fully disinfected water workflow from the supplied HydroPure material.", ShieldCheck],
-              ["Smart & Connected", "IoT module, remote monitoring and cloud-based visualization.", Cloud],
-              ["Alerts & Analytics", "HydroSure smart alerts, AI insights and feedback loops.", Bell],
-              ["Solar Ready", "Low-power off-grid deployment for distributed water assets.", Waypoints]
+              ["On-Site Generation", "Generate disinfectant using salt, water and electricity.", ShieldCheck],
+              ["Automatic Dosing", "Reduce manual dosing dependency with controlled operation.", Gauge],
+              ["Live Monitoring", "HydroSure dashboards show alerts, reports and site status.", Cloud],
+              ["Solar Compatible", "Built for rural, distributed and off-grid deployments.", Waypoints]
             ].map(([title, text, Icon]) => (
               <article key={title as string} className="flex gap-3 border-r border-hydro-line px-5 last:border-0 max-lg:border-0 max-lg:p-4">
                 <Icon aria-hidden="true" className="mt-1 text-hydro-blue" />
@@ -59,18 +59,18 @@ export default async function HomePage() {
         <Container>
           <div className="grid grid-cols-[0.9fr_1.1fr] items-center gap-12 max-lg:grid-cols-1">
             <div>
-              <span className="mb-4 block text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">HydroSure monitoring layer</span>
+              <span className="mb-4 block text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">How HydroPure works</span>
               <h2 className="text-[clamp(34px,4vw,56px)] font-extrabold leading-[1.08] tracking-[-0.045em]">
-                Turn raw sensor data into water intelligence.
+                From brine electrolysis to monitored water disinfection.
               </h2>
               <p className="mt-5 text-hydro-muted">
-                The supplied deck describes a data pipeline from raw sensor data to vector embeddings, AI insights, smart alerts, role-based access and operational action.
+                Salt and softened water are used to prepare brine. The brine passes through an electrolytic cell, converts into sodium hypochlorite and is dosed automatically into the water line.
               </p>
               <div className="mt-7 grid gap-4">
                 {[
-                  ["01", "Collect raw sensor data", "Flow, pressure, chlorine, pH, conductivity, TDS, turbidity and temperature readings."],
-                  ["02", "Convert into intelligence", "Vector embeddings and AI insights connect parameter patterns across sites."],
-                  ["03", "Act through alerts", "Smart alerts, escalation and feedback loops support operations teams."]
+                  ["01", "Prepare brine", "Softened water and salt create the input for electrochlorination."],
+                  ["02", "Generate sodium hypochlorite", "Direct current triggers electrolysis inside the electrolytic cell."],
+                  ["03", "Dose and monitor", "Dosing pumps, sensors and HydroSure dashboards support controlled operation."]
                 ].map(([number, title, text]) => (
                   <article key={number} className="flex gap-4">
                     <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-[#e8f3ff] text-xs font-extrabold text-hydro-blue">{number}</span>
@@ -96,7 +96,7 @@ export default async function HomePage() {
       </section>
       <section className="hydro-section">
         <Container>
-          <SectionHeading eyebrow="Solutions" title="Built around real water infrastructure workflows" />
+          <SectionHeading eyebrow="Solutions" title="Choose a solution based on your water network" />
           <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1">
             {solutions.slice(0, 6).map((solution) => (
               <SolutionCard key={solution.slug} solution={solution} />
@@ -106,7 +106,7 @@ export default async function HomePage() {
       </section>
       <section className="hydro-section bg-hydro-soft">
         <Container>
-          <SectionHeading eyebrow="Applications" title="Smart water monitoring across critical infrastructure" />
+          <SectionHeading eyebrow="Applications" title="Rural, municipal, institutional and industrial water networks" />
           <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-1">
             {applications.map((application) => (
               <ApplicationCard key={application.slug} application={application} />
@@ -118,12 +118,12 @@ export default async function HomePage() {
         <Container>
           <div className="grid grid-cols-[0.9fr_1.1fr] items-center gap-8 max-lg:grid-cols-1">
             <div>
-              <span className="mb-4 block text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">HydroPure for village water tanks</span>
+              <span className="mb-4 block text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">Automated village tank chlorination</span>
               <h2 className="text-[clamp(34px,4vw,54px)] font-extrabold leading-[1.08] tracking-[-0.045em]">
-                Intelligent water safety infrastructure for distributed tank networks.
+                Safer drinking water for every village tank.
               </h2>
               <p className="mt-5 text-hydro-muted">
-                HydroPure replaces irregular manual chlorination workflows with automated on-site chlorine generation, sensor monitoring, cloud dashboards and safe drinking-water visibility for village tank operations.
+                Replace manual dosing with automated chlorination, sensor feedback and cloud dashboard visibility. The workflow is built for rural and off-grid deployments.
               </p>
               <div className="mt-6 grid gap-3 text-sm text-hydro-muted">
                 {["Water source to HydroPure unit to automatic chlorination", "Sensors and monitoring with cloud dashboard visibility", "Solar-ready, low-power and plug-and-play installation"].map((item) => (
@@ -143,10 +143,10 @@ export default async function HomePage() {
           </div>
           <div className="mt-8 grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
               {[
-                ["The challenge", "Ageing infrastructure, leakages, inconsistent chlorination, manual handling and no real-time visibility can increase operational risk."],
-                ["HydroPure workflow", "Water source, HydroPure unit, automatic chlorination, sensors, cloud dashboard and safe drinking-water delivery are connected into one monitored process."],
-                ["Operating model", "Salt solution tank, electrochlorination unit, injection line and water distribution workflow support automated village tank deployment."],
-                ["Governance view", "Dashboards help teams track residual chlorine, alerts, water usage and multi-site status for better accountability."]
+                ["Water safety challenge", "Manual chlorination creates inconsistent dosing, delayed monitoring and limited accountability."],
+                ["Hydroscope solution", "HydroPure, HydroSense and HydroSure combine generation, sensing and visibility."],
+                ["Model range", "HSE 100 to HSE 2000 support small tanks through large multi-site infrastructure projects."],
+                ["Buyer outcome", "Lower chemical handling, improved dosing consistency and better reporting for decision-makers."]
               ].map(([title, text]) => (
                 <Card key={title} className="p-5">
                   <h3 className="text-base font-extrabold text-hydro-blue">{title}</h3>
@@ -158,7 +158,7 @@ export default async function HomePage() {
       </section>
       <section className="hydro-section">
         <Container>
-          <SectionHeading eyebrow="Why HYDROscope" title="Water intelligence designed for operating teams" />
+          <SectionHeading eyebrow="Why Hydroscope" title="Water intelligence designed for operating teams" />
           <div className="grid grid-cols-6 gap-4 max-lg:grid-cols-3 max-sm:grid-cols-2">
             {[
               ["Real-time", "Dashboard", Gauge],
@@ -179,7 +179,7 @@ export default async function HomePage() {
       </section>
       <section className="hydro-section bg-hydro-soft">
         <Container>
-          <SectionHeading eyebrow="Insights" title="Guides for smart water decisions" />
+          <SectionHeading eyebrow="SEO resources" title="Guides for smart water decisions" />
           <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-1">
             {blogPosts.slice(0, 3).map((post) => (
               <BlogCard key={post.slug} post={post} />
@@ -196,13 +196,13 @@ export default async function HomePage() {
       <section className="relative overflow-hidden bg-hydro-navy py-20 text-center text-white">
         <div className="hydro-network absolute inset-0 opacity-10" />
         <Container className="relative">
-          <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#bde8ff]">Smarter water. Safer future.</span>
+          <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#bde8ff]">Automate chlorination and monitoring</span>
           <h2 className="mx-auto mt-3 max-w-3xl text-[clamp(34px,4vw,58px)] font-extrabold leading-[1.05] tracking-[-0.045em]">
-            Transform how you monitor, treat and protect water.
+            Share your water demand, tank capacity and monitoring requirement.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-[#cfe4ff]">Discuss a pilot, utility deployment, rural water scheme or technology partnership with the HYDROscope team.</p>
-          <Button href="/contact" className="mt-7">
-            Request a consultation
+          <p className="mx-auto mt-4 max-w-2xl text-[#cfe4ff]">Hydroscope will recommend the right HydroPure model, sensing layer and deployment plan.</p>
+          <Button href="/request-demo" className="mt-7">
+            Request demo
           </Button>
         </Container>
       </section>

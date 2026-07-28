@@ -32,22 +32,33 @@ export function ContactForm() {
       <input className="hidden" name="website" tabIndex={-1} autoComplete="off" />
       <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
         <Field label="Name" name="name" required />
-        <Field label="Company" name="company" />
+        <Field label="Organization" name="company" />
         <Field label="Email" name="email" type="email" required />
         <Field label="Phone" name="phone" />
         <Field label="Country" name="country" defaultValue="India" required />
+        <Field label="City and state" name="cityState" />
         <label className="grid gap-2 text-sm font-bold">
           Requirement type
           <select name="requirementType" required className="min-h-12 rounded-md border border-hydro-line px-3 font-medium text-hydro-ink">
-            <option>Product enquiry</option>
-            <option>Utility deployment</option>
-            <option>Industrial monitoring</option>
             <option>Rural drinking-water scheme</option>
+            <option>Municipal / government project</option>
+            <option>Industrial water treatment</option>
+            <option>Product demo</option>
+            <option>Dashboard walkthrough</option>
+            <option>Model recommendation</option>
             <option>Partnership</option>
           </select>
         </label>
       </div>
-      <Field label="Product / solution interest" name="interest" />
+      <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+        <Field label="Application type" name="applicationType" />
+        <Field label="Daily water demand" name="dailyWaterDemand" />
+        <Field label="Tank capacity" name="tankCapacity" />
+        <Field label="Number of sites" name="numberOfSites" />
+        <Field label="Power availability" name="powerAvailability" />
+        <Field label="Solar requirement" name="solarRequirement" />
+      </div>
+      <Field label="Monitoring requirement" name="interest" />
       <label className="grid gap-2 text-sm font-bold">
         Message
         <textarea name="message" required rows={5} className="rounded-md border border-hydro-line px-3 py-3 font-medium text-hydro-ink" />

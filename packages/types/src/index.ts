@@ -77,7 +77,14 @@ export interface Enquiry {
   email: string;
   phone?: string;
   country: string;
+  cityState?: string;
   requirementType: string;
+  applicationType?: string;
+  dailyWaterDemand?: string;
+  tankCapacity?: string;
+  numberOfSites?: string;
+  powerAvailability?: string;
+  solarRequirement?: string;
   interest?: string;
   message: string;
   consent: boolean;

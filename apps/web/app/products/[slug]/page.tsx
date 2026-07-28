@@ -74,8 +74,8 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <Card className="p-6">
               <h2 className="text-xl font-extrabold">Plan a deployment</h2>
               <p className="mt-3 text-sm text-hydro-muted">Discuss product fit, parameters, site conditions and dashboard needs with the HYDROscope team.</p>
-              <Button href="/contact" className="mt-5 w-full">
-                Request details
+              <Button href="/request-demo" className="mt-5 w-full">
+                Request demo
               </Button>
             </Card>
             <Card className="p-6">

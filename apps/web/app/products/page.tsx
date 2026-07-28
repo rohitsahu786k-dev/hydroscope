@@ -6,8 +6,8 @@ import { getProducts } from "@/lib/cms/queries";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
-  title: "Products | HydroPure, HydroSense & HydroSure",
-  description: "Explore HYDROscope products from the supplied documents: HydroPure electrochlorination, HydroSense sensing and HydroSure IoT monitoring.",
+  title: "Hydroscope Products | HydroPure, HydroSense and HydroSure",
+  description: "Explore Hydroscope products for electrochlorination, sensing and IoT water monitoring.",
   path: "/products"
 });
 
@@ -18,7 +18,11 @@ export default async function ProductsPage() {
     <main className="hydro-section">
       <Container>
         <Breadcrumbs items={[{ label: "Products" }]} />
-        <SectionHeading eyebrow="Products" title="HydroPure, HydroSense and HydroSure" />
+        <SectionHeading
+          eyebrow="Water technology products"
+          title="HydroPure, HydroSense and HydroSure"
+          text="Hydroscope offers an integrated product ecosystem for water disinfection, sensing and monitoring. The system is designed to reduce dependency on manual dosing and delayed checks."
+        />
         <div className="grid grid-cols-2 gap-5 max-xl:grid-cols-1">
           {products.map((product) => (
             <ProductCard key={product.slug} product={product} />

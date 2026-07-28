@@ -60,7 +60,7 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
                 ))}
               </div>
             </Card>
-            <Button href="/contact" className="w-full">
+            <Button href="/request-demo" className="w-full">
               Discuss this solution
             </Button>
           </aside>
