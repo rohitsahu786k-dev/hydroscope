@@ -84,10 +84,10 @@ export default async function HomePage() {
             </div>
             <Card className="overflow-hidden p-3">
               <Image
-                src="/generated/source-to-tap-platform.png"
-                alt="Source-to-tap water monitoring workflow with HydroPure, sensors, cloud dashboard and alerts"
-                width={1680}
-                height={900}
+                src="/images/seo/hydroscope-product-ecosystem-hydropure-hydrosense-hydrosure-banner.webp"
+                alt="Hydroscope product ecosystem showing HydroPure HydroSense and HydroSure for water safety monitoring"
+                width={1915}
+                height={821}
                 className="h-auto w-full rounded-lg"
               />
             </Card>
@@ -133,10 +133,10 @@ export default async function HomePage() {
             </div>
             <div className="overflow-hidden rounded-hydro border border-hydro-line bg-white shadow-hydro">
               <Image
-                src="/generated/hydropure-deployment-hero.png"
-                alt="HydroPure smart electrochlorination deployment near water infrastructure with solar and IoT monitoring"
-                width={1680}
-                height={900}
+                src="/images/seo/hydropure-installation-engineers-village-water-tank-banner.webp"
+                alt="HydroPure installation with engineers inspecting automated chlorination system near village water tank"
+                width={1916}
+                height={821}
                 className="h-auto w-full"
               />
             </div>

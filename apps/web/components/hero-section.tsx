@@ -60,10 +60,10 @@ export function HeroSection({
         <div className="relative min-h-[560px] max-lg:min-h-[520px] max-sm:min-h-[560px]">
           <div className="absolute inset-x-0 top-8 overflow-hidden rounded-[30px] border border-white/85 bg-white p-3 shadow-[0_34px_90px_rgba(9,36,76,.18)]">
             <Image
-              src="/generated/hydropure-deployment-hero.png"
-              alt="HydroPure smart electrochlorination deployment with solar and IoT monitoring"
-              width={1680}
-              height={900}
+              src="/images/seo/hydropure-smart-chlorination-system-outdoor-utility-banner.webp"
+              alt="HydroPure smart chlorination system installed at outdoor water utility site"
+              width={1915}
+              height={821}
               className="aspect-[1.45] w-full rounded-[24px] object-cover"
               priority
             />
@@ -87,7 +87,13 @@ export function HeroSection({
             </div>
           </div>
           <div className="absolute bottom-16 right-6 w-[46%] overflow-hidden rounded-[20px] border border-[#c8ddf4] bg-white p-3 shadow-[0_20px_52px_rgba(18,88,182,.16)] max-sm:hidden">
-            <Image src="/generated/source-to-tap-platform.png" alt="HydroSense and HydroSure source-to-tap platform visual" width={1680} height={900} className="rounded-2xl" />
+            <Image
+              src="/images/seo/hydrosure-dashboard-control-unit-product-only-shot.webp"
+              alt="HydroSure dashboard control unit with laptop and mobile app product only image"
+              width={1672}
+              height={941}
+              className="rounded-2xl"
+            />
           </div>
           <div className="absolute right-8 top-2 grid h-14 w-14 place-items-center rounded-full bg-white text-hydro-blue shadow-hydro">
             <Bell aria-hidden="true" />

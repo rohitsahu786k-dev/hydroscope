@@ -24,10 +24,10 @@ export default function DashboardPlatformPage() {
         <div className="grid grid-cols-[1.1fr_.8fr] gap-8 max-lg:grid-cols-1">
           <Card className="overflow-hidden p-3">
             <Image
-              src="/generated/source-to-tap-platform.png"
-              alt="HYDROscope source-to-tap IoT monitoring workflow, AI dashboard and alerts"
-              width={1680}
-              height={900}
+              src="/images/seo/hydrosure-iot-water-monitoring-system-product-shot.webp"
+              alt="HydroSure IoT water monitoring system product shot with laptop and mobile dashboard"
+              width={1672}
+              height={941}
               className="h-auto w-full rounded-lg"
             />
           </Card>

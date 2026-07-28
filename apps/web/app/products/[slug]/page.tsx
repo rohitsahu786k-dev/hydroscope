@@ -49,6 +49,15 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 <Image src={product.featuredImage} alt={`${product.title} product visual`} width={1680} height={900} className="h-auto w-full" />
               </div>
             ) : null}
+            {product.gallery?.length ? (
+              <div className="mt-5 grid grid-cols-2 gap-5 max-sm:grid-cols-1">
+                {product.gallery.map((image, index) => (
+                  <div key={image} className="overflow-hidden rounded-hydro border border-hydro-line bg-white p-3 shadow-hydro">
+                    <Image src={image} alt={`${product.title} supporting product image ${index + 1}`} width={1672} height={941} className="h-auto w-full rounded-lg" />
+                  </div>
+                ))}
+              </div>
+            ) : null}
             <div className="mt-8 grid grid-cols-2 gap-5 max-sm:grid-cols-1">
               <FeatureList title="Key features" items={product.features} />
               <FeatureList title="Parameters supported" items={product.parameters} />

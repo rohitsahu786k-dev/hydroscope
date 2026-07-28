@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbSchema, FaqSchema } from "@/components/json-ld";
@@ -37,6 +38,11 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
             <span className="mb-4 block text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">Solution</span>
             <h1 className="text-[clamp(38px,4.5vw,64px)] font-extrabold leading-[1.03] tracking-[-0.045em]">{solution.title}</h1>
             <p className="mt-5 max-w-3xl text-hydro-muted">{solution.body}</p>
+            {solution.featuredImage ? (
+              <div className="mt-8 overflow-hidden rounded-hydro border border-hydro-line bg-white p-3 shadow-hydro">
+                <Image src={solution.featuredImage} alt={`${solution.title} Hydroscope solution visual`} width={1916} height={821} className="h-auto w-full rounded-lg" />
+              </div>
+            ) : null}
             <section className="mt-8">
               <h2 className="text-2xl font-extrabold">Operational outcomes</h2>
               <div className="mt-4 grid grid-cols-2 gap-4 max-sm:grid-cols-1">

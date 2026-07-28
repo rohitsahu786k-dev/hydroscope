@@ -11,7 +11,7 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="hydro-network absolute inset-0 opacity-30" />
         <div className="absolute h-56 w-56 rounded-full bg-white/90 blur-sm" />
         <Image
-          src={product.featuredImage ?? "/generated/source-to-tap-platform.png"}
+          src={product.featuredImage ?? "/images/seo/hydroscope-product-ecosystem-hydropure-hydrosense-hydrosure-banner.webp"}
           alt={`${product.title} by HYDROscope`}
           width={520}
           height={340}

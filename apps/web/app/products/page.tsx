@@ -1,4 +1,5 @@
 import { ProductCard } from "@/components/cards";
+import Image from "next/image";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SectionHeading } from "@/components/section-heading";
 import { Container } from "@/components/ui/container";
@@ -23,6 +24,15 @@ export default async function ProductsPage() {
           title="HydroPure, HydroSense and HydroSure"
           text="Hydroscope offers an integrated product ecosystem for water disinfection, sensing and monitoring. The system is designed to reduce dependency on manual dosing and delayed checks."
         />
+        <div className="mb-8 overflow-hidden rounded-hydro border border-hydro-line bg-white p-3 shadow-hydro">
+          <Image
+            src="/images/seo/hydroscope-product-ecosystem-hydropure-hydrosense-hydrosure-banner.webp"
+            alt="Hydroscope product ecosystem showing HydroPure HydroSense and HydroSure for water safety monitoring"
+            width={1915}
+            height={821}
+            className="h-auto w-full rounded-lg"
+          />
+        </div>
         <div className="grid grid-cols-2 gap-5 max-xl:grid-cols-1">
           {products.map((product) => (
             <ProductCard key={product.slug} product={product} />

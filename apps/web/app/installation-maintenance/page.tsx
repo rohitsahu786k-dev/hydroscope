@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
@@ -25,6 +26,15 @@ export default function InstallationMaintenancePage() {
           title="Deployment support from site assessment to long-term maintenance"
           text="Hydroscope supports the complete deployment lifecycle from site assessment to commissioning, training and maintenance."
         />
+        <div className="mb-8 overflow-hidden rounded-hydro border border-hydro-line bg-white p-3 shadow-hydro">
+          <Image
+            src="/images/seo/hydropure-field-inspection-iot-enabled-water-treatment-banner.webp"
+            alt="HydroPure IoT enabled water treatment system field inspection with village tank background"
+            width={1916}
+            height={821}
+            className="h-auto w-full rounded-lg"
+          />
+        </div>
         <div className="grid grid-cols-2 gap-6 max-lg:grid-cols-1">
           <ListCard title="Deployment process" items={deployment} />
           <ListCard title="Scope of supply" items={supply} />

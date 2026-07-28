@@ -32,7 +32,13 @@ export const products: Product[] = [
     body:
       "HydroPure uses salt, water and electricity to support reliable water disinfection without routine dependency on transported chlorine chemicals. A brine solution passes through an electrolytic cell, direct current triggers electrolysis and the generated sodium hypochlorite is stored and dosed into the water system through dosing pumps.",
     status: "published",
-    featuredImage: "/generated/hydropure-deployment-hero.png",
+    featuredImage: "/images/seo/hydropure-front-view-electrochlorinator-product-image.webp",
+    gallery: [
+      "/images/seo/hydropure-electrochlorinator-product-only-outdoor-shot.webp",
+      "/images/seo/hydropure-clean-front-product-shot-solar-water-tank.webp",
+      "/images/seo/hydropure-electrochlorinator-feature-marketing-image.webp",
+      "/images/seo/hydropure-modular-chlorination-unit-village-water-tank.webp"
+    ],
     features: [
       "On-site chlorine generation",
       "Fully automated operation",
@@ -82,7 +88,8 @@ export const products: Product[] = [
     body:
       "HydroSense is a water-quality sensing platform for real-time monitoring of critical parameters. It supports better decisions by reducing dependency on delayed manual checks and creates a stronger data foundation for reports, alerts and preventive action.",
     status: "published",
-    featuredImage: "/product-images/hydrosense-sensor.png",
+    featuredImage: "/images/seo/hydrosense-water-quality-sensors-product-only-shot.webp",
+    gallery: ["/images/seo/hydroscope-water-treatment-products-feature-collage.webp"],
     features: [
       "Active chlorine monitoring",
       "pH monitoring",
@@ -121,7 +128,8 @@ export const products: Product[] = [
     body:
       "HydroSure is an IoT monitoring platform that helps teams monitor performance, receive alerts and manage multiple sites from one place. Operators get site-level actions, engineers get diagnostics, district officials get reports and administrators get aggregate performance insights.",
     status: "published",
-    featuredImage: "/generated/source-to-tap-platform.png",
+    featuredImage: "/images/seo/hydrosure-iot-water-monitoring-system-product-shot.webp",
+    gallery: ["/images/seo/hydrosure-dashboard-control-unit-product-only-shot.webp"],
     features: [
       "Live monitoring",
       "Residual chlorine tracking",
@@ -156,6 +164,7 @@ const solutionSeeds = [
     outcomes: ["Consistent disinfection", "Reduced manual dosing", "Solar-compatible operation", "Remote monitoring", "Better accountability", "Simple local operation"],
     applications: ["Village overhead tanks", "Rural water-supply schemes", "Gram Panchayat workflows"],
     relatedProducts: ["hydropure-intelligent-electrochlorinator", "hydrosense-water-quality-sensor", "hydrosure-iot-real-time-monitoring"],
+    featuredImage: "/images/seo/hydropure-installation-engineers-village-water-tank-banner.webp",
     seoTitle: "Rural Water Supply Chlorination System | Village Tank Monitoring",
     seoDescription: "Automate village water tank chlorination with HydroPure, IoT monitoring and solar-compatible operation.",
     keywords: ["village water tank chlorination system", "rural drinking water chlorination", "solar chlorination system"]
@@ -168,6 +177,7 @@ const solutionSeeds = [
     outcomes: ["Automatic chlorination", "Multi-site dashboard", "Residual chlorine monitoring", "Flow and pressure visibility", "Alerts and escalation", "Reports for officials"],
     applications: ["Municipal water boards", "PHED departments", "RWSS projects", "District water authorities", "Smart city water systems", "JJM and AMRUT aligned projects"],
     relatedProducts: ["hydropure-intelligent-electrochlorinator", "hydrosure-iot-real-time-monitoring"],
+    featuredImage: "/images/seo/hydropure-smart-chlorination-system-outdoor-utility-banner.webp",
     seoTitle: "Municipal Water Chlorination System | IoT Monitoring",
     seoDescription: "Hydroscope supports municipal and government water systems with automated chlorination, sensors and centralized monitoring.",
     keywords: ["municipal water chlorination system", "PHED water monitoring", "smart city water quality monitoring"]
@@ -180,6 +190,7 @@ const solutionSeeds = [
     outcomes: ["Reduced stored chemical dependency", "Better dosing control", "Improved site-team safety", "Remote maintenance visibility", "Scalable capacity"],
     applications: ["Cooling water systems", "Wastewater treatment", "Process water disinfection", "Food and beverage plants", "Pharmaceutical manufacturing", "Hospitals and campuses"],
     relatedProducts: ["hydropure-intelligent-electrochlorinator", "hydrosense-water-quality-sensor"],
+    featuredImage: "/images/seo/hydropure-water-treatment-facility-village-tank-banner.webp",
     seoTitle: "Industrial Water Chlorination System | On-Site Hypochlorite Generator",
     seoDescription: "HydroPure supports industrial water disinfection, cooling water systems, wastewater treatment and process water chlorination.",
     keywords: ["industrial water chlorination system", "cooling water chlorination", "wastewater chlorination"]
@@ -192,6 +203,7 @@ const solutionSeeds = [
     outcomes: ["Live monitoring", "Reports and analytics", "Multi-site visibility", "Faster response workflows"],
     applications: ["Utilities", "District operations", "Smart cities"],
     relatedProducts: ["hydrosense-water-quality-sensor", "hydrosure-iot-real-time-monitoring"],
+    featuredImage: "/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp",
     seoTitle: "Water Treatment and Chlorination Solutions | Hydroscope",
     seoDescription: "Hydroscope provides automated water disinfection and monitoring solutions for rural, municipal, industrial and institutional water networks.",
     keywords: ["water treatment solutions", "chlorination solutions", "water monitoring solutions"]
@@ -207,7 +219,7 @@ export const solutions: Solution[] = solutionSeeds.map((item) => {
     excerpt: item.excerpt,
     body: item.body,
     status: "published" as const,
-    featuredImage: item.relatedProducts.includes("hydropure-intelligent-electrochlorinator") ? "/generated/hydropure-deployment-hero.png" : "/generated/source-to-tap-platform.png",
+    featuredImage: item.featuredImage,
     outcomes: item.outcomes,
     relatedProducts: item.relatedProducts,
     applications: item.applications,
@@ -291,7 +303,7 @@ export const blogPosts: BlogPost[] = [
     body:
       "This article topic is mapped from the Hydroscope SEO keyword and blog plan. Expand it with project-specific data, diagrams and verified technical details before final long-form publication.",
     status: "published" as const,
-    featuredImage: title.toLowerCase().includes("chlor") ? "/generated/hydropure-deployment-hero.png" : "/generated/source-to-tap-platform.png",
+    featuredImage: title.toLowerCase().includes("chlor") ? "/images/seo/hydropure-electrochlorinator-feature-marketing-image.webp" : "/images/seo/hydroscope-product-ecosystem-hydropure-hydrosense-hydrosure-banner.webp",
     author: "Hydroscope Team",
     readingTime: "4 min read",
     tags: ["HydroPure", "HydroSense", "HydroSure"],
@@ -314,7 +326,7 @@ export const caseStudies: CaseStudy[] = [
     body:
       "Water Source -> Treatment Point -> Village Tank -> HydroPure Chlorination -> Sensors and Monitoring -> Cloud Dashboard -> Safe Drinking Water.",
     status: "published",
-    featuredImage: "/generated/hydropure-deployment-hero.png",
+    featuredImage: "/images/seo/hydropure-modular-chlorination-unit-village-water-tank.webp",
     sector: "Rural drinking water",
     location: "India",
     challenge: "Manual chlorination can be irregular, operators may not be available at every site, power availability can be limited and delayed alerts can increase water-safety risk.",
