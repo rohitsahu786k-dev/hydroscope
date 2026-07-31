@@ -49,7 +49,7 @@ export async function getHeaderData(): Promise<HeaderData> {
   return tryPayload(async () => {
     const payload = await getPayloadClient();
     const header = (await payload.findGlobal({ slug: "header", depth: 2 })) as { logo?: Media; menuItems?: LinkItem[]; cta?: LinkItem };
-    const menuItems = normalizeLinks(header.menuItems);
+    const menuItems = normalizeLinks(header.menuItems).filter((item) => item.href !== "/");
     return {
       logo: header.logo,
       menuItems: menuItems.length ? menuItems : navItems.map((item) => ({ label: item.label, href: item.href })),

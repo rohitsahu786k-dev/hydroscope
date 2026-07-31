@@ -5,6 +5,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Additive brand tokens used by the Glow/Mockup primitives. The existing
+        // hydro-* palette below is untouched.
+        brand: "hsl(var(--brand))",
+        "brand-foreground": "hsl(var(--brand-foreground))",
         hydro: {
           blue: "#1258b6",
           blue2: "#1678e8",
@@ -22,6 +26,23 @@ const config: Config = {
       },
       borderRadius: {
         hydro: "13px"
+      },
+      animation: {
+        // `both`, not `forwards`: the backwards fill holds the 0% keyframe during
+        // animation-delay, so the markup does not need a hard `opacity-0` class -
+        // which would leave the text invisible if the stylesheet ever fails to load.
+        appear: "appear 0.5s ease-out both",
+        "appear-zoom": "appear-zoom 0.8s ease-out both"
+      },
+      keyframes: {
+        appear: {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" }
+        },
+        "appear-zoom": {
+          "0%": { opacity: "0", transform: "scale(0.98)" },
+          "100%": { opacity: "1", transform: "scale(1)" }
+        }
       }
     }
   },

@@ -1,0 +1,312 @@
+/* HydroPure "Village tank setup" infographic.
+   Every class is namespaced hydropure-infographic-*, and the file is a CSS module,
+   so nothing here can reach global styles or any other section. */
+
+.hydropure-infographic-section {
+  --hydropure-infographic-blue: #006edc;
+  --hydropure-infographic-navy: #0b1f44;
+  --hydropure-infographic-border: #d7e8fa;
+  --hydropure-infographic-muted: #4c6182;
+  --hydropure-infographic-radius: 16px;
+
+  /* Must match the aspect ratio of the base image: the callout offsets and the
+     connector overlay are authored in that image's coordinate space, so a crop
+     with a different ratio needs this updated to keep the anchors aligned. */
+  --hydropure-infographic-media-ratio: 3 / 2;
+
+  --hydropure-infographic-card-width: 21.5%;
+  --hydropure-infographic-card-inset: 2.6%;
+
+  position: relative;
+  overflow: hidden;
+  padding: clamp(18px, 2.8vw, 44px);
+  border: 1px solid var(--hydropure-infographic-border);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6fbff 100%);
+}
+
+/* ---------------------------------------------------------------- header ---- */
+
+.hydropure-infographic-header {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hydropure-infographic-eyebrow {
+  display: inline-block;
+  margin: 0;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: var(--hydropure-infographic-blue);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hydropure-infographic-heading {
+  margin: 16px 0 0;
+  color: var(--hydropure-infographic-navy);
+  font-size: clamp(28px, 4.2vw, 56px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+/* Accent word inside the heading - kept as an element so the copy stays editable. */
+.hydropure-infographic-heading em {
+  font-style: normal;
+  color: var(--hydropure-infographic-blue);
+}
+
+.hydropure-infographic-rule {
+  width: 132px;
+  height: 1px;
+  margin: 18px auto 0;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--hydropure-infographic-border), transparent);
+}
+
+.hydropure-infographic-description {
+  margin: 14px auto 0;
+  max-width: 560px;
+  color: var(--hydropure-infographic-muted);
+  font-size: clamp(14px, 1.15vw, 17px);
+  line-height: 1.6;
+}
+
+/* ----------------------------------------------------------------- stage ---- */
+
+.hydropure-infographic-stage {
+  position: relative;
+  margin-top: clamp(20px, 2.6vw, 38px);
+}
+
+.hydropure-infographic-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--hydropure-infographic-media-ratio);
+  border-radius: var(--hydropure-infographic-radius);
+  overflow: hidden;
+}
+
+/* contain, never cover: the products must never be cropped at any width */
+.hydropure-infographic-image {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* ------------------------------------------------------------ connectors ---- */
+
+.hydropure-infographic-connectors {
+  position: absolute;
+  inset: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hydropure-infographic-connector-path {
+  fill: none;
+  stroke: #8fc2f2;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* paths carry pathLength="1", so offset 1 is fully hidden and 0 fully drawn.
+     Default 0 keeps them visible when animation is skipped. */
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  vector-effect: non-scaling-stroke;
+}
+
+.hydropure-infographic-connector-dot {
+  fill: var(--hydropure-infographic-blue);
+  opacity: 0.8;
+}
+
+/* --------------------------------------------------------------- droplets ---- */
+
+.hydropure-infographic-droplets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hydropure-infographic-droplet {
+  position: absolute;
+  left: var(--hydropure-infographic-droplet-x);
+  top: var(--hydropure-infographic-droplet-y);
+  width: var(--hydropure-infographic-droplet-size);
+  height: var(--hydropure-infographic-droplet-size);
+  border: 1px solid rgba(0, 110, 220, 0.26);
+  border-radius: 999px;
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95), rgba(157, 205, 246, 0.48));
+  box-shadow: 0 6px 16px rgba(0, 110, 220, 0.12);
+}
+
+/* --------------------------------------------------------------- callouts ---- */
+
+.hydropure-infographic-callouts {
+  display: grid;
+  /* minmax(0, 1fr) rather than 1fr: plain 1fr floors each track at its min-content
+     width, which pushes long labels past the viewport on narrow screens. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hydropure-infographic-card {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--hydropure-infographic-border);
+  border-radius: var(--hydropure-infographic-radius);
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(11, 31, 68, 0.05);
+}
+
+.hydropure-infographic-card-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #e8f3ff;
+  color: var(--hydropure-infographic-blue);
+}
+
+.hydropure-infographic-card-title {
+  margin: 0;
+  color: var(--hydropure-infographic-blue);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.hydropure-infographic-card-text {
+  margin: 6px 0 0;
+  color: var(--hydropure-infographic-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------- benefits ---- */
+
+.hydropure-infographic-benefits {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: clamp(16px, 2vw, 26px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Flex children default to min-width:auto, so without this the copy refuses to
+   wrap and overflows its card. */
+.hydropure-infographic-card-body,
+.hydropure-infographic-benefit-body {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* Two benefit columns on a 390px screen leave roughly 68px beside the icon, which
+   is narrower than a single word - so stack the icon on top until there is room. */
+.hydropure-infographic-benefit {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--hydropure-infographic-border);
+  border-radius: var(--hydropure-infographic-radius);
+  background: #ffffff;
+}
+
+.hydropure-infographic-benefit-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: #f0f7ff;
+  color: var(--hydropure-infographic-blue);
+}
+
+.hydropure-infographic-benefit-title {
+  margin: 0;
+  color: var(--hydropure-infographic-blue);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.hydropure-infographic-benefit-text {
+  margin: 5px 0 0;
+  color: var(--hydropure-infographic-muted);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+/* ------------------------------------------------- tablet: 2x2 callouts ---- */
+
+@media (min-width: 768px) {
+  .hydropure-infographic-callouts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .hydropure-infographic-benefit {
+    flex-direction: row;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+}
+
+/* ------------------ desktop: callouts float around the central product ---- */
+
+@media (min-width: 1180px) {
+  .hydropure-infographic-connectors {
+    display: block;
+  }
+
+  .hydropure-infographic-callouts {
+    position: absolute;
+    inset: 0;
+    display: block;
+    gap: 0;
+    margin: 0;
+  }
+
+  .hydropure-infographic-card {
+    position: absolute;
+    top: var(--hydropure-infographic-card-top);
+    width: var(--hydropure-infographic-card-width);
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  .hydropure-infographic-card-left {
+    left: var(--hydropure-infographic-card-inset);
+  }
+
+  .hydropure-infographic-card-right {
+    right: var(--hydropure-infographic-card-inset);
+  }
+
+  .hydropure-infographic-benefits {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Static, readable fallback when the visitor asks for less motion. GSAP is not
+   registered at all in that case, so nothing here has to undo transforms. */
+@media (prefers-reduced-motion: reduce) {
+  .hydropure-infographic-droplet {
+    animation: none;
+  }
+}

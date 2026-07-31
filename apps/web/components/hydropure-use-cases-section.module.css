@@ -1,0 +1,283 @@
+/* HydroPure use cases - "Built for Multiple Water Challenges".
+   Text is HTML laid over an unmodified background image. Every class is
+   prefixed hydropure-use-cases-, and this is a CSS module, so nothing leaks. */
+
+.hydropure-use-cases-section {
+  /* --- desktop overlay geometry -------------------------------------------
+     Percentages of the background image box, measured off the supplied artwork
+     (1535 x 1024). Tune only these to re-align text with the blank cards. */
+
+  /* Five blank cards: x 45..1487, tops at y 425, bottoms at y 830. The round
+     icon badges are centred on each card and end at y 555, so card text starts
+     below that - close to the brief's suggested top:58%. The brief's bottom:8%
+     would run the last lines past the card edge onto the wave, so the box ends
+     at the real card bottom instead. */
+  --hydropure-use-cases-cards-left: 2.9%;
+  --hydropure-use-cases-cards-width: 93.9%;
+  --hydropure-use-cases-cards-top: 56%;
+  --hydropure-use-cases-cards-bottom: 19%;
+  --hydropure-use-cases-cards-gap: 1.89%;
+
+  /* Header block (headerPlacement="overlay"). The band above the dotted
+     connector is clear to y 210 = 20.5%, so the type below is sized to end
+     around 18% and keep clear of it. */
+  --hydropure-use-cases-header-left: 17%;
+  --hydropure-use-cases-header-top: 3%;
+  --hydropure-use-cases-header-width: 66%;
+
+  /* --- palette (exactly the values supplied) ----------------------------- */
+  --hydropure-use-cases-eyebrow-color: #1765c1;
+  --hydropure-use-cases-heading-color: #071d46;
+  --hydropure-use-cases-highlight-color: #078b92;
+  --hydropure-use-cases-description-color: #657286;
+  --hydropure-use-cases-card-heading-color: #071d46;
+  --hydropure-use-cases-card-text-color: #566477;
+  --hydropure-use-cases-divider-color: #08a1a1;
+  --hydropure-use-cases-card-border: #dcebfa;
+
+  /* Inherit the site face first; Inter only as a fallback. */
+  font-family: inherit;
+  /* Fills its parent, which is the site-wide <Container> at w-[90%] - so this
+     section is 90% of the viewport and lines up with every other section. No
+     max-width cap: one here would make it stop short of the rest of the page on
+     wide screens. The Container's 5% gutters cover the mobile padding. */
+  width: 100%;
+  margin-inline: auto;
+}
+
+/* The image wrapper is what overlay type is measured against, so every overlay
+   font size below uses cqw and scales exactly with the artwork. That is what
+   keeps text inside its blank card at any width, and at 125%/150% zoom. */
+.hydropure-use-cases-visual {
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+}
+
+/* width:100% + height:auto preserves the original aspect ratio - never
+   cropped, never stretched. The width/height attributes reserve the space. */
+.hydropure-use-cases-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ---------------------------------------------------------------------------
+   Base (mobile-first): no absolute positioning, nothing over the image.
+   ------------------------------------------------------------------------ */
+
+.hydropure-use-cases-header {
+  position: static;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.hydropure-use-cases-eyebrow {
+  margin: 0;
+  color: var(--hydropure-use-cases-eyebrow-color);
+  font-size: clamp(12px, 0.9vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hydropure-use-cases-heading {
+  margin: 14px 0 0;
+  color: var(--hydropure-use-cases-heading-color);
+  font-size: clamp(38px, 4vw, 64px);
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  /* text-wrap:balance is progressive - unsupported browsers just wrap normally. */
+  text-wrap: balance;
+}
+
+.hydropure-use-cases-highlight {
+  color: var(--hydropure-use-cases-highlight-color);
+}
+
+.hydropure-use-cases-description {
+  max-width: 760px;
+  margin: 16px auto 0;
+  color: var(--hydropure-use-cases-description-color);
+  font-size: clamp(14px, 1.15vw, 19px);
+  line-height: 1.55;
+}
+
+.hydropure-use-cases-cards {
+  position: static;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Off-image card surface: the artwork's white cards sit behind these on
+   desktop only, so tablet and mobile need their own. */
+.hydropure-use-cases-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--hydropure-use-cases-card-border);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(7, 29, 70, 0.06);
+  text-align: center;
+}
+
+.hydropure-use-cases-card-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: #eaf3fd;
+  color: #1765c1;
+}
+
+.hydropure-use-cases-card-glyph {
+  width: 26px;
+  height: 26px;
+}
+
+.hydropure-use-cases-card-heading {
+  max-width: 220px;
+  margin: 0 auto;
+  color: var(--hydropure-use-cases-card-heading-color);
+  font-size: clamp(16px, 1.35vw, 23px);
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.hydropure-use-cases-card-divider {
+  display: block;
+  width: 42px;
+  height: 2px;
+  margin: 16px auto;
+  background: var(--hydropure-use-cases-divider-color);
+}
+
+.hydropure-use-cases-card-description {
+  max-width: 220px;
+  margin: 0 auto;
+  color: var(--hydropure-use-cases-card-text-color);
+  font-size: clamp(11px, 0.9vw, 15px);
+  line-height: 1.5;
+}
+
+/* ------------------------------- 520px - 767px: two-column cards --------- */
+
+@media (min-width: 520px) {
+  .hydropure-use-cases-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Odd count - the fifth card spans both columns rather than orphaning. */
+  .hydropure-use-cases-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ------------------------------- tablet 768px - 1199px ------------------- */
+
+@media (min-width: 768px) {
+  .hydropure-use-cases-cards {
+    gap: 20px;
+    margin-top: 28px;
+  }
+}
+
+/* ------------------------------- desktop 1200px and up ------------------- */
+
+@media (min-width: 1200px) {
+  /* The card row becomes an overlay pinned to the artwork's five blank cards. */
+  .hydropure-use-cases-cards {
+    position: absolute;
+    left: var(--hydropure-use-cases-cards-left);
+    top: var(--hydropure-use-cases-cards-top);
+    bottom: var(--hydropure-use-cases-cards-bottom);
+    width: var(--hydropure-use-cases-cards-width);
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: var(--hydropure-use-cases-cards-gap);
+    row-gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* The artwork already draws the card, so the overlay contributes type only. */
+  .hydropure-use-cases-card,
+  .hydropure-use-cases-card:last-child {
+    grid-column: auto;
+    justify-content: flex-start;
+    padding: 0 0.9cqw;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  /* Icons live in the artwork at this width - showing ours would double them. */
+  .hydropure-use-cases-card-icon {
+    display: none;
+  }
+
+  .hydropure-use-cases-card-heading {
+    max-width: 100%;
+    font-size: 1.25cqw;
+  }
+
+  .hydropure-use-cases-card-divider {
+    width: 2.9cqw;
+    margin: 1.1cqw auto;
+  }
+
+  .hydropure-use-cases-card-description {
+    max-width: 100%;
+    font-size: 0.85cqw;
+  }
+
+  /* Opt-in header overlay - see headerPlacement in the component. */
+  .hydropure-use-cases-header-overlay {
+    position: absolute;
+    left: var(--hydropure-use-cases-header-left);
+    top: var(--hydropure-use-cases-header-top);
+    width: var(--hydropure-use-cases-header-width);
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Sized so eyebrow + heading + a two-line description total ~15% of the image
+     height: starting at 3%, the block ends near 18% and stays clear of the
+     dotted connector at 20.5%. Raising these risks crowding it. */
+  .hydropure-use-cases-header-overlay .hydropure-use-cases-eyebrow {
+    font-size: 0.9cqw;
+  }
+
+  .hydropure-use-cases-header-overlay .hydropure-use-cases-heading {
+    margin-top: 1cqw;
+    font-size: 3.4cqw;
+  }
+
+  .hydropure-use-cases-header-overlay .hydropure-use-cases-description {
+    max-width: 53cqw;
+    margin-top: 1cqw;
+    font-size: 1.05cqw;
+  }
+}
+
+/* Static fallback for visitors who ask for reduced motion: GSAP never runs for
+   them (see the component), so nothing is left mid-tween. */
+@media (prefers-reduced-motion: reduce) {
+  .hydropure-use-cases-card,
+  .hydropure-use-cases-header,
+  .hydropure-use-cases-visual {
+    transition: none;
+  }
+}

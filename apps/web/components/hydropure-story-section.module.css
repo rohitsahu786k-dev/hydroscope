@@ -1,0 +1,599 @@
+/* "One monitored layer for safer village water tanks".
+   Every class is prefixed hydropure-story- and the file is a CSS module, so nothing
+   here can reach global styles or any other section. */
+
+.hydropure-story-section {
+  --hydropure-story-navy: #07152e;
+  --hydropure-story-blue: #0867c7;
+  --hydropure-story-blue-ink: #1765c1;
+  --hydropure-story-teal: #078b92;
+  --hydropure-story-green: #188a4e;
+  --hydropure-story-green-ink: #168245;
+  --hydropure-story-red: #ef5757;
+  --hydropure-story-red-ink: #e54b4b;
+  --hydropure-story-body: #667389;
+  --hydropure-story-border: #e3eaf3;
+  --hydropure-story-card-border: #e5ecf4;
+  --hydropure-story-soft: #f6f9fc;
+
+  /* Hero overlay geometry, as a share of the hero image box. The artwork's right
+     half is entirely equipment, so the overlay and metrics both live in the blank
+     left band - see the note in the component. */
+  --hydropure-story-overlay-left: 5%;
+  --hydropure-story-overlay-top: 11%;
+  --hydropure-story-overlay-width: 38%;
+  --hydropure-story-metrics-top: 62%;
+
+  font-family: inherit;
+  background: #ffffff;
+}
+
+/* ------------------------------------------------------------------ intro --- */
+
+/* Fills its parent rather than capping at a fixed width, so the section spans the
+   same 90% as the rest of the page via the surrounding Container. */
+.hydropure-story-shell {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding-inline: 0;
+}
+
+.hydropure-story-intro {
+  margin-bottom: clamp(28px, 3.4vw, 52px);
+  text-align: left;
+}
+
+.hydropure-story-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--hydropure-story-blue-ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hydropure-story-heading {
+  max-width: 850px;
+  margin: 18px 0 0;
+  color: var(--hydropure-story-navy);
+  font-size: clamp(42px, 5vw, 76px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.hydropure-story-highlight {
+  color: var(--hydropure-story-teal);
+}
+
+.hydropure-story-lede {
+  max-width: 720px;
+  margin: 20px 0 0;
+  color: var(--hydropure-story-body);
+  font-size: clamp(15px, 1.2vw, 19px);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------------- hero --- */
+
+.hydropure-story-hero {
+  position: relative;
+  container-type: inline-size;
+  overflow: hidden;
+  border: 1px solid var(--hydropure-story-border);
+  border-radius: 12px;
+  background: var(--hydropure-story-soft);
+}
+
+/* width/height on the element reserve the ratio, so nothing shifts on load and the
+   equipment is never cropped or stretched. */
+.hydropure-story-hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hydropure-story-hero-copy {
+  padding: 22px 16px 0;
+}
+
+.hydropure-story-hero-eyebrow {
+  margin: 0;
+  color: #0a8a86;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hydropure-story-hero-heading {
+  margin: 14px 0 0;
+  color: var(--hydropure-story-navy);
+  font-size: clamp(38px, 4.5vw, 68px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.hydropure-story-hero-text {
+  max-width: 560px;
+  margin: 16px 0 0;
+  color: #536273;
+  font-size: clamp(14px, 1vw, 17px);
+  line-height: 1.6;
+}
+
+.hydropure-story-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.hydropure-story-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: filter 0.2s ease, background-color 0.2s ease;
+}
+
+.hydropure-story-button:focus-visible {
+  outline: 2px solid var(--hydropure-story-blue);
+  outline-offset: 3px;
+}
+
+.hydropure-story-button-primary {
+  border: 1px solid var(--hydropure-story-blue);
+  background: var(--hydropure-story-blue);
+  color: #ffffff;
+}
+
+.hydropure-story-button-primary:hover {
+  filter: brightness(1.08);
+}
+
+.hydropure-story-button-secondary {
+  border: 1px solid var(--hydropure-story-blue);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--hydropure-story-blue);
+}
+
+.hydropure-story-button-secondary:hover {
+  background: #ffffff;
+}
+
+/* ---------------------------------------------------------------- metrics --- */
+
+.hydropure-story-metrics {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin: 18px 16px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hydropure-story-metric {
+  border: 1px solid var(--hydropure-story-card-border);
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 16px 18px;
+}
+
+.hydropure-story-metric-value {
+  margin: 0;
+  color: var(--hydropure-story-navy);
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.hydropure-story-metric-label {
+  margin: 6px 0 0;
+  color: var(--hydropure-story-blue-ink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------- comparison --- */
+
+.hydropure-story-comparison {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  margin-top: clamp(22px, 2.6vw, 40px);
+}
+
+.hydropure-story-column {
+  border: 1px solid var(--hydropure-story-card-border);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.hydropure-story-column-challenge {
+  background: #fff7f7;
+}
+
+.hydropure-story-column-traditional {
+  display: flex;
+  flex-direction: column;
+  background: #f4f9ff;
+}
+
+.hydropure-story-column-solution {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f5fbff 0%, #f4fbf7 100%);
+}
+
+.hydropure-story-column-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hydropure-story-column-eyebrow-challenge {
+  color: var(--hydropure-story-red-ink);
+}
+
+/* soft green pill, per the reference */
+.hydropure-story-column-eyebrow-solution {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #e6f7ee;
+  color: var(--hydropure-story-green-ink);
+}
+
+.hydropure-story-column-heading {
+  margin: 16px 0 0;
+  color: var(--hydropure-story-navy);
+  font-size: clamp(24px, 2.1vw, 32px);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+}
+
+.hydropure-story-column-text {
+  margin: 14px 0 0;
+  color: var(--hydropure-story-body);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.hydropure-story-list {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hydropure-story-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid #f6dede;
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--hydropure-story-navy);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.hydropure-story-marker {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--hydropure-story-red);
+}
+
+/* -------------------------------------------------- traditional practice --- */
+
+.hydropure-story-traditional-heading {
+  margin: 0;
+  color: var(--hydropure-story-blue-ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.hydropure-story-arrow {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: 22px auto;
+  border-radius: 999px;
+  background: var(--hydropure-story-blue);
+  color: #ffffff;
+}
+
+.hydropure-story-traditional-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hydropure-story-traditional-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--hydropure-story-card-border);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--hydropure-story-navy);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.hydropure-story-cross {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #fdeaea;
+  color: var(--hydropure-story-red);
+}
+
+/* ------------------------------------------------------------- solutions --- */
+
+.hydropure-story-features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hydropure-story-feature {
+  border: 1px solid var(--hydropure-story-card-border);
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 16px;
+}
+
+.hydropure-story-feature-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #eaf3ff;
+  color: var(--hydropure-story-blue);
+}
+
+.hydropure-story-feature-title {
+  margin: 14px 0 0;
+  color: var(--hydropure-story-navy);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.hydropure-story-flowstrip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid #d8f0e2;
+  border-radius: 10px;
+  background: #eefaf3;
+  color: var(--hydropure-story-green-ink);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.hydropure-story-flowstrip-icon {
+  flex: none;
+  color: var(--hydropure-story-green);
+}
+
+/* --------------------------------------------------------------- summary --- */
+
+.hydropure-story-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hydropure-story-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid var(--hydropure-story-card-border);
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.hydropure-story-summary-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+}
+
+.hydropure-story-summary-icon-red {
+  background: #fdeeee;
+  color: var(--hydropure-story-red);
+}
+
+.hydropure-story-summary-icon-blue {
+  background: #eaf3ff;
+  color: var(--hydropure-story-blue);
+}
+
+.hydropure-story-summary-icon-green {
+  background: #e8f7ef;
+  color: var(--hydropure-story-green);
+}
+
+.hydropure-story-summary-title {
+  margin: 0;
+  color: var(--hydropure-story-navy);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.hydropure-story-summary-text {
+  margin: 5px 0 0;
+  color: var(--hydropure-story-body);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* Flex/grid children default to min-width:auto; without this long labels refuse
+   to wrap and push the card past the viewport. */
+.hydropure-story-body {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* ------------------------------ 520px+: two-column metrics ---------------- */
+
+@media (min-width: 520px) {
+  .hydropure-story-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ------------------------------ tablet 768px - 1199px -------------------- */
+
+@media (min-width: 768px) {
+  .hydropure-story-hero-copy {
+    padding: 26px 26px 0;
+  }
+
+  .hydropure-story-metrics {
+    margin-inline: 26px;
+  }
+
+  .hydropure-story-summary {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ------------------------------ desktop 1200px and up ------------------- */
+
+@media (min-width: 1200px) {
+  /* Hero copy and metrics become overlays inside the artwork's blank left band. */
+  .hydropure-story-hero-copy {
+    position: absolute;
+    left: var(--hydropure-story-overlay-left);
+    top: var(--hydropure-story-overlay-top);
+    width: var(--hydropure-story-overlay-width);
+    padding: 0;
+  }
+
+  .hydropure-story-hero-eyebrow {
+    font-size: 0.95cqw;
+  }
+
+  .hydropure-story-hero-heading {
+    margin-top: 1cqw;
+    font-size: 3.5cqw;
+  }
+
+  .hydropure-story-hero-text {
+    margin-top: 1.1cqw;
+    font-size: 1.15cqw;
+  }
+
+  .hydropure-story-actions {
+    gap: 0.9cqw;
+    margin-top: 1.6cqw;
+  }
+
+  .hydropure-story-button {
+    min-height: 3.3cqw;
+    padding: 0 1.6cqw;
+    border-radius: 0.55cqw;
+    font-size: 1.05cqw;
+  }
+
+  .hydropure-story-metrics {
+    position: absolute;
+    left: var(--hydropure-story-overlay-left);
+    top: var(--hydropure-story-metrics-top);
+    width: var(--hydropure-story-overlay-width);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85cqw;
+    margin: 0;
+  }
+
+  .hydropure-story-metric {
+    padding: 1.1cqw 1.2cqw;
+    border-color: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px -18px rgba(7, 21, 46, 0.28);
+  }
+
+  .hydropure-story-metric-value {
+    font-size: 2.1cqw;
+  }
+
+  .hydropure-story-metric-label {
+    margin-top: 0.35cqw;
+    font-size: 0.8cqw;
+  }
+
+  /* three-column comparison, widths from the brief */
+  .hydropure-story-comparison {
+    grid-template-columns: 39% 17% 44%;
+    gap: 14px;
+  }
+
+  .hydropure-story-summary {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@supports not (container-type: inline-size) {
+  /* Without container queries the overlay type cannot track the artwork width, so
+     keep the stacked layout instead of risking text over the equipment. */
+  @media (min-width: 1200px) {
+    .hydropure-story-hero-copy,
+    .hydropure-story-metrics {
+      position: static;
+      width: auto;
+    }
+  }
+}

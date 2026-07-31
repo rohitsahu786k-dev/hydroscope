@@ -11,6 +11,11 @@
   --line: #dbe4ef;
   --soft: #f5f9ff;
   --navy: #09244c;
+
+  /* Additive HSL brand triplets for the Glow/Mockup primitives. These mirror
+     --blue and --blue2 above; no existing variable is redefined. */
+  --brand: 214 82% 39%;
+  --brand-foreground: 212 83% 50%;
 }
 
 * {

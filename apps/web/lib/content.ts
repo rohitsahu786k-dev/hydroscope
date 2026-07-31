@@ -2,21 +2,57 @@ import type { Application, BlogPost, CaseStudy, Faq, Product, Solution } from "@
 
 const now = "2026-07-27T00:00:00.000Z";
 
-export const faqs: Faq[] = [
+/** Faq plus an optional category chip. Assignable anywhere a `Faq` is expected. */
+export type FaqEntry = Faq & { meta?: string };
+
+export const faqs: FaqEntry[] = [
   {
     question: "What does HydroPure do?",
     answer:
-      "HydroPure is an IoT-enabled electrochlorinator that generates sodium hypochlorite on site using salt, water and electricity, then supports automatic dosing and remote monitoring."
+      "HydroPure is an IoT-enabled electrochlorinator that generates sodium hypochlorite on site using salt, water and electricity, then supports automatic dosing and remote monitoring.",
+    meta: "Product"
   },
   {
     question: "Which products are part of the Hydroscope ecosystem?",
     answer:
-      "HydroPure handles on-site disinfection, HydroSense measures water-quality parameters and HydroSure gives teams live dashboards, alerts, reports and multi-site visibility."
+      "HydroPure handles on-site disinfection, HydroSense measures water-quality parameters and HydroSure gives teams live dashboards, alerts, reports and multi-site visibility.",
+    meta: "Ecosystem"
   },
   {
     question: "Can Hydroscope support rural and off-grid sites?",
     answer:
-      "Yes. The HydroPure content positions the system for village overhead tanks, rural schemes, solar-compatible operation, low maintenance and remote monitoring."
+      "Yes. The HydroPure content positions the system for village overhead tanks, rural schemes, solar-compatible operation, low maintenance and remote monitoring.",
+    meta: "Deployment"
+  },
+  {
+    question: "How is chlorine produced without storing hazardous chemicals?",
+    answer:
+      "The electrolyzer passes current through a brine solution to generate 0.6%-0.8% sodium hypochlorite on demand. Because the disinfectant is made where it is dosed, there is no chlorine gas cylinder or bleach stock to transport, store or handle.",
+    meta: "Process"
+  },
+  {
+    question: "What does a village tank installation involve?",
+    answer:
+      "A skid-mounted HydroPure unit sits beside the tank with a brine tank, an injection line into the outgoing main and the sensing layer. The units are plug and play, solar compatible and sized to the tank, so most sites need no civil rework.",
+    meta: "Installation"
+  },
+  {
+    question: "How much maintenance does the system need?",
+    answer:
+      "The self-cleaning electrolyzer keeps scaling down and extends electrode life, so routine attention is mostly refilling salt and periodic checks. Device health and faults surface as dashboard alerts rather than waiting for a site visit.",
+    meta: "Maintenance"
+  },
+  {
+    question: "What can an operator see on the dashboard?",
+    answer:
+      "Residual chlorine, water usage, flow, dosing status and device health for every connected tank, plus warnings, attention alerts, downloadable reports and multi-site visibility from one screen.",
+    meta: "Monitoring"
+  },
+  {
+    question: "Which HydroPure model matches our daily water volume?",
+    answer:
+      "The range runs from HSE 100 at 100 g/day, which covers roughly 1,00,000 litres per day, up to HSE 2000 at 2000 g/day for about 20,00,000 litres per day. Those figures assume a 16-hour runtime, though the system can run continuously for 24 hours.",
+    meta: "Capacity"
   }
 ];
 
@@ -32,8 +68,9 @@ export const products: Product[] = [
     body:
       "HydroPure uses salt, water and electricity to support reliable water disinfection without routine dependency on transported chlorine chemicals. A brine solution passes through an electrolytic cell, direct current triggers electrolysis and the generated sodium hypochlorite is stored and dosed into the water system through dosing pumps.",
     status: "published",
-    featuredImage: "/images/seo/hydropure-front-view-electrochlorinator-product-image.webp",
+    featuredImage: "/images/hydroscope-products/hydroscope-electrochlorination-unit.webp",
     gallery: [
+      "/images/hydroscope-products/hydroscope-salt-solution-tank.webp",
       "/images/seo/hydropure-electrochlorinator-product-only-outdoor-shot.webp",
       "/images/seo/hydropure-clean-front-product-shot-solar-water-tank.webp",
       "/images/seo/hydropure-electrochlorinator-feature-marketing-image.webp",
@@ -88,8 +125,11 @@ export const products: Product[] = [
     body:
       "HydroSense is a water-quality sensing platform for real-time monitoring of critical parameters. It supports better decisions by reducing dependency on delayed manual checks and creates a stronger data foundation for reports, alerts and preventive action.",
     status: "published",
-    featuredImage: "/images/seo/hydrosense-water-quality-sensors-product-only-shot.webp",
-    gallery: ["/images/seo/hydroscope-water-treatment-products-feature-collage.webp"],
+    featuredImage: "/images/hydroscope-products/hydroscope-water-quality-sensor.webp",
+    gallery: [
+      "/images/seo/hydrosense-water-quality-sensors-product-only-shot.webp",
+      "/images/seo/hydroscope-water-treatment-products-feature-collage.webp"
+    ],
     features: [
       "Active chlorine monitoring",
       "pH monitoring",
@@ -128,8 +168,11 @@ export const products: Product[] = [
     body:
       "HydroSure is an IoT monitoring platform that helps teams monitor performance, receive alerts and manage multiple sites from one place. Operators get site-level actions, engineers get diagnostics, district officials get reports and administrators get aggregate performance insights.",
     status: "published",
-    featuredImage: "/images/seo/hydrosure-iot-water-monitoring-system-product-shot.webp",
-    gallery: ["/images/seo/hydrosure-dashboard-control-unit-product-only-shot.webp"],
+    featuredImage: "/images/hydroscope-products/hydroscope-control-unit.webp",
+    gallery: [
+      "/images/seo/hydrosure-iot-water-monitoring-system-product-shot.webp",
+      "/images/seo/hydrosure-dashboard-control-unit-product-only-shot.webp"
+    ],
     features: [
       "Live monitoring",
       "Residual chlorine tracking",

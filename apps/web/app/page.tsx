@@ -1,10 +1,15 @@
-import { Activity, Bell, Cloud, Gauge, ShieldCheck, Waypoints } from "lucide-react";
+import { Cloud, Gauge, ShieldCheck, Waypoints } from "lucide-react";
 import Image from "next/image";
-import { ApplicationCard, BlogCard, ProductCard, SolutionCard } from "@/components/cards";
-import { FAQAccordion } from "@/components/faq-accordion";
+import { ApplicationCard, BlogCard, ProductCard } from "@/components/cards";
+import { FaqMonochrome } from "@/components/ui/faq-monochrome";
 import { HeroSection } from "@/components/hero-section";
+import { HydroPureProofSection } from "@/components/hydropure-proof-section";
+import { HydroscopeProductLineup } from "@/components/hydroscope-product-lineup";
 import { FaqSchema } from "@/components/json-ld";
 import { SectionHeading } from "@/components/section-heading";
+import { SolutionsShowcase } from "@/components/solutions-showcase";
+import { TestimonialsSection } from "@/components/testimonials";
+import { WhyHydroscopeCarousel } from "@/components/why-hydroscope-carousel";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -21,6 +26,7 @@ export const metadata = createMetadata({
 
 export default async function HomePage() {
   const home = await getHomeData();
+  const [hydroPure, hydroSense, hydroSure] = products;
 
   return (
     <main>
@@ -32,10 +38,18 @@ export default async function HomePage() {
             title="HydroPure, HydroSense and HydroSure"
             text="Hydroscope brings electrochlorination, water-quality sensing and dashboard monitoring into one ecosystem for distributed water networks."
           />
-          <div className="grid grid-cols-3 gap-5 max-xl:grid-cols-1">
-            {products.slice(0, 3).map((product) => (
+          <div className="grid grid-cols-2 gap-6 max-lg:grid-cols-1">
+            {[hydroPure, hydroSense].filter(Boolean).map((product) => (
               <ProductCard key={product.slug} product={product} />
             ))}
+            {hydroSure ? (
+              <div className="col-span-2 mx-auto w-full max-w-[760px] max-lg:col-span-1">
+                <ProductCard product={hydroSure} />
+              </div>
+            ) : null}
+          </div>
+          <div className="mt-10">
+            <HydroscopeProductLineup />
           </div>
           <div className="mt-8 grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
             {[
@@ -57,6 +71,7 @@ export default async function HomePage() {
           </div>
         </Container>
       </section>
+      <HydroPureProofSection />
       <section className="hydro-section bg-hydro-soft">
         <Container>
           <div className="grid grid-cols-[0.9fr_1.1fr] items-center gap-12 max-lg:grid-cols-1">
@@ -96,16 +111,7 @@ export default async function HomePage() {
           </div>
         </Container>
       </section>
-      <section className="hydro-section">
-        <Container>
-          <SectionHeading eyebrow="Solutions" title="Choose a solution based on your water network" />
-          <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1">
-            {solutions.slice(0, 6).map((solution) => (
-              <SolutionCard key={solution.slug} solution={solution} />
-            ))}
-          </div>
-        </Container>
-      </section>
+      <SolutionsShowcase solutions={solutions} />
       <section className="hydro-section bg-hydro-soft">
         <Container>
           <SectionHeading eyebrow="Applications" title="Rural, municipal, institutional and industrial water networks" />
@@ -158,27 +164,8 @@ export default async function HomePage() {
           </div>
         </Container>
       </section>
-      <section className="hydro-section">
-        <Container>
-          <SectionHeading eyebrow="Why Hydroscope" title="Water intelligence designed for operating teams" />
-          <div className="grid grid-cols-6 gap-4 max-lg:grid-cols-3 max-sm:grid-cols-2">
-            {[
-              ["Real-time", "Dashboard", Gauge],
-              ["AI-powered", "Analytics", Activity],
-              ["Automated", "Alerts", Bell],
-              ["Remote", "Control", Cloud],
-              ["Secure", "Visibility", ShieldCheck],
-              ["Scalable", "Sites", Waypoints]
-            ].map(([title, text, Icon]) => (
-              <Card key={title as string} className="p-5 text-center">
-                <Icon aria-hidden="true" className="mx-auto mb-4 text-hydro-blue" />
-                <strong className="block text-sm">{title as string}</strong>
-                <span className="text-xs text-hydro-muted">{text as string}</span>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <WhyHydroscopeCarousel />
+      <TestimonialsSection />
       <section className="hydro-section bg-hydro-soft">
         <Container>
           <SectionHeading eyebrow="SEO resources" title="Guides for smart water decisions" />
@@ -191,8 +178,7 @@ export default async function HomePage() {
       </section>
       <section className="hydro-section">
         <Container>
-          <SectionHeading eyebrow="FAQs" title="Common questions" />
-          <FAQAccordion faqs={faqs} />
+          <FaqMonochrome items={faqs} />
         </Container>
       </section>
       <section className="relative overflow-hidden bg-hydro-navy py-20 text-center text-white">
