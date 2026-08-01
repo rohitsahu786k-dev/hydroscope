@@ -1,6 +1,5 @@
-import { Cloud, Gauge, ShieldCheck, Waypoints } from "lucide-react";
 import Image from "next/image";
-import { ApplicationCard, BlogCard, ProductCard } from "@/components/cards";
+import { ApplicationCard, BlogCard } from "@/components/cards";
 import { FaqMonochrome } from "@/components/ui/faq-monochrome";
 import { HeroSection } from "@/components/hero-section";
 import { HydroPureProofSection } from "@/components/hydropure-proof-section";
@@ -13,7 +12,7 @@ import { WhyHydroscopeCarousel } from "@/components/why-hydroscope-carousel";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
-import { applications, blogPosts, faqs, products, solutions } from "@/lib/content";
+import { applications, blogPosts, faqs, solutions } from "@/lib/content";
 import { getHomeData } from "@/lib/cms/globals";
 import { createMetadata } from "@/lib/seo";
 
@@ -26,7 +25,6 @@ export const metadata = createMetadata({
 
 export default async function HomePage() {
   const home = await getHomeData();
-  const [hydroPure, hydroSense, hydroSure] = products;
 
   return (
     <main>
@@ -38,37 +36,7 @@ export default async function HomePage() {
             title="HydroPure, HydroSense and HydroSure"
             text="Hydroscope brings electrochlorination, water-quality sensing and dashboard monitoring into one ecosystem for distributed water networks."
           />
-          <div className="grid grid-cols-2 gap-6 max-lg:grid-cols-1">
-            {[hydroPure, hydroSense].filter(Boolean).map((product) => (
-              <ProductCard key={product.slug} product={product} />
-            ))}
-            {hydroSure ? (
-              <div className="col-span-2 mx-auto w-full max-w-[760px] max-lg:col-span-1">
-                <ProductCard product={hydroSure} />
-              </div>
-            ) : null}
-          </div>
-          <div className="mt-10">
-            <HydroscopeProductLineup />
-          </div>
-          <div className="mt-8 grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
-            {[
-              ["On-Site Generation", "Generate disinfectant using salt, water and electricity.", ShieldCheck],
-              ["Automatic Dosing", "Reduce manual dosing dependency with controlled operation.", Gauge],
-              ["Live Monitoring", "HydroSure dashboards show alerts, reports and site status.", Cloud],
-              ["Solar Compatible", "Built for rural, distributed and off-grid deployments.", Waypoints]
-            ].map(([title, text, Icon]) => (
-              <article key={title as string} className="group border border-hydro-line bg-white p-5 shadow-hydro transition hover:-translate-y-1 hover:border-[#b7d7f6] hover:shadow-hydroHover">
-                <span className="mb-5 grid h-11 w-11 place-items-center bg-[#eef7ff] text-hydro-blue transition group-hover:bg-hydro-blue group-hover:text-white">
-                  <Icon aria-hidden="true" size={20} />
-                </span>
-                <div>
-                  <h3 className="text-base font-extrabold text-hydro-ink">{title as string}</h3>
-                  <p className="mt-2 text-sm leading-6 text-hydro-muted">{text as string}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <HydroscopeProductLineup showHeading={false} />
         </Container>
       </section>
       <HydroPureProofSection />
