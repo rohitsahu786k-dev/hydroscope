@@ -40,7 +40,7 @@ export default function InstallationMaintenancePage() {
           <ListCard title="Scope of supply" items={supply} />
         </div>
         <Card className="mt-8 p-7">
-          <h2 className="text-2xl font-extrabold">Plan the right capacity</h2>
+          <h2 className="text-2xl font-normal">Plan the right capacity</h2>
           <p className="mt-3 max-w-3xl text-hydro-muted">
             Share water demand, dosing requirement, runtime, power availability and site conditions so the right HydroPure model and monitoring setup can be recommended.
           </p>
@@ -56,7 +56,7 @@ export default function InstallationMaintenancePage() {
 function ListCard({ title, items }: { title: string; items: string[] }) {
   return (
     <Card className="p-6">
-      <h2 className="text-2xl font-extrabold">{title}</h2>
+      <h2 className="text-2xl font-normal">{title}</h2>
       <ul className="mt-5 grid gap-3">
         {items.map((item) => (
           <li key={item} className="flex gap-2 text-sm text-hydro-muted">

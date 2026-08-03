@@ -54,7 +54,7 @@ export function SolutionsShowcase({ solutions }: { solutions: Solution[] }) {
         <div className="mb-8 flex items-end justify-between gap-6 max-sm:flex-col max-sm:items-start">
           <div>
             <span className="mb-4 block text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">Solutions</span>
-            <h2 className="m-0 max-w-3xl text-[clamp(30px,3.6vw,48px)] font-extrabold leading-[1.08] tracking-[-0.04em] text-hydro-ink">
+            <h2 className="m-0 max-w-3xl text-[clamp(24px,2.4vw,34px)] font-normal leading-[1.12] tracking-[-0.03em] text-hydro-ink">
               Choose a solution based on your water network
             </h2>
           </div>
@@ -102,7 +102,7 @@ export function SolutionsShowcase({ solutions }: { solutions: Solution[] }) {
                 <span className="mb-3 inline-flex bg-white/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.18em] text-hydro-blue shadow-[0_12px_30px_rgba(255,255,255,0.85)]">
                   Solution
                 </span>
-                <h2 className="text-[20px] font-extrabold leading-[1.15] tracking-[-0.035em] text-hydro-ink">{solution.title}</h2>
+                <h2 className="text-[20px] font-normal leading-[1.15] tracking-[-0.035em] text-hydro-ink">{solution.title}</h2>
                 <p className="mt-3 text-[13px] leading-5 text-hydro-muted">{solution.excerpt}</p>
                 <span className="mt-5 inline-flex items-center gap-2 text-[13px] font-bold text-hydro-blue">
                   Explore solution <ArrowRight aria-hidden="true" size={16} />

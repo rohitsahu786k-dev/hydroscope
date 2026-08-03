@@ -134,7 +134,7 @@ export function TestimonialsSection() {
           <span className="mb-4 inline-flex border border-hydro-line bg-hydro-soft px-4 py-1 text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">
             Testimonials
           </span>
-          <h2 className="m-0 text-[clamp(30px,3.6vw,48px)] font-extrabold leading-[1.08] tracking-[-0.04em] text-hydro-ink">
+          <h2 className="m-0 text-[clamp(24px,2.4vw,34px)] font-normal leading-[1.12] tracking-[-0.03em] text-hydro-ink">
             What operating teams say about Hydroscope
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-hydro-muted">

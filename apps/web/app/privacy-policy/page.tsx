@@ -8,5 +8,5 @@ export default function PrivacyPolicyPage() {
 }
 
 function Legal({ title, body }: { title: string; body: string }) {
-  return <main className="hydro-section"><Container><h1 className="text-5xl font-extrabold">{title}</h1><p className="mt-6 max-w-3xl text-hydro-muted">{body}</p></Container></main>;
+  return <main className="hydro-section"><Container><h1 className="text-5xl font-normal">{title}</h1><p className="mt-6 max-w-3xl text-hydro-muted">{body}</p></Container></main>;
 }

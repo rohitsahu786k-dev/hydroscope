@@ -31,7 +31,7 @@ export default function RequestDemoPage() {
             ].map(([title, text, Icon]) => (
               <Card key={title as string} className="p-6">
                 <Icon aria-hidden="true" className="mb-4 text-hydro-blue" />
-                <h2 className="text-xl font-extrabold">{title as string}</h2>
+                <h2 className="text-xl font-normal">{title as string}</h2>
                 <p className="mt-2 text-sm text-hydro-muted">{text as string}</p>
               </Card>
             ))}

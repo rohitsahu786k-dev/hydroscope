@@ -88,7 +88,7 @@ export function WhyHydroscopeCarousel() {
       <div className="mx-auto w-[90%]">
         <div className="mx-auto mb-8 max-w-[780px] text-center">
           <span className="mb-4 block text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">Why Hydroscope</span>
-          <h2 className="m-0 text-[clamp(30px,3.6vw,48px)] font-extrabold leading-[1.08] tracking-[-0.04em] text-hydro-ink">
+          <h2 className="m-0 text-[clamp(24px,2.4vw,34px)] font-normal leading-[1.12] tracking-[-0.03em] text-hydro-ink">
             Water intelligence designed for operating teams
           </h2>
         </div>
@@ -127,7 +127,7 @@ export function WhyHydroscopeCarousel() {
                   {card.badge}
                 </span>
                 <div className="absolute inset-x-0 bottom-0 p-6 text-hydro-ink">
-                  <h3 className="text-[20px] font-extrabold leading-[1.14] tracking-[-0.035em]">{card.title}</h3>
+                  <h3 className="text-[20px] font-normal leading-[1.14] tracking-[-0.035em]">{card.title}</h3>
                   <p className={`mt-2 text-[13px] leading-5 text-hydro-muted transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-75"}`}>
                     {card.description}
                   </p>
@@ -148,7 +148,7 @@ export function WhyHydroscopeCarousel() {
                   {card.badge}
                 </span>
                 <div className="text-hydro-ink">
-                  <h3 className="text-[20px] font-extrabold leading-[1.14] tracking-[-0.035em]">{card.title}</h3>
+                  <h3 className="text-[20px] font-normal leading-[1.14] tracking-[-0.035em]">{card.title}</h3>
                   <p className="mt-2 text-[13px] leading-5 text-hydro-muted">{card.description}</p>
                 </div>
               </div>

@@ -51,7 +51,7 @@ export const faqs: FaqEntry[] = [
   {
     question: "Which HydroPure model matches our daily water volume?",
     answer:
-      "The range runs from HSE 100 at 100 g/day, which covers roughly 1,00,000 litres per day, up to HSE 2000 at 2000 g/day for about 20,00,000 litres per day. Those figures assume a 16-hour runtime, though the system can run continuously for 24 hours.",
+      "The range runs from HP-100 at 100 g/day, which covers roughly 1,00,000 litres per day, up to HP-2000 at 2000 g/day for about 20,00,000 litres per day. Those figures assume a 16-hour runtime, though the system can run continuously for 24 hours.",
     meta: "Capacity"
   }
 ];
@@ -68,9 +68,10 @@ export const products: Product[] = [
     body:
       "HydroPure uses salt, water and electricity to support reliable water disinfection without routine dependency on transported chlorine chemicals. A brine solution passes through an electrolytic cell, direct current triggers electrolysis and the generated sodium hypochlorite is stored and dosed into the water system through dosing pumps.",
     status: "published",
-    featuredImage: "/images/hydroscope-products/hydroscope-electrochlorination-unit.webp",
+    featuredImage: "/images/hydroscope-products/hydropure-hp-200-500-1000.webp",
     gallery: [
-      "/images/hydroscope-products/hydroscope-salt-solution-tank.webp",
+      "/images/hydroscope-products/hydropure-hp-100.webp",
+      "/images/hydroscope-products/hydropure-hp-1600-2000.webp",
       "/images/seo/hydropure-electrochlorinator-product-only-outdoor-shot.webp",
       "/images/seo/hydropure-clean-front-product-shot-solar-water-tank.webp",
       "/images/seo/hydropure-electrochlorinator-feature-marketing-image.webp",
@@ -98,11 +99,11 @@ export const products: Product[] = [
       "Wastewater treatment"
     ],
     parameters: [
-      "HSE 100: small village tanks, compact institutions and low-demand sites",
-      "HSE 200: medium-demand sites needing higher chlorine output",
-      "HSE 500: larger village, residential and institutional applications",
-      "HSE 1000: high-volume municipal or campus-level water systems",
-      "HSE 2000: large water-supply schemes and multi-site infrastructure projects"
+      "HP-100: small village tanks, compact institutions and low-demand sites",
+      "HP-200: medium-demand sites needing higher chlorine output",
+      "HP-500: larger village, residential and institutional applications",
+      "HP-1000: high-volume municipal or campus-level water systems",
+      "HP-2000: large water-supply schemes and multi-site infrastructure projects"
     ],
     faqs,
     seo: {
@@ -125,7 +126,7 @@ export const products: Product[] = [
     body:
       "HydroSense is a water-quality sensing platform for real-time monitoring of critical parameters. It supports better decisions by reducing dependency on delayed manual checks and creates a stronger data foundation for reports, alerts and preventive action.",
     status: "published",
-    featuredImage: "/images/hydroscope-products/hydroscope-water-quality-sensor.webp",
+    featuredImage: "/images/hydroscope-products/hydrosense-water-quality-sensor.webp",
     gallery: [
       "/images/seo/hydrosense-water-quality-sensors-product-only-shot.webp",
       "/images/seo/hydroscope-water-treatment-products-feature-collage.webp"
@@ -168,9 +169,8 @@ export const products: Product[] = [
     body:
       "HydroSure is an IoT monitoring platform that helps teams monitor performance, receive alerts and manage multiple sites from one place. Operators get site-level actions, engineers get diagnostics, district officials get reports and administrators get aggregate performance insights.",
     status: "published",
-    featuredImage: "/images/hydroscope-products/hydroscope-control-unit.webp",
+    featuredImage: "/images/seo/hydrosure-iot-water-monitoring-system-product-shot.webp",
     gallery: [
-      "/images/seo/hydrosure-iot-water-monitoring-system-product-shot.webp",
       "/images/seo/hydrosure-dashboard-control-unit-product-only-shot.webp"
     ],
     features: [
@@ -283,6 +283,7 @@ export const applications: Application[] = [
     title: "Village Water Tanks",
     slug: "village-water-tanks",
     excerpt: "Automated chlorination, sensors and dashboard monitoring for rural overhead tanks.",
+    featuredImage: "/images/applications/village-water-tanks.webp",
     body: "HydroPure helps replace irregular manual chlorination with on-site generation, automatic dosing and remote visibility.",
     status: "published",
     sectors: ["Rural water supply", "Village tanks", "Gram Panchayat workflows"],
@@ -299,6 +300,7 @@ export const applications: Application[] = [
     title: "Municipal and Government Water",
     slug: "municipal-government-water",
     excerpt: "Centralized monitoring and chlorination support for municipal, PHED, RWSS and smart-city water systems.",
+    featuredImage: "/images/applications/municipal-government-water.webp",
     body: "Hydroscope supports public agencies with multi-site dashboard visibility, residual chlorine monitoring, alerts, reports and role-based access.",
     status: "published",
     sectors: ["Municipal boards", "PHED", "Smart cities"],
@@ -315,6 +317,7 @@ export const applications: Application[] = [
     title: "Industrial and Institutional Water",
     slug: "industrial-institutional-water",
     excerpt: "On-site hypochlorite generation for cooling water, wastewater, process water and large campuses.",
+    featuredImage: "/images/applications/industrial-institutional-water.webp",
     body: "HydroPure supports industrial and institutional disinfection workflows where dosing control, safety and remote maintenance visibility matter.",
     status: "published",
     sectors: ["Industrial water", "Healthcare", "Food and beverage"],
@@ -327,6 +330,26 @@ export const applications: Application[] = [
     createdAt: now
   }
 ];
+
+/* One image per topic. The previous rule keyed off the word "chlor", so five of
+   the seven posts shared a single banner - the listing looked duplicated. Every
+   path below is an existing file in public/images/seo. */
+const blogImages: Record<string, string> = {
+  "what-is-electrochlorination-and-how-does-it-work":
+    "/images/seo/hydropure-electrochlorinator-feature-marketing-image.webp",
+  "electrochlorination-vs-bleaching-powder":
+    "/images/seo/hydropure-front-view-electrochlorinator-product-image.webp",
+  "on-site-sodium-hypochlorite-generation-for-municipal-water":
+    "/images/seo/hydropure-water-treatment-facility-village-tank-banner.webp",
+  "why-village-water-tanks-need-automated-chlorination":
+    "/images/seo/hydropure-modular-chlorination-unit-village-water-tank.webp",
+  "residual-chlorine-monitoring-in-drinking-water":
+    "/images/seo/hydrosense-water-quality-sensors-product-only-shot.webp",
+  "solar-powered-chlorination-systems-for-remote-villages":
+    "/images/seo/hydropure-clean-front-product-shot-solar-water-tank.webp",
+  "iot-water-monitoring-for-public-water-supply":
+    "/images/seo/hydrosure-iot-water-monitoring-system-product-shot.webp"
+};
 
 export const blogPosts: BlogPost[] = [
   "What is electrochlorination and how does it work?",
@@ -346,7 +369,7 @@ export const blogPosts: BlogPost[] = [
     body:
       "This article topic is mapped from the Hydroscope SEO keyword and blog plan. Expand it with project-specific data, diagrams and verified technical details before final long-form publication.",
     status: "published" as const,
-    featuredImage: title.toLowerCase().includes("chlor") ? "/images/seo/hydropure-electrochlorinator-feature-marketing-image.webp" : "/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp",
+    featuredImage: blogImages[slug] ?? "/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp",
     author: "Hydroscope Team",
     readingTime: "4 min read",
     tags: ["HydroPure", "HydroSense", "HydroSure"],

@@ -124,7 +124,9 @@ export function HydroPureInstallationSection({
           height={backgroundImage.height}
           sizes="(min-width: 1200px) 1200px, 100vw"
           loading="lazy"
-          className={styles["hydropure-installation-image"]}
+          /* Background artwork, not a control: clicks and drags do nothing. */
+          draggable={false}
+          className={`${styles["hydropure-installation-image"]} pointer-events-none select-none`}
         />
 
         {/* B. middle-left supporting card */}

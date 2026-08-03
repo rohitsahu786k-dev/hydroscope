@@ -24,7 +24,7 @@ export default function ContactPage() {
         />
         <div className="grid grid-cols-[.8fr_1.2fr] gap-8 max-lg:grid-cols-1">
           <Card className="p-6">
-            <h2 className="text-2xl font-extrabold">Hydroscope Technology Pvt. Ltd.</h2>
+            <h2 className="text-2xl font-normal">Hydroscope Technology Pvt. Ltd.</h2>
             <div className="mt-5 grid gap-3 text-sm text-hydro-muted">
               <a href={`mailto:${siteConfig.email}`} className="font-bold text-hydro-blue">{siteConfig.email}</a>
               <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="font-bold text-hydro-blue">{siteConfig.phone}</a>

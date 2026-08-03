@@ -190,10 +190,26 @@
   transition: opacity 500ms ease;
 }
 
-/* The answer panel animates on max-height, set inline from the measured content. */
+/* The answer panel animates on grid-template-rows (0fr -> 1fr) rather than a
+   measured max-height. Measuring scrollHeight during render read the node while
+   it was still `hidden`, so every panel resolved to 0px and no answer ever
+   opened. This needs no measurement and never clips a long answer. */
 .panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 450ms ease-out, opacity 350ms ease;
+  opacity: 0;
+}
+
+.panelOpen {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+/* The inner wrapper is what actually clips while the row collapses. */
+.panelInner {
   overflow: hidden;
-  transition: max-height 500ms ease-out, opacity 400ms ease;
+  min-height: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -205,6 +221,7 @@
   .fade,
   .fadeReady,
   .panel,
+  .panelOpen,
   .glow {
     animation: none;
     transition: none;

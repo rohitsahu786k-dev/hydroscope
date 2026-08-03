@@ -173,7 +173,7 @@ export function MotionFooter({ description, columns, bottomText, email, phone, l
           <div className="hydro-footer-aurora pointer-events-none absolute left-1/2 top-1/2 z-0 h-[60vh] w-[80vw] rounded-[50%] bg-[radial-gradient(circle,rgba(38,185,232,0.28)_0%,rgba(22,120,232,0.16)_40%,transparent_70%)] blur-[88px]" />
           <div className="hydro-footer-grid pointer-events-none absolute inset-0 z-0" />
 
-          <div className="pointer-events-none absolute -bottom-[5vh] left-1/2 z-0 -translate-x-1/2 select-none whitespace-nowrap text-[24vw] font-black leading-[0.75] tracking-[-0.05em] text-white/[0.04]">
+          <div className="pointer-events-none absolute -bottom-[5vh] left-1/2 z-0 -translate-x-1/2 select-none whitespace-nowrap text-[24vw] font-extrabold leading-[0.75] tracking-[-0.05em] text-white/[0.04]">
             HYDRO
           </div>
 
@@ -197,7 +197,7 @@ export function MotionFooter({ description, columns, bottomText, email, phone, l
               </span>
             </Link>
 
-            <h2 className="hydro-footer-text-glow text-5xl font-black leading-none tracking-[-0.04em] md:text-8xl">
+            <h2 className="hydro-footer-text-glow text-5xl font-normal leading-none tracking-[-0.04em] md:text-8xl">
               Ready to begin?
             </h2>
             <p className="mt-6 max-w-2xl text-sm leading-7 text-[#cfe4ff] md:text-base">{description}</p>
@@ -244,7 +244,7 @@ export function MotionFooter({ description, columns, bottomText, email, phone, l
 
             <div className="hydro-footer-glass order-1 flex items-center gap-2 rounded-full px-6 py-3 md:order-2">
               <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#aabbd0] md:text-xs">Built for</span>
-              <span className="hydro-footer-heartbeat text-sm font-black text-[#26b9e8] md:text-base">water</span>
+              <span className="hydro-footer-heartbeat text-sm font-extrabold text-[#26b9e8] md:text-base">water</span>
               <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#aabbd0] md:text-xs">{bottomText}</span>
             </div>
 

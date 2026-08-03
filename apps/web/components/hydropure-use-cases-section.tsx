@@ -198,7 +198,9 @@ export function HydroPureUseCasesSection({
           sizes="(min-width: 1440px) 1440px, 100vw"
           priority={priority}
           loading={priority ? undefined : "lazy"}
-          className={styles["hydropure-use-cases-image"]}
+          /* Background artwork, not a control: clicks and drags do nothing. */
+          draggable={false}
+          className={`${styles["hydropure-use-cases-image"]} pointer-events-none select-none`}
         />
 
         {cards}

@@ -27,14 +27,14 @@ export default function AboutPage() {
         <div className="mt-10 grid grid-cols-3 gap-5 max-lg:grid-cols-1">
           {["Automated water disinfection", "Water-quality sensing", "IoT dashboards and reports"].map((item) => (
             <Card key={item} className="p-6">
-              <h2 className="text-xl font-extrabold text-hydro-blue">{item}</h2>
+              <h2 className="text-xl font-normal text-hydro-blue">{item}</h2>
               <p className="mt-3 text-sm text-hydro-muted">Practical technology for safer water operations, smart alerts and field-team accountability.</p>
             </Card>
           ))}
         </div>
         <section className="mt-12 grid grid-cols-[0.85fr_1.15fr] gap-8 max-lg:grid-cols-1">
           <Card className="p-7">
-            <h2 className="text-2xl font-extrabold">Mission and vision</h2>
+            <h2 className="text-2xl font-normal">Mission and vision</h2>
             <p className="mt-4 text-sm leading-7 text-hydro-muted">
               Hydroscope's mission is to make safe water management more reliable, automated and accessible for communities, water utilities and institutions. Its vision is intelligent water-safety infrastructure that supports healthier communities, better governance and sustainable operations.
             </p>
@@ -47,7 +47,7 @@ export default function AboutPage() {
               ["Source-to-tap", "Monitoring every key point across the distribution system."]
             ].map(([title, text]) => (
               <Card key={title} className="p-5">
-                <h3 className="font-extrabold text-hydro-blue">{title}</h3>
+                <h3 className="font-normal text-hydro-blue">{title}</h3>
                 <p className="mt-2 text-sm text-hydro-muted">{text}</p>
               </Card>
             ))}

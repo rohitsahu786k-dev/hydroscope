@@ -41,7 +41,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         <div className="grid grid-cols-[0.85fr_0.45fr] gap-8 max-lg:grid-cols-1">
           <article>
             <span className="mb-4 block text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">{product.category}</span>
-            <h1 className="text-[clamp(38px,4.5vw,64px)] font-extrabold leading-[1.03] tracking-[-0.045em]">{product.title}</h1>
+            <h1 className="text-[clamp(38px,4.5vw,64px)] font-normal leading-[1.03] tracking-[-0.045em]">{product.title}</h1>
             <p className="mt-4 text-xl font-semibold text-hydro-blue">{product.subtitle}</p>
             <p className="mt-5 max-w-3xl text-hydro-muted">{product.body}</p>
             {product.featuredImage ? (
@@ -69,7 +69,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               </>
             ) : null}
             <section className="mt-10">
-              <h2 className="text-2xl font-extrabold">Applications</h2>
+              <h2 className="text-2xl font-normal">Applications</h2>
               <div className="mt-4 flex flex-wrap gap-2">
                 {product.applications.map((item) => (
                   <span key={item} className="rounded-full bg-[#e8f3ff] px-3 py-1 text-sm font-bold text-hydro-blue">
@@ -81,14 +81,14 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           </article>
           <aside className="grid content-start gap-5">
             <Card className="p-6">
-              <h2 className="text-xl font-extrabold">Plan a deployment</h2>
+              <h2 className="text-xl font-normal">Plan a deployment</h2>
               <p className="mt-3 text-sm text-hydro-muted">Discuss product fit, parameters, site conditions and dashboard needs with the HYDROscope team.</p>
               <Button href="/request-demo" className="mt-5 w-full">
                 Request demo
               </Button>
             </Card>
             <Card className="p-6">
-              <h2 className="text-xl font-extrabold">Related solutions</h2>
+              <h2 className="text-xl font-normal">Related solutions</h2>
               <div className="mt-4 grid gap-3 text-sm font-bold text-hydro-blue">
                 {solutions.slice(0, 4).map((solution) => (
                   <Link key={solution.slug} href={`/solutions/${solution.slug}`}>
@@ -100,7 +100,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           </aside>
         </div>
         <section className="mt-12">
-          <h2 className="mb-5 text-2xl font-extrabold">FAQs</h2>
+          <h2 className="mb-5 text-2xl font-normal">FAQs</h2>
           <FAQAccordion faqs={product.faqs} />
         </section>
       </Container>
@@ -115,7 +115,7 @@ function HydroPureSourceDetails() {
   return (
     <section className="mt-8 grid grid-cols-3 gap-5 max-lg:grid-cols-1">
       <Card className="p-6">
-        <h2 className="text-lg font-extrabold">Scope of supply</h2>
+        <h2 className="text-lg font-normal">Scope of supply</h2>
         <ul className="mt-4 grid gap-2 text-sm text-hydro-muted">
           {["Electrolyser cell, chlorine reaction tank and chlorine storage tank", "Flowmeter, dosing pumps, level sensors and valves", "Softener unit with brine tank", "Microcontroller control panel and IoT module", "Web application for remote performance monitoring"].map((item) => (
             <li key={item} className="flex gap-2">
@@ -126,7 +126,7 @@ function HydroPureSourceDetails() {
         </ul>
       </Card>
       <Card className="p-6">
-        <h2 className="text-lg font-extrabold">Commissioning workflow</h2>
+        <h2 className="text-lg font-normal">Commissioning workflow</h2>
         <ul className="mt-4 grid gap-2 text-sm text-hydro-muted">
           {["Installation and commissioning of EC system", "Testing available chlorine after commissioning", "Operator or Gram Panchayat representative training", "Comprehensive maintenance planning for EC systems"].map((item) => (
             <li key={item} className="flex gap-2">
@@ -137,7 +137,7 @@ function HydroPureSourceDetails() {
         </ul>
       </Card>
       <Card className="p-6">
-        <h2 className="text-lg font-extrabold">Chlorination context</h2>
+        <h2 className="text-lg font-normal">Chlorination context</h2>
         <p className="mt-4 text-sm leading-6 text-hydro-muted">
           Source decks compare gas chlorine, bleaching powder, sodium hypochlorite cans and smart electrochlorination by strength, handling, safety and operating cost. Use exact cost models only after site-specific validation.
         </p>
@@ -148,18 +148,18 @@ function HydroPureSourceDetails() {
 
 function HydroPureCapacityTable() {
   const rows = [
-    ["HSE 100", "100", "1,00,000"],
-    ["HSE 200", "200", "2,00,000"],
-    ["HSE 500", "500", "5,00,000"],
-    ["HSE 1000", "1000", "10,00,000"],
-    ["HSE 2000", "2000", "20,00,000"]
+    ["HP-100", "100", "1,00,000"],
+    ["HP-200", "200", "2,00,000"],
+    ["HP-500", "500", "5,00,000"],
+    ["HP-1000", "1000", "10,00,000"],
+    ["HP-2000", "2000", "20,00,000"]
   ];
 
   return (
     <section className="mt-8">
       <Card className="overflow-hidden">
         <div className="border-b border-hydro-line bg-[#f4f9ff] p-5">
-          <h2 className="text-xl font-extrabold">HydroPure model capacity range</h2>
+          <h2 className="text-xl font-normal">HydroPure model capacity range</h2>
           <p className="mt-2 text-sm text-hydro-muted">Catalog values below are based on 16 hours runtime. The system is described as capable of continuous 24 hour operation.</p>
         </div>
         <div className="overflow-x-auto">
@@ -190,7 +190,7 @@ function HydroPureCapacityTable() {
 function FeatureList({ title, items }: { title: string; items: string[] }) {
   return (
     <Card className="p-6">
-      <h2 className="text-lg font-extrabold">{title}</h2>
+      <h2 className="text-lg font-normal">{title}</h2>
       <ul className="mt-4 grid gap-3">
         {items.map((item) => (
           <li key={item} className="flex gap-2 text-sm text-hydro-muted">

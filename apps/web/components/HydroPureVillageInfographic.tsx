@@ -108,7 +108,7 @@ export default function HydroPureVillageInfographic() {
                 </span>
                 <div>
                   <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#d64343]">The challenge</p>
-                  <h3 className="mt-1 text-2xl font-extrabold tracking-[-0.04em] text-hydro-ink">Manual operation creates blind spots</h3>
+                  <h3 className="mt-1 text-2xl font-normal tracking-[-0.04em] text-hydro-ink">Manual operation creates blind spots</h3>
                   <p className="mt-2 text-sm leading-6 text-hydro-muted">
                     Even treated water can become unsafe when storage, dosing and field reporting depend on irregular manual checks.
                   </p>
@@ -149,7 +149,7 @@ export default function HydroPureVillageInfographic() {
               <p className="inline-flex rounded-full bg-[#e9f8ef] px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#1e8f4d]">
                 What changes
               </p>
-              <h3 className="mt-4 text-[clamp(26px,2.6vw,38px)] font-extrabold leading-[1.02] tracking-[-0.045em] text-hydro-ink">
+              <h3 className="mt-4 text-[clamp(26px,2.6vw,38px)] font-normal leading-[1.02] tracking-[-0.045em] text-hydro-ink">
                 A monitored dosing layer built for distributed water tanks
               </h3>
               <p className="mt-3 max-w-xl text-sm leading-6 text-hydro-muted">

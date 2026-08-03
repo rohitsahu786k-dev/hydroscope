@@ -9,6 +9,7 @@ import { HydroPureUseCasesSection } from "@/components/hydropure-use-cases-secti
 import { IndustryAdoptionSection } from "@/components/industry-adoption-section";
 import { KeyFeaturesCarousel } from "@/components/key-features-carousel";
 import { SectionHeading } from "@/components/section-heading";
+import { StakeholdersCarousel } from "@/components/stakeholders-carousel";
 
 const platformStats = [
   ["1,256", "Tanks online", "+20.1%", "up"],
@@ -21,14 +22,12 @@ const platformStats = [
    HydroPureUseCasesSection artwork block and the IndustryAdoptionSection
    marquee, both rendered full width below the key-features carousel. */
 
-const stakeholders = ["Government", "State PHED/RWS Dept.", "District administration", "Village panchayat", "Operator", "Citizens"];
-
 const capacities = [
-  ["HSE 100", "100 g/day", "1,00,000 litres/day"],
-  ["HSE 200", "200 g/day", "2,00,000 litres/day"],
-  ["HSE 500", "500 g/day", "5,00,000 litres/day"],
-  ["HSE 1000", "1000 g/day", "10,00,000 litres/day"],
-  ["HSE 2000", "2000 g/day", "20,00,000 litres/day"]
+  ["HP-100", "100 g/day", "1,00,000 litres/day"],
+  ["HP-200", "200 g/day", "2,00,000 litres/day"],
+  ["HP-500", "500 g/day", "5,00,000 litres/day"],
+  ["HP-1000", "1000 g/day", "10,00,000 litres/day"],
+  ["HP-2000", "2000 g/day", "20,00,000 litres/day"]
 ];
 
 export function HydroPureProofSection() {
@@ -45,7 +44,7 @@ export function HydroPureProofSection() {
           <div className="grid min-h-[430px] grid-cols-[0.95fr_1.05fr] items-center gap-14 max-lg:grid-cols-1 max-lg:gap-9">
             <div className="max-w-[560px]">
               <span className="inline-flex rounded-full bg-hydro-ink px-3 py-1 text-[11px] font-extrabold text-white">Platform</span>
-              <h3 className="mt-5 text-[clamp(36px,4vw,58px)] font-normal leading-[1.02] tracking-[-0.04em] text-black">
+              <h3 className="mt-5 text-[clamp(36px,4vw,58px)] font-normal leading-[1.02] tracking-[-0.04em] text-hydro-ink">
                 From Har Ghar Jal to Har Ghar Swachh Jal.
               </h3>
               <p className="mt-4 max-w-[470px] text-lg leading-8 text-[#6b7280] max-sm:text-base max-sm:leading-7">
@@ -62,7 +61,7 @@ export function HydroPureProofSection() {
                     <Icon aria-hidden="true" className={isDown ? "text-[#ef4444]" : "text-black"} size={18} strokeWidth={1.8} />
                     <div>
                       <div className="flex items-baseline gap-3">
-                        <p className="text-[clamp(34px,3vw,44px)] font-normal leading-none tracking-[-0.04em] text-black">{value}</p>
+                        <p className="text-[clamp(34px,3vw,44px)] font-normal leading-none tracking-[-0.04em] text-hydro-ink">{value}</p>
                         <span className="text-sm text-[#6b7280]">{delta}</span>
                       </div>
                       <p className="mt-2 text-base leading-none text-[#6b7280]">{label}</p>
@@ -93,7 +92,7 @@ export function HydroPureProofSection() {
             <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-hydro-blue">Key features</p>
             <h3
               id="key-features-heading"
-              className="mt-3 text-[clamp(30px,4vw,56px)] font-bold tracking-tighter text-hydro-ink"
+              className="mt-3 text-[clamp(30px,4vw,56px)] font-normal tracking-tighter text-hydro-ink"
             >
               Key features.
             </h3>
@@ -107,21 +106,11 @@ export function HydroPureProofSection() {
 
         <IndustryAdoptionSection />
 
-        <div className="mt-8 grid grid-cols-[0.95fr_1.05fr] gap-6 max-xl:grid-cols-1">
-          <Card className="border-[#dbe8f5] bg-white p-7">
-            <div>
-              <p className="mb-4 text-sm font-extrabold uppercase tracking-[0.14em] text-hydro-blue">Stakeholders</p>
-              <div className="grid grid-cols-6 gap-2 max-lg:grid-cols-3 max-sm:grid-cols-2">
-                {stakeholders.map((item, index) => (
-                  <div key={item} className="border border-[#dbe8f5] bg-[#f8fbff] p-3 text-center">
-                    <span className="mx-auto mb-2 grid h-8 w-8 place-items-center rounded-full bg-white text-xs font-extrabold text-hydro-blue shadow-hydro">{index + 1}</span>
-                    <p className="text-xs font-bold text-hydro-ink">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Card>
+        <div className="mt-12">
+          <StakeholdersCarousel />
+        </div>
 
+        <div className="mt-12">
           <Card className="border-[#dbe8f5] bg-white p-7">
             <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-hydro-blue">Model capacity range</p>
             <div className="mt-5 overflow-hidden border border-[#d4e3f2]">

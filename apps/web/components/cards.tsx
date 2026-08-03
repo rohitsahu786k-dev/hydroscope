@@ -21,7 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
         </span>
       </div>
       <div className="flex flex-1 flex-col p-7">
-        <h2 className="whitespace-nowrap text-[clamp(20px,1.6vw,26px)] font-extrabold tracking-[-0.03em] text-hydro-ink max-sm:whitespace-normal">{product.title}</h2>
+        <h2 className="whitespace-nowrap text-[clamp(20px,1.6vw,26px)] font-normal tracking-[-0.03em] text-hydro-ink max-sm:whitespace-normal">{product.title}</h2>
         <p className="mt-1 text-xs font-semibold text-[#445066]">{product.subtitle}</p>
         <p className="mt-4 text-sm text-hydro-muted">{product.excerpt}</p>
         <ul className="my-5 grid gap-2">
@@ -56,10 +56,10 @@ export function SolutionCard({ solution }: { solution: Solution }) {
           <p className="mb-3 inline-flex bg-white/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.18em] text-hydro-blue shadow-[0_10px_24px_rgba(255,255,255,0.75)]">
             Solution
           </p>
-          <h2 className="text-[24px] font-extrabold leading-tight tracking-[-0.04em] text-hydro-ink">{solution.title}</h2>
-          <p className="mt-3 text-sm leading-6 text-hydro-muted">{solution.excerpt}</p>
-          <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-hydro-blue">
-            Explore solution <ArrowRight aria-hidden="true" size={16} />
+          <h2 className="text-[28px] font-normal leading-tight tracking-[-0.03em] text-hydro-ink">{solution.title}</h2>
+          <p className="mt-3 text-base leading-7 text-hydro-muted">{solution.excerpt}</p>
+          <span className="mt-5 inline-flex items-center gap-2 text-base font-bold text-hydro-blue">
+            Explore solution <ArrowRight aria-hidden="true" size={18} />
           </span>
         </div>
       </Link>
@@ -69,15 +69,30 @@ export function SolutionCard({ solution }: { solution: Solution }) {
 
 export function ApplicationCard({ application }: { application: Application }) {
   return (
-    <Card className="hydro-card-hover min-h-[220px] p-7">
-      <h2 className="text-[22px] font-extrabold leading-tight tracking-[-0.03em]">{application.title}</h2>
-      <p className="mt-4 text-sm leading-6 text-hydro-muted">{application.excerpt}</p>
-      <div className="mt-5 flex flex-wrap gap-2">
-        {application.sectors.map((sector) => (
-          <span key={sector} className="rounded-full bg-[#e8f3ff] px-3 py-1 text-xs font-bold text-hydro-blue">
-            {sector}
-          </span>
-        ))}
+    <Card className="hydro-card-hover group flex h-full flex-col overflow-hidden p-0">
+      {/* Fixed 4:3 box so the three cards line up and the row does not shift as
+          the images decode. */}
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#eef7ff]">
+        <Image
+          src={application.featuredImage ?? "/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp"}
+          alt={`${application.title} - HYDROscope application`}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          loading="lazy"
+          draggable={false}
+          className="select-none object-cover transition duration-700 group-hover:scale-105"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-7">
+        <h2 className="text-[26px] font-normal leading-tight tracking-[-0.03em]">{application.title}</h2>
+        <p className="mt-4 text-base leading-7 text-hydro-muted">{application.excerpt}</p>
+        <div className="mt-auto flex flex-wrap gap-2 pt-5">
+          {application.sectors.map((sector) => (
+            <span key={sector} className="rounded-full bg-[#e8f3ff] px-3.5 py-1.5 text-sm font-bold text-hydro-blue">
+              {sector}
+            </span>
+          ))}
+        </div>
       </div>
     </Card>
   );
@@ -85,13 +100,30 @@ export function ApplicationCard({ application }: { application: Application }) {
 
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <Card className="hydro-card-hover min-h-[250px] p-7">
-      <p className="text-xs font-bold uppercase tracking-[0.16em] text-hydro-blue">{post.readingTime}</p>
-      <h2 className="mt-4 text-[22px] font-extrabold leading-tight tracking-[-0.03em]">{post.title}</h2>
-      <p className="mt-4 text-sm leading-6 text-hydro-muted">{post.excerpt}</p>
-      <Link href={`/blog/${post.slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-hydro-blue">
-        Read insight <ArrowRight aria-hidden="true" size={16} />
-      </Link>
+    <Card className="hydro-card-hover group flex h-full flex-col overflow-hidden p-0">
+      {/* Fixed aspect box so every card in the grid lines up and the row does
+          not shift as images decode. */}
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#eef7ff]">
+        <Image
+          src={post.featuredImage ?? "/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp"}
+          alt={`${post.title} - HYDROscope insight`}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          loading="lazy"
+          className="object-cover transition duration-700 group-hover:scale-105"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-7">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-hydro-blue">{post.readingTime}</p>
+        <h2 className="mt-4 text-[26px] font-normal leading-tight tracking-[-0.03em]">{post.title}</h2>
+        <p className="mt-4 text-base leading-7 text-hydro-muted">{post.excerpt}</p>
+        <Link
+          href={`/blog/${post.slug}`}
+          className="mt-auto inline-flex items-center gap-2 pt-5 text-base font-bold text-hydro-blue"
+        >
+          Read insight <ArrowRight aria-hidden="true" size={18} />
+        </Link>
+      </div>
     </Card>
   );
 }
@@ -100,10 +132,10 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
   return (
     <Card className="hydro-card-hover p-6">
       <p className="text-xs font-bold uppercase tracking-[0.16em] text-hydro-blue">{study.sector}</p>
-      <h2 className="mt-3 text-xl font-extrabold">{study.title}</h2>
-      <p className="mt-3 text-sm text-hydro-muted">{study.excerpt}</p>
-      <Link href={`/case-studies/${study.slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-hydro-blue">
-        View framework <ArrowRight aria-hidden="true" size={16} />
+      <h2 className="mt-3 text-[26px] font-normal leading-tight tracking-[-0.03em]">{study.title}</h2>
+      <p className="mt-3 text-base leading-7 text-hydro-muted">{study.excerpt}</p>
+      <Link href={`/case-studies/${study.slug}`} className="mt-5 inline-flex items-center gap-2 text-base font-bold text-hydro-blue">
+        View framework <ArrowRight aria-hidden="true" size={18} />
       </Link>
     </Card>
   );

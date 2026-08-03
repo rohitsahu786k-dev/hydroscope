@@ -36,7 +36,7 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
         <div className="grid grid-cols-[0.85fr_0.45fr] gap-8 max-lg:grid-cols-1">
           <article>
             <span className="mb-4 block text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">Solution</span>
-            <h1 className="text-[clamp(38px,4.5vw,64px)] font-extrabold leading-[1.03] tracking-[-0.045em]">{solution.title}</h1>
+            <h1 className="text-[clamp(38px,4.5vw,64px)] font-normal leading-[1.03] tracking-[-0.045em]">{solution.title}</h1>
             <p className="mt-5 max-w-3xl text-hydro-muted">{solution.body}</p>
             {solution.featuredImage ? (
               <div className="mt-8 overflow-hidden rounded-hydro border border-hydro-line bg-white p-3 shadow-hydro">
@@ -44,7 +44,7 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
               </div>
             ) : null}
             <section className="mt-8">
-              <h2 className="text-2xl font-extrabold">Operational outcomes</h2>
+              <h2 className="text-2xl font-normal">Operational outcomes</h2>
               <div className="mt-4 grid grid-cols-2 gap-4 max-sm:grid-cols-1">
                 {solution.outcomes.map((outcome) => (
                   <Card key={outcome} className="flex gap-3 p-5">
@@ -57,7 +57,7 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
           </article>
           <aside className="grid content-start gap-5">
             <Card className="p-6">
-              <h2 className="text-xl font-extrabold">Recommended products</h2>
+              <h2 className="text-xl font-normal">Recommended products</h2>
               <div className="mt-4 grid gap-3 text-sm font-bold text-hydro-blue">
                 {products.slice(0, 4).map((product) => (
                   <Link key={product.slug} href={`/products/${product.slug}`}>
@@ -72,7 +72,7 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
           </aside>
         </div>
         <section className="mt-12">
-          <h2 className="mb-5 text-2xl font-extrabold">FAQs</h2>
+          <h2 className="mb-5 text-2xl font-normal">FAQs</h2>
           <FAQAccordion faqs={solution.faqs} />
         </section>
       </Container>

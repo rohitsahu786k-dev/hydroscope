@@ -59,7 +59,7 @@ export function HydroPureDashboardHero({
               "animate-appear inline-block",
               "bg-gradient-to-b from-hydro-ink via-hydro-ink/90 to-hydro-muted",
               "bg-clip-text text-transparent",
-              "text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl",
+              "text-3xl font-normal tracking-tight sm:text-4xl md:text-5xl lg:text-6xl",
               "leading-[1.1] sm:leading-[1.1]",
               "max-w-[900px]"
             )}

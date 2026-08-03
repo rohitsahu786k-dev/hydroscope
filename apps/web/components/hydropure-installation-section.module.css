@@ -74,6 +74,9 @@
   width: 100%;
   height: auto;
   object-fit: contain;
+  /* Rounded to match the site's rounded-hydro token. Purely visual - the text
+     overlays sit outside the image box, so nothing gets clipped. */
+  border-radius: var(--hydropure-installation-image-radius, 13px);
 }
 
 /* ---------------------------------------------------------------------------

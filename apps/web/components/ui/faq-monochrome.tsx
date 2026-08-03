@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type MouseEvent } from "react";
+import { useEffect, useId, useState, type MouseEvent } from "react";
 import styles from "./faq-monochrome.module.css";
 
 export type FaqMonochromeItem = {
@@ -16,7 +16,7 @@ type FaqMonochromeProps = {
   eyebrow?: string;
   heading?: string;
   description?: string;
-  /** index open on first render; pass -1 to start fully collapsed */
+  /** index open on first render; -1 (the default) starts fully collapsed */
   defaultOpenIndex?: number;
 };
 
@@ -26,13 +26,12 @@ export function FaqMonochrome({
   eyebrow = "Questions",
   heading = "Common questions",
   description = "Everything worth knowing about HydroPure, HydroSense and HydroSure before a deployment - answered plainly.",
-  defaultOpenIndex = 0
+  defaultOpenIndex = -1
 }: FaqMonochromeProps) {
   const baseId = useId();
   const [introReady, setIntroReady] = useState(false);
   const [hasEntered, setHasEntered] = useState(false);
   const [activeIndex, setActiveIndex] = useState(defaultOpenIndex);
-  const panelRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => setIntroReady(true));
@@ -60,11 +59,6 @@ export function FaqMonochrome({
 
   const toggle = (index: number) => setActiveIndex((prev) => (prev === index ? -1 : index));
 
-  /* Panels animate to their measured height rather than a hard max-h value, so a
-     long answer is never clipped mid-sentence. */
-  const panelHeight = (index: number) =>
-    activeIndex === index ? `${panelRefs.current[index]?.scrollHeight ?? 0}px` : "0px";
-
   const trackGlow = (event: MouseEvent<HTMLLIElement>) => {
     const target = event.currentTarget;
     const rect = target.getBoundingClientRect();
@@ -79,20 +73,10 @@ export function FaqMonochrome({
   };
 
   return (
-    <div
-      className={`relative w-full overflow-hidden rounded-[24px] border border-[#d7e8fa] bg-[linear-gradient(160deg,#ffffff_0%,#f5faff_58%,#eef6ff_100%)] ${
-        hasEntered ? styles.fadeReady : styles.fade
-      }`}
-    >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-70"
-        style={{
-          background: "radial-gradient(ellipse 50% 100% at 10% 0%, rgba(18, 88, 182, 0.09), transparent 68%)"
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative mx-auto flex max-w-4xl flex-col gap-10 px-6 py-16 lg:max-w-5xl lg:px-12 lg:py-20">
+    <div className={`relative w-full ${hasEntered ? styles.fadeReady : styles.fade}`}>
+      {/* No max-width cap: this sits inside the site <Container> (w-[90%]), so
+          the content fills that 90% instead of stopping short of the card edge. */}
+      <div className="relative flex w-full flex-col gap-10 px-6 py-16 lg:px-12 lg:py-20">
         <div className={`${styles.intro} ${introReady ? styles.introActive : ""}`}>
           <span className={styles.beam} aria-hidden="true" />
           <span className={styles.ping} aria-hidden="true" />
@@ -103,13 +87,15 @@ export function FaqMonochrome({
 
         <header className="space-y-4">
           <p className="text-xs font-extrabold uppercase tracking-[0.35em] text-hydro-blue">{eyebrow}</p>
-          <h2 className="text-[clamp(30px,3.6vw,52px)] font-semibold leading-tight tracking-[-0.03em] text-hydro-navy">
+          <h2 className="text-[clamp(24px,2.4vw,34px)] font-normal leading-[1.12] tracking-[-0.03em] text-hydro-ink">
             {heading}
           </h2>
           <p className="max-w-xl text-base leading-7 text-hydro-muted">{description}</p>
         </header>
 
-        <ul className="space-y-4">
+        {/* Two equal columns on desktop - with 8 items that is 4 per column.
+            items-start stops an open answer from stretching its row neighbour. */}
+        <ul className="grid grid-cols-2 items-start gap-4 max-lg:grid-cols-1">
           {items.map((item, index) => {
             const open = activeIndex === index;
             const panelId = `${baseId}-panel-${index}`;
@@ -152,7 +138,7 @@ export function FaqMonochrome({
                     </span>
 
                     <span className="flex min-w-0 flex-1 flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-                      <span className="text-lg font-medium leading-snug text-hydro-navy sm:text-xl">
+                      <span className="text-lg font-bold leading-snug text-hydro-ink sm:text-xl">
                         {item.question}
                       </span>
                       {item.meta ? (
@@ -164,20 +150,20 @@ export function FaqMonochrome({
                   </button>
                 </h3>
 
+                {/* No `hidden` here: the row collapses to 0fr instead, which keeps
+                    the transition working. aria-expanded on the trigger already
+                    conveys the state to assistive tech. */}
                 <div
                   id={panelId}
                   role="region"
                   aria-labelledby={buttonId}
-                  hidden={!open}
-                  ref={(node) => {
-                    panelRefs.current[index] = node;
-                  }}
-                  className={styles.panel}
-                  style={{ maxHeight: panelHeight(index) }}
+                  className={`${styles.panel} ${open ? styles.panelOpen : ""}`}
                 >
-                  <p className="px-6 pb-6 pl-[4.25rem] text-sm leading-relaxed text-hydro-muted sm:px-8 sm:pb-7 sm:pl-[5.5rem]">
-                    {item.answer}
-                  </p>
+                  <div className={styles.panelInner}>
+                    <p className="px-6 pb-6 pl-[4.25rem] text-sm leading-relaxed text-hydro-muted sm:px-8 sm:pb-7 sm:pl-[5.5rem]">
+                      {item.answer}
+                    </p>
+                  </div>
                 </div>
               </li>
             );

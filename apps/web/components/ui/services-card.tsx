@@ -44,11 +44,11 @@ const ServiceCard = ({ service, index }: { service: Service; index: number }) =>
     )}
   >
     <div className="z-10 flex flex-col items-start text-left">
-      <span className="mb-6 font-mono text-xs text-hydro-blue/60">( {service.number} )</span>
+      <span className="mb-6 text-xs font-bold tracking-[0.12em] text-hydro-blue/60">( {service.number} )</span>
       <service.icon className="mb-auto h-10 w-10 text-hydro-blue" aria-hidden="true" strokeWidth={1.6} />
     </div>
     <div className="z-10">
-      <h3 className="mb-2 text-base font-semibold uppercase tracking-wide text-hydro-ink">{service.title}</h3>
+      <h3 className="mb-2 text-base font-normal uppercase tracking-wide text-hydro-ink">{service.title}</h3>
       <p className="text-[13px] leading-6 text-hydro-muted">{service.description}</p>
     </div>
 

@@ -60,7 +60,7 @@ const Logos3 = ({ heading = "Trusted by these companies", eyebrow, logos = [], c
         {eyebrow ? (
           <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-hydro-blue">{eyebrow}</p>
         ) : null}
-        <h2 className="mt-3 text-[clamp(28px,3.4vw,44px)] font-bold tracking-tighter text-hydro-ink">
+        <h2 className="mt-3 text-[clamp(28px,3.4vw,44px)] font-normal tracking-tighter text-hydro-ink">
           {heading}
         </h2>
       </div>

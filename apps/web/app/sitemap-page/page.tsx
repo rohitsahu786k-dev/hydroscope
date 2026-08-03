@@ -29,7 +29,7 @@ export default function SitemapPage() {
   return (
     <main className="hydro-section">
       <Container>
-        <h1 className="text-5xl font-extrabold">Sitemap</h1>
+        <h1 className="text-5xl font-normal">Sitemap</h1>
         <div className="mt-8 grid grid-cols-3 gap-3 max-lg:grid-cols-1">
           {links.map(([href, label]) => (
             <Link key={href} href={href} className="rounded-md border border-hydro-line bg-white p-4 text-sm font-bold text-hydro-blue">

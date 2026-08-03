@@ -81,7 +81,7 @@ function FlowPanel({ eyebrow, title, steps, notes, tone }: FlowPanelProps) {
     // so the flow row scrolls internally instead of widening the page.
     <div className="min-w-0 rounded-[14px] bg-white p-5 shadow-[0_18px_54px_rgba(35,69,111,0.08)] sm:p-7 lg:p-9">
       <p className={`text-[11px] font-extrabold uppercase tracking-[0.18em] ${accentText}`}>{eyebrow}</p>
-      <h3 className="mt-3 max-w-3xl text-[clamp(22px,2.5vw,34px)] font-extrabold leading-[1.12] tracking-[-0.04em] text-hydro-ink">
+      <h3 className="mt-3 max-w-3xl text-[clamp(22px,2.5vw,34px)] font-normal leading-[1.12] tracking-[-0.04em] text-hydro-ink">
         {title}
       </h3>
 

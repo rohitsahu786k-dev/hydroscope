@@ -43,13 +43,13 @@ export default function HowItWorksPage() {
         </div>
         <section className="mt-10 grid grid-cols-[0.9fr_1.1fr] gap-6 max-lg:grid-cols-1">
           <Card className="p-7">
-            <h2 className="text-2xl font-extrabold">Why this matters</h2>
+            <h2 className="text-2xl font-normal">Why this matters</h2>
             <p className="mt-4 leading-7 text-hydro-muted">
               The process reduces manual dosing errors and improves control. It also gives field teams and officials better visibility into whether the system is working as expected.
             </p>
           </Card>
           <Card className="p-7">
-            <h2 className="text-2xl font-extrabold">Technical walkthrough</h2>
+            <h2 className="text-2xl font-normal">Technical walkthrough</h2>
             <ul className="mt-4 grid gap-3 text-sm text-hydro-muted">
               {["Brine electrolysis", "Automatic dosing logic", "Sensor feedback", "IoT dashboard alerts", "Reports and operational visibility"].map((item) => (
                 <li key={item} className="flex gap-2">

@@ -71,7 +71,7 @@ export default function DashboardPlatformPage() {
               <span className="mb-4 inline-flex border border-hydro-line bg-white px-4 py-1 text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">
                 HydroSure dashboard
               </span>
-              <h1 className="text-[clamp(40px,5vw,72px)] font-extrabold leading-[1.02] tracking-[-0.055em] text-hydro-ink">
+              <h1 className="text-[clamp(40px,5vw,72px)] font-normal leading-[1.02] tracking-[-0.055em] text-hydro-ink">
                 Monitor every site from one intelligent water dashboard.
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-hydro-muted">
@@ -104,7 +104,7 @@ export default function DashboardPlatformPage() {
       <section className="hydro-section bg-white">
         <Container>
           <div className="mb-10 max-w-4xl">
-            <h2 className="text-[clamp(30px,3.6vw,48px)] font-extrabold leading-[1.08] tracking-[-0.04em] text-hydro-ink">
+            <h2 className="text-[clamp(24px,2.4vw,34px)] font-normal leading-[1.12] tracking-[-0.03em] text-hydro-ink">
               Built around secure access, field visibility and exportable operations data.
             </h2>
           </div>
@@ -112,7 +112,7 @@ export default function DashboardPlatformPage() {
             {workflow.map(([title, text, Icon]) => (
               <Card key={title as string} className="p-6">
                 <Icon aria-hidden="true" className="mb-5 text-hydro-blue" size={28} />
-                <h3 className="text-lg font-extrabold text-hydro-ink">{title as string}</h3>
+                <h3 className="text-lg font-normal text-hydro-ink">{title as string}</h3>
                 <p className="mt-3 text-sm leading-6 text-hydro-muted">{text as string}</p>
               </Card>
             ))}
@@ -137,7 +137,7 @@ export default function DashboardPlatformPage() {
                   <Bell aria-hidden="true" size={15} />
                   Real-time device intelligence
                 </span>
-                <h2 className="max-w-2xl text-[clamp(34px,4vw,58px)] font-extrabold leading-[1.04] tracking-[-0.05em]">
+                <h2 className="max-w-2xl text-[clamp(34px,4vw,58px)] font-normal leading-[1.04] tracking-[-0.05em]">
                   From map marker to chlorine trendline in one workflow.
                 </h2>
                 <p className="mt-5 max-w-xl text-[#d5eaff]">
@@ -148,7 +148,7 @@ export default function DashboardPlatformPage() {
             {bentoCards.map(([title, text, Icon]) => (
               <Card key={title as string} className="min-h-[180px] p-6">
                 <Icon aria-hidden="true" className="mb-5 text-hydro-blue" size={24} />
-                <h3 className="text-lg font-extrabold text-hydro-ink">{title as string}</h3>
+                <h3 className="text-lg font-normal text-hydro-ink">{title as string}</h3>
                 <p className="mt-2 text-sm leading-6 text-hydro-muted">{text as string}</p>
               </Card>
             ))}
@@ -161,7 +161,7 @@ export default function DashboardPlatformPage() {
           <div className="mb-10 flex items-end justify-between gap-6 max-lg:flex-col max-lg:items-start">
             <div>
               <span className="mb-4 block text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">HydroSure screens</span>
-              <h2 className="max-w-3xl text-[clamp(30px,3.6vw,48px)] font-extrabold leading-[1.08] tracking-[-0.04em] text-hydro-ink">
+              <h2 className="max-w-3xl text-[clamp(24px,2.4vw,34px)] font-normal leading-[1.12] tracking-[-0.03em] text-hydro-ink">
                 Key software pages explained with real dashboard references.
               </h2>
             </div>
@@ -185,7 +185,7 @@ export default function DashboardPlatformPage() {
                   <Image src={card.image} alt={card.title} width={1672} height={941} className="h-full w-full object-cover object-left-top transition duration-700 hover:scale-105" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-extrabold text-hydro-ink">{card.title}</h3>
+                  <h3 className="text-xl font-normal text-hydro-ink">{card.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-hydro-muted">{card.text}</p>
                 </div>
               </article>
@@ -199,7 +199,7 @@ export default function DashboardPlatformPage() {
           <div className="grid grid-cols-[0.8fr_1.2fr] items-center gap-10 max-lg:grid-cols-1">
             <div>
               <span className="mb-4 block text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">Secure account layer</span>
-              <h2 className="text-[clamp(30px,3.6vw,48px)] font-extrabold leading-[1.08] tracking-[-0.04em] text-hydro-ink">
+              <h2 className="text-[clamp(24px,2.4vw,34px)] font-normal leading-[1.12] tracking-[-0.03em] text-hydro-ink">
                 Login, password governance and two-factor authentication.
               </h2>
               <p className="mt-5 text-hydro-muted">
