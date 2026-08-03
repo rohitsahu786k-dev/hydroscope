@@ -1,5 +1,4 @@
 import { Download } from "lucide-react";
-import Image from "next/image";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
@@ -35,15 +34,6 @@ export default function ResourcesPage() {
           title="Brochures, datasheets and water monitoring resources"
           text="Resources help buyers, engineers and government teams access the documents they need before a technical or commercial discussion."
         />
-        <div className="mb-8 overflow-hidden rounded-hydro border border-hydro-line bg-white p-3 shadow-hydro">
-          <Image
-            src="/images/seo/hydroscope-water-treatment-products-feature-collage.webp"
-            alt="Hydroscope water treatment products feature collage with HydroPure HydroSense HydroSure and IoT monitoring"
-            width={1672}
-            height={941}
-            className="h-auto w-full rounded-lg"
-          />
-        </div>
         <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1">
           {resources.map((resource) => (
             <Card key={resource} className="p-6">
