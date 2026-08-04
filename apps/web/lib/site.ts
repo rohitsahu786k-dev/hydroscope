@@ -6,18 +6,14 @@ export const siteConfig = {
   email: "sudhanshu@hydroscope.in",
   phone: "+91 95820 16238",
   location: "4/162, 1st Floor, Shipra Path, SFS Mansarovar, Jaipur, Rajasthan 302020, India",
-  tagline: "Reliable water intelligence",
+  tagline: "Transforming Lives. Reliable Solutions",
   description:
-    "HydroPure electrochlorination, HydroSense water-quality sensing and HydroSure IoT real-time monitoring for safe water infrastructure."
+    "IoT solutions, water quality monitoring, smart electrochlorination and AI-powered water analytics for safer, smarter and more sustainable water infrastructure."
 };
 
 export const navItems = [
+  { label: "Why Choose Us", href: "/#why-hydroscope" },
+  { label: "Solutions", href: "/#solutions" },
   { label: "About Us", href: "/about" },
-  { label: "Products", href: "/products" },
-  { label: "Solutions", href: "/solutions" },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "Dashboard", href: "/dashboard-platform" },
-  { label: "Resources", href: "/resources" },
-  { label: "Contact", href: "/contact" },
-  { label: "Request Demo", href: "/request-demo" }
+  { label: "Contact", href: "/contact" }
 ] as const;
