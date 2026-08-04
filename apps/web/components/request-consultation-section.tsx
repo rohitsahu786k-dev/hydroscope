@@ -1,10 +1,8 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { ProudlySupportsMarquee } from "./proudly-supports-marquee";
 import { Container } from "./ui/container";
-import { proudlySupports } from "@/lib/solutions-content";
 
-/* Closing call to action, followed by the programmes HYDROscope aligns its
-   products with, using the supplied official logos. */
+/* Closing call to action, followed by the programme marquee. */
 export function RequestConsultationSection() {
   return (
     <>
@@ -28,37 +26,7 @@ export function RequestConsultationSection() {
         </Container>
       </section>
 
-      <section aria-label="HydroScope proudly supports" className="border-y border-hydro-line bg-white py-10">
-        <p className="mb-6 text-center text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">
-          HydroScope proudly supports
-        </p>
-        <div className="overflow-hidden">
-          <div className="hydro-marquee">
-            {[0, 1].map((copy) => (
-              <ul key={copy} aria-hidden={copy === 1} className="flex shrink-0 items-center">
-                {proudlySupports.map((item) => (
-                  <li key={`${copy}-${item.name}`} className="px-10 max-sm:px-6">
-                    {/* Fixed height, auto width: the five marks have different
-                        proportions, so matching on height keeps the row
-                        optically even instead of letterboxing them. */}
-                    <Image
-                      src={item.image}
-                      /* The duplicate copy is aria-hidden, so only the first
-                         announces the programme name. */
-                      alt={copy === 0 ? item.name : ""}
-                      width={500}
-                      height={250}
-                      loading="lazy"
-                      draggable={false}
-                      className="pointer-events-none h-14 w-auto select-none object-contain max-sm:h-11"
-                    />
-                  </li>
-                ))}
-              </ul>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProudlySupportsMarquee />
     </>
   );
 }

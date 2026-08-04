@@ -22,84 +22,92 @@ export function HeroSection(props: HeroSectionProps) {
      change while the guide is being rolled out. */
   void props;
 
-  const { eyebrow, title, subtitle, ctaLabel, ctaHref, cards } = heroContent;
+  const { eyebrow, subtitle, ctaLabel, ctaHref, cards } = heroContent;
+
+  const copy = (
+    <>
+      <p className="text-[clamp(11px,0.85vw,14px)] font-semibold uppercase tracking-[0.24em] text-hydro-blue2">
+        {eyebrow}
+      </p>
+
+      {/* Two lines, exactly as the reference sets them. */}
+      <h1 className="mt-5 text-[clamp(34px,4.2vw,60px)] font-normal leading-[1.06] tracking-[-0.04em] text-hydro-navy">
+        Empowering. Smarter
+        <span className="block">Water Management.</span>
+      </h1>
+
+      <p className="mt-6 max-w-[520px] text-[clamp(14px,1.05vw,17px)] leading-[1.7] text-hydro-muted">{subtitle}</p>
+
+      <a
+        href={ctaHref}
+        className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-hydro-blue2 px-7 text-[15px] font-bold text-white transition hover:-translate-y-0.5 hover:bg-hydro-navy"
+      >
+        {ctaLabel}
+        <ArrowRight aria-hidden="true" size={16} />
+      </a>
+
+      <ul className="mt-9 grid max-w-[620px] grid-cols-3 gap-4 max-sm:grid-cols-1">
+        {cards.map((card, index) => {
+          const Icon = cardIcons[index] ?? Droplets;
+          return (
+            <li
+              key={card.title}
+              className="rounded-xl bg-white/85 px-5 py-4 text-center shadow-[0_18px_44px_-30px_rgba(9,36,76,0.8)] backdrop-blur"
+            >
+              <span className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-[#e8f1fd] text-hydro-blue2">
+                <Icon aria-hidden="true" className="h-[18px] w-[18px]" strokeWidth={1.8} />
+              </span>
+              <p className="mt-3 text-[15px] font-extrabold leading-tight text-hydro-navy">{card.title}</p>
+              <p className="mt-1 text-[12px] leading-tight text-hydro-muted">{card.subtitle}</p>
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#eef5fb_0%,#f7fbff_38%,#e8f1f9_100%)]">
-      <div className="hydro-network pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true" />
-
-      <Container className="relative">
-        <div className="grid grid-cols-[1.05fr_1fr] items-center gap-12 py-16 max-lg:grid-cols-1 max-lg:gap-10 max-lg:py-12">
-          <div>
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.24em] text-hydro-blue">{eyebrow}</p>
-
-            {/* Two lines, matching the banner: the first sits in ink and the
-                rest carries the brand blue. */}
-            <h1 className="mt-5 text-[clamp(38px,5vw,68px)] font-normal leading-[1.02] tracking-[-0.045em] text-hydro-ink">
-              Empowering.
-              <span className="block text-hydro-blue">Smarter Water</span>
-              <span className="block text-hydro-blue">Management.</span>
-            </h1>
-            <span className="sr-only">{title}</span>
-
-            <p className="mt-6 max-w-[540px] text-base leading-7 text-hydro-muted">{subtitle}</p>
-
-            <a
-              href={ctaHref}
-              className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-hydro-blue px-6 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-hydro-navy"
-            >
-              {ctaLabel}
-              <ArrowRight aria-hidden="true" size={16} />
-            </a>
-
-            <ul className="mt-10 grid grid-cols-3 gap-3 max-sm:grid-cols-1">
-              {cards.map((card, index) => {
-                const Icon = cardIcons[index] ?? Droplets;
-                return (
-                  <li
-                    key={card.title}
-                    className="flex items-center gap-3 rounded-xl border border-white bg-white/80 px-4 py-3 shadow-[0_16px_40px_-28px_rgba(9,36,76,0.7)] backdrop-blur"
-                  >
-                    <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-hydro-blue" strokeWidth={1.7} />
-                    <div className="min-w-0">
-                      <p className="text-[13px] font-extrabold leading-tight text-hydro-navy">{card.title}</p>
-                      <p className="mt-0.5 text-[11.5px] leading-tight text-hydro-muted">{card.subtitle}</p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
+    <section className="bg-white">
+      {/* ---- lg and up: the wide banner fills the section and the copy sits in
+             the clear left band the artwork was drawn with. object-right keeps
+             the unit, the sensor and the dashboard in frame at every width -
+             only the empty left area is ever trimmed, and the copy covers
+             that. ---- */}
+      <div className="relative isolate overflow-hidden max-lg:hidden">
+        <Image
+          src="/images/hero/hero-hydroscope-banner-desktop.webp"
+          alt="HydroPure electrochlorinator and a HydroSense handheld sensor on a plant bench, with the HydroSure dashboard on a screen behind them"
+          fill
+          sizes="100vw"
+          priority
+          draggable={false}
+          className="pointer-events-none -z-10 select-none object-cover object-right"
+        />
+        <Container>
+          <div className="flex min-h-[clamp(560px,43vw,821px)] flex-col justify-center py-14">
+            <div className="max-w-[46%] max-xl:max-w-[52%]">{copy}</div>
           </div>
+        </Container>
+      </div>
 
-          {/* Right side is the product story the guide asks for: the live
-              dashboard next to the electrochlorinator it controls. */}
-          <div className="relative">
-            <div className="overflow-hidden rounded-2xl border border-white bg-white shadow-[0_40px_90px_-50px_rgba(9,36,76,0.8)]">
-              <Image
-                src="/images/hydrosure-dashboard/hydrosure-dashboard-cinematic.webp"
-                alt="HydroSure dashboard showing the assigned devices map, device counts, water quality, flow monitoring and active alerts"
-                width={1600}
-                height={900}
-                priority
-                draggable={false}
-                className="pointer-events-none h-auto w-full select-none"
-              />
-            </div>
-
-            <div className="absolute -bottom-6 -right-2 w-[34%] max-sm:static max-sm:mt-5 max-sm:w-1/2">
-              <Image
-                src="/images/hydroscope-products/hydropure-hp-100.webp"
-                alt="HydroPure HP-100 electrochlorinator unit"
-                width={800}
-                height={1000}
-                priority
-                draggable={false}
-                className="pointer-events-none h-auto w-full select-none drop-shadow-[0_30px_50px_rgba(9,36,76,0.35)]"
-              />
-            </div>
-          </div>
-        </div>
-      </Container>
+      {/* ---- Below lg the copy sits on white above the portrait crop. Overlaid
+             on a phone the paragraph and the three cards would cover most of
+             the artwork and land on the busy half of it, so the banner is shown
+             whole underneath instead. ---- */}
+      <div className="lg:hidden">
+        <Container>
+          <div className="py-12">{copy}</div>
+        </Container>
+        <Image
+          src="/images/hero/hero-hydroscope-banner-mobile.webp"
+          alt=""
+          width={1122}
+          height={1402}
+          priority
+          draggable={false}
+          className="pointer-events-none h-auto w-full select-none"
+        />
+      </div>
     </section>
   );
 }

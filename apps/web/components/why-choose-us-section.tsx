@@ -1,14 +1,11 @@
 import Image from "next/image";
-import { Boxes, Cloud, Gauge, Layers, Radar, Sparkles } from "lucide-react";
 import { SectionHeading } from "./section-heading";
+import { CarouselStacked } from "./ui/carousel-07";
 import { Container } from "./ui/container";
 import { whyChooseUs } from "@/lib/solutions-content";
 
-const cardIcons = [Layers, Gauge, Sparkles, Radar, Cloud, Boxes];
-
-/* Why Choose Us. Four credibility figures across the top, then six cards that
-   show icon and title first and reveal the description on flip - hover on a
-   pointer, keyboard focus otherwise, so the copy is reachable without a mouse. */
+/* Why Choose Us. Four credibility figures across the top, then the six reasons
+   as a stacked drag carousel - drag it, or use the arrows. */
 export function WhyChooseUsSection() {
   return (
     <section id="why-choose-us" className="hydro-section bg-[#f7fbff]">
@@ -39,35 +36,20 @@ export function WhyChooseUsSection() {
             </div>
           ))}
         </dl>
-
-        <ul className="mt-10 grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1">
-          {whyChooseUs.cards.map((card, index) => {
-            const Icon = cardIcons[index] ?? Layers;
-            return (
-              <li key={card.title} className="group h-[190px] [perspective:1200px]">
-                <div
-                  tabIndex={0}
-                  className="relative h-full w-full rounded-2xl outline-none transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)] motion-reduce:transition-none"
-                >
-                  {/* Front */}
-                  <div className="absolute inset-0 flex flex-col justify-center gap-4 rounded-2xl border border-hydro-line bg-white p-7 shadow-[0_20px_54px_-42px_rgba(9,36,76,0.8)] [backface-visibility:hidden]">
-                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#eaf3fd] text-hydro-blue">
-                      <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.7} />
-                    </span>
-                    <h3 className="text-lg font-normal leading-snug text-hydro-navy">{card.title}</h3>
-                  </div>
-
-                  {/* Back */}
-                  <div className="absolute inset-0 flex flex-col justify-center rounded-2xl bg-hydro-navy p-7 text-white [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                    <h3 className="text-base font-normal leading-snug">{card.title}</h3>
-                    <p className="mt-3 text-[13px] leading-6 text-[#cfe4ff]">{card.text}</p>
-                  </div>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
       </Container>
+
+      {/* Full width rather than inside the container: the stack fans out well
+          past the centre card, and clipping it would cut the fan in half. */}
+      <CarouselStacked
+        slides={whyChooseUs.cards.map((card) => ({
+          image: card.image,
+          title: card.title,
+          description: card.text,
+          badge: card.badge
+        }))}
+      />
+
+      <p className="text-center text-xs text-hydro-muted">Drag the cards, or use the arrows.</p>
     </section>
   );
 }

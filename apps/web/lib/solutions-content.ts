@@ -115,8 +115,9 @@ export const solutionEntries: SolutionEntry[] = [
     ],
     bestFor: "Municipal corporations, smart cities, water utilities, large-scale networks",
     speciality: ["Manage Thousands of Devices", "Secure Cloud Platform"],
-    cardImage: "/images/seo/hydrosure-iot-water-monitoring-system-product-shot.webp",
-    cardImageAlt: "HydroSure cloud dashboard shown on a monitoring screen",
+    cardImage: "/images/hydrosure-dashboard/hydrosure-dashboard-full.webp",
+    cardImageAlt:
+      "HydroSure dashboard showing tanks online, warnings, attention alerts, residual chlorine, water usage, the assigned devices map and chlorination trend charts",
     heroImage: "/images/hydrosure-dashboard/hydrosure-dashboard-cinematic.webp",
     heroImageAlt: "HydroSure cloud dashboard running on a tablet beside a water treatment site at night",
     heroSubtitle:
@@ -520,19 +521,47 @@ export const whyChooseUs = {
     { value: "1", label: "Unified Platform" },
     { value: "100%", label: "Remote Accessibility" }
   ],
+  /* Rendered as the stacked drag carousel, so each entry also carries the
+     photograph it sits on and a one-word category for its badge. Portrait
+     sources throughout: the cards are 2:3, and a landscape photo cropped to
+     that loses its subject. */
   cards: [
     {
       title: "Engineered as One",
-      text: "Sensors, treatment, automation, and software - perfectly integrated for seamless operation."
+      text: "Sensors, treatment, automation, and software - perfectly integrated for seamless operation.",
+      badge: "Integrated",
+      image: "/images/about/hydroscope-fully-automated-electrochlorinator.webp"
     },
-    { title: "Precision Monitoring", text: "High-accuracy water quality measurements with continuous data validation." },
-    { title: "Intelligent Disinfection", text: "Optimized chlorine generation and dosing for safer, more efficient treatment." },
-    { title: "Operational Intelligence", text: "AI transforms operational data into insights and automated decisions." },
+    {
+      title: "Precision Monitoring",
+      text: "High-accuracy water quality measurements with continuous data validation.",
+      badge: "Accuracy",
+      image: "/images/about/hydroscope-inline-multi-parameter-water-quality-sensor.webp"
+    },
+    {
+      title: "Intelligent Disinfection",
+      text: "Optimized chlorine generation and dosing for safer, more efficient treatment.",
+      badge: "Treatment",
+      image: "/images/hydroscope-industries/municipal-water-boards-treatment-facility.webp"
+    },
+    {
+      title: "Operational Intelligence",
+      text: "AI transforms operational data into insights and automated decisions.",
+      badge: "AI",
+      image: "/images/about/hydroscope-iot-water-monitoring-dashboard-laptop.webp"
+    },
     {
       title: "Connected Everywhere",
-      text: "Unified cloud dashboard with live monitoring, alarms, trends, reports, and remote control."
+      text: "Unified cloud dashboard with live monitoring, alarms, trends, reports, and remote control.",
+      badge: "Cloud",
+      image: "/images/about/hydroscope-automated-valve-and-pump-controller.webp"
     },
-    { title: "Ready for Scale", text: "Designed for municipalities, utilities, industries, and large distributed water networks." }
+    {
+      title: "Ready for Scale",
+      text: "Designed for municipalities, utilities, industries, and large distributed water networks.",
+      badge: "Scale",
+      image: "/images/hydroscope-industries/state-phed-smart-cities-water-infrastructure.webp"
+    }
   ]
 };
 
@@ -555,9 +584,11 @@ export const trustPillars = [
 /* Programmes HYDROscope aligns its products with. The artwork is the supplied
    official logo for each, so `name` is only the accessible label. */
 export const proudlySupports = [
-  { name: "Digital India", image: "/images/programmes/digital-india.webp" },
+  { name: "Namami Gange", image: "/images/programmes/namami-gange.webp" },
+  { name: "Har Ghar Jal - Jal Jeevan Mission", image: "/images/programmes/jal-jeevan-mission.webp" },
   { name: "Make In India", image: "/images/programmes/make-in-india.webp" },
   { name: "Swachh Bharat", image: "/images/programmes/swachh-bharat.webp" },
-  { name: "Har Ghar Jal - Jal Jeevan Mission", image: "/images/programmes/jal-jeevan-mission.webp" },
-  { name: "World Health Organization", image: "/images/programmes/world-health-organization.webp" }
+  { name: "Digital India", image: "/images/programmes/digital-india.webp" },
+  { name: "World Health Organization", image: "/images/programmes/world-health-organization.webp" },
+  { name: "Sustainable Development Goals", image: "/images/programmes/sustainable-development-goals.webp" }
 ];

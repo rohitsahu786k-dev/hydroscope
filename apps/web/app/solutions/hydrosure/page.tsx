@@ -107,10 +107,10 @@ export default function HydroSurePage() {
           <div className="grid grid-cols-[1.35fr_1fr] items-center gap-9 max-lg:grid-cols-1">
             <div className="overflow-hidden rounded-2xl border border-hydro-line bg-white p-3">
               <Image
-                src="/images/hydrosure-dashboard/dashboard-realtime-overview.webp"
-                alt="HydroSure real-time overview screen showing the assigned devices map, device counts and live water-quality tiles"
-                width={1600}
-                height={764}
+                src="/images/hydrosure-dashboard/hydrosure-dashboard-full.webp"
+                alt="HydroSure real-time overview: tanks online, warnings, attention alerts, residual chlorine, water usage, the assigned devices map, device analytics and chlorination trend charts"
+                width={1672}
+                height={941}
                 draggable={false}
                 className="pointer-events-none h-auto w-full select-none rounded-lg"
               />

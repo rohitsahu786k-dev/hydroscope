@@ -1,5 +1,6 @@
 import { CapabilityMarquee } from "@/components/capability-marquee";
 import { HeroSection } from "@/components/hero-section";
+import { HydroSureDashboardShowcase } from "@/components/hydrosure-dashboard-showcase";
 import { HydroVerseEcosystemSection } from "@/components/hydroverse-ecosystem-section";
 import { IndustryAdoptionSection } from "@/components/industry-adoption-section";
 import { FaqSchema } from "@/components/json-ld";
@@ -37,6 +38,7 @@ export default async function HomePage() {
       <HeroSection />
       <SectorNavigation />
       <SolutionsSection />
+      <HydroSureDashboardShowcase />
       <HydroVerseEcosystemSection />
       <WhyChooseUsSection />
       <CapabilityMarquee />

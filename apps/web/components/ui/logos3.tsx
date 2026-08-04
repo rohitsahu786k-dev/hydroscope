@@ -5,6 +5,7 @@ import Image from "next/image";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Container } from "@/components/ui/container";
+import { PHOTO_CARD_PILL } from "@/lib/ui-classes";
 import { cn } from "@/lib/utils";
 
 /* An item shows either a photo (`image`) or a Lucide icon (`Icon`) - both render
@@ -31,14 +32,6 @@ export interface Logos3Props {
      photograph with its name set into a white scrim along the bottom edge. */
   variant?: "chip" | "photo";
 }
-
-/* A many-stop white gradient rather than Tailwind's three-stop
-   from/via/to: with only three stops the midpoint reads as a visible band
-   across a photograph. These stops ease the white out gradually, so the scrim
-   dissolves into the image and the card still ends in solid white where the
-   label sits. */
-const SCRIM =
-  "linear-gradient(to top, #ffffff 0%, #ffffff 26%, rgba(255,255,255,0.94) 40%, rgba(255,255,255,0.78) 54%, rgba(255,255,255,0.5) 68%, rgba(255,255,255,0.22) 82%, rgba(255,255,255,0) 100%)";
 
 /* AutoScroll is motion the visitor did not ask for, so it must not start when
    the OS asks for reduced motion. Read once on mount, then keep listening. */
@@ -71,16 +64,18 @@ const Logos3 = ({
   /* Re-created only when the motion preference flips, so embla is not torn down
      and rebuilt on every parent render.
    *
-   * stopOnMouseEnter pauses the strip while a visitor is reading a caption and
-   * resumes on leave; stopOnInteraction stays false so using the arrows does not
-   * kill autoplay for the rest of the session. */
+   * Nothing stops the scroll except a reduced-motion preference: an earlier
+   * version paused on mouse enter, which read as broken autoplay whenever the
+   * pointer happened to rest over the strip. stopOnInteraction stays false so
+   * the arrows nudge the strip without ending playback. */
   const plugins = React.useMemo(
     () => [
       AutoScroll({
         playOnInit: !prefersReducedMotion,
         speed: 1,
         stopOnInteraction: false,
-        stopOnMouseEnter: true
+        stopOnFocusIn: false,
+        stopOnMouseEnter: false
       })
     ],
     [prefersReducedMotion]
@@ -94,7 +89,10 @@ const Logos3 = ({
         /* The strip is decorative repetition of the list below it in the DOM
            sense - embla still exposes it as a region, so name it. */
         aria-label={heading}
-        opts={{ loop: true, align: "start", dragFree: !isPhoto }}
+        /* dragFree must stay on for both variants: with snapping enabled the
+           engine keeps pulling back to the nearest snap point and fights
+           AutoScroll, which leaves the strip standing still. */
+        opts={{ loop: true, align: "start", dragFree: true }}
         plugins={plugins}
         className="w-full"
       >
@@ -120,15 +118,8 @@ const Logos3 = ({
                         draggable={false}
                         className="select-none object-cover"
                       />
-                      {/* The scrim and the caption are one block, so the white
-                          always reaches exactly as far as the text needs. */}
-                      <figcaption
-                        className="absolute inset-x-0 bottom-0 flex min-h-[46%] items-end p-5"
-                        style={{ backgroundImage: SCRIM }}
-                      >
-                        <span className="text-[15px] font-extrabold leading-snug tracking-[-0.01em] text-hydro-navy">
-                          {logo.description}
-                        </span>
+                      <figcaption className={cn("absolute right-3 top-3 z-10", PHOTO_CARD_PILL)}>
+                        {logo.description}
                       </figcaption>
                     </figure>
                   ) : (
