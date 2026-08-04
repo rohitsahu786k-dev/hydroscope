@@ -49,24 +49,48 @@ interface CarouselConfig {
   scaleReduction: number;
 }
 
+/* Card widths in pixels, one per breakpoint band. These must stay in step with
+   the Tailwind widths on the card itself (w-52 / sm:w-72 / lg:w-80), because
+   the fan width is worked out from them below. */
+const CARD_WIDTH = { phone: 208, tablet: 288, desktop: 320 };
+
+/* The outermost card the visitor can see sits at half the slide count minus
+   half a step - 2.5 for a six-card stack - and it is scaled down by then. Its
+   travel plus its scaled half-width has to stay inside half the screen, or the
+   fan runs off the edge. Deriving xMultiplier from the viewport instead of
+   hand-tuning a number per band means it cannot overflow at any width; the
+   band value is only ever an upper bound for large screens. */
+const OUTERMOST_OFFSET = 2.5;
+const EDGE_MARGIN = 10;
+
+function fanTravel(width: number, cardWidth: number, scaleReduction: number, cap: number) {
+  const scaledHalfWidth = (cardWidth * (1 - OUTERMOST_OFFSET * scaleReduction)) / 2;
+  const room = width / 2 - EDGE_MARGIN - scaledHalfWidth;
+  return Math.max(24, Math.min(cap, Math.round(room / OUTERMOST_OFFSET)));
+}
+
 const getCarouselConfig = (width: number): CarouselConfig => {
-  if (width < 640) {
+  /* Before the first measurement, assume a desktop so the server and the first
+     client render agree. */
+  const w = width || 1440;
+
+  if (w < 640) {
     return {
       distanceDivisor: 120,
       velocityDivisor: 500,
       sensitivity: 180,
-      xMultiplier: 90,
-      yMultiplier: 20,
-      rotationMultiplier: 8,
+      xMultiplier: fanTravel(w, CARD_WIDTH.phone, 0.06, 90),
+      yMultiplier: 16,
+      rotationMultiplier: 6,
       scaleReduction: 0.06
     };
   }
-  if (width < 1024) {
+  if (w < 1024) {
     return {
       distanceDivisor: 160,
       velocityDivisor: 650,
       sensitivity: 220,
-      xMultiplier: 130,
+      xMultiplier: fanTravel(w, CARD_WIDTH.tablet, 0.09, 130),
       yMultiplier: 30,
       rotationMultiplier: 10,
       scaleReduction: 0.09
@@ -76,7 +100,7 @@ const getCarouselConfig = (width: number): CarouselConfig => {
     distanceDivisor: 200,
     velocityDivisor: 800,
     sensitivity: 250,
-    xMultiplier: 215,
+    xMultiplier: fanTravel(w, CARD_WIDTH.desktop, 0.1, 215),
     yMultiplier: 46,
     rotationMultiplier: 12,
     scaleReduction: 0.1

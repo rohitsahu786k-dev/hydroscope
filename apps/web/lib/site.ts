@@ -3,7 +3,7 @@ export const siteConfig = {
   legalName: "HYDROscope",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hydroscope.in",
   apiUrl: process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000/api",
-  email: "sudhanshu@hydroscope.in",
+  email: "contact@hydroscope.in",
   phone: "+91 95820 16238",
   location: "4/162, 1st Floor, Shipra Path, SFS Mansarovar, Jaipur, Rajasthan 302020, India",
   tagline: "Reliable water intelligence",
