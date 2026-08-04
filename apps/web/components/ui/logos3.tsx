@@ -184,12 +184,14 @@ const Logos3 = ({
   return (
     <section className={cn("py-14", className)}>
       <div className="flex flex-col items-center text-center">
-        {eyebrow ? (
-          <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-hydro-blue">{eyebrow}</p>
-        ) : null}
-        <h2 className="mt-3 text-[clamp(28px,3.4vw,44px)] font-normal tracking-tighter text-hydro-ink">
+        {/* Same order as SectionHeading: the section's name is the heading and
+            the descriptive line is the kicker beneath it. */}
+        <h2 className="m-0 text-[clamp(25px,3vw,40px)] font-normal leading-[1.1] tracking-[-0.035em] text-hydro-navy">
           {heading}
         </h2>
+        {eyebrow ? (
+          <p className="mt-3 text-[11px] font-extrabold uppercase tracking-[0.2em] text-hydro-blue2">{eyebrow}</p>
+        ) : null}
       </div>
 
       {/* The photo strip sits inside the site container so it is offset from

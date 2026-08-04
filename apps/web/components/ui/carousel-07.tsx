@@ -76,10 +76,10 @@ const getCarouselConfig = (width: number): CarouselConfig => {
     distanceDivisor: 200,
     velocityDivisor: 800,
     sensitivity: 250,
-    xMultiplier: 170,
-    yMultiplier: 40,
+    xMultiplier: 215,
+    yMultiplier: 46,
     rotationMultiplier: 12,
-    scaleReduction: 0.12
+    scaleReduction: 0.1
   };
 };
 
@@ -120,8 +120,17 @@ export function CarouselStacked({ slides, className }: { slides: StackedSlide[];
   };
 
   return (
-    <div className={cn("relative flex w-full select-none flex-col items-center justify-center py-10", className)}>
-      <div className="relative flex h-80 w-full max-w-7xl items-center justify-center sm:h-[28rem] lg:h-[32rem]">
+    /* overflow-hidden on the outer wrapper, not the track: the fan spreads
+       wider than a phone screen, and without this the whole page gains a
+       horizontal scrollbar. The outermost cards are already fading out at that
+       distance, so nothing readable is clipped. */
+    <div
+      className={cn(
+        "relative flex w-full select-none flex-col items-center justify-center overflow-hidden py-8 sm:py-10",
+        className
+      )}
+    >
+      <div className="relative flex h-[25rem] w-full max-w-none items-center justify-center overflow-visible sm:h-[34rem] lg:h-[38rem]">
         {/* Transparent drag surface sitting over the whole stack. */}
         <motion.div
           drag="x"
@@ -150,7 +159,7 @@ export function CarouselStacked({ slides, className }: { slides: StackedSlide[];
           type="button"
           onClick={() => step(-1)}
           aria-label="Previous card"
-          className="absolute left-2 top-1/2 z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-hydro-line bg-white/90 text-hydro-blue shadow-hydro backdrop-blur transition hover:bg-white"
+          className="absolute left-3 top-1/2 z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-hydro-line bg-white/90 text-hydro-blue shadow-hydro backdrop-blur transition hover:bg-white sm:left-8 lg:left-[10vw]"
         >
           <ChevronLeft aria-hidden="true" className="h-5 w-5" />
         </button>
@@ -158,7 +167,7 @@ export function CarouselStacked({ slides, className }: { slides: StackedSlide[];
           type="button"
           onClick={() => step(1)}
           aria-label="Next card"
-          className="absolute right-2 top-1/2 z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-hydro-line bg-white/90 text-hydro-blue shadow-hydro backdrop-blur transition hover:bg-white"
+          className="absolute right-3 top-1/2 z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-hydro-line bg-white/90 text-hydro-blue shadow-hydro backdrop-blur transition hover:bg-white sm:right-8 lg:right-[10vw]"
         >
           <ChevronRight aria-hidden="true" className="h-5 w-5" />
         </button>
@@ -202,17 +211,17 @@ function Card({ slide, index, total, progress, config }: CardProps) {
     <motion.div
       style={{ x, rotate, y, scale, opacity, zIndex }}
       className={cn(
-        "group pointer-events-none absolute overflow-hidden rounded-2xl bg-[#eef7ff]",
-        "h-56 w-44 sm:h-80 sm:w-56 lg:h-96 lg:w-64"
+        "group pointer-events-none absolute overflow-hidden rounded-2xl bg-[#eef7ff] shadow-[0_28px_70px_rgba(9,36,76,0.2)]",
+        "h-72 w-52 sm:h-[29rem] sm:w-72 lg:h-[31rem] lg:w-80"
       )}
     >
       <Image
         src={slide.image}
         alt={slide.title}
         fill
-        sizes="(min-width: 1024px) 256px, (min-width: 640px) 224px, 176px"
+        sizes="(min-width: 1024px) 320px, (min-width: 640px) 288px, 208px"
         draggable={false}
-        className="pointer-events-none select-none object-cover transition-transform duration-700 group-hover:scale-110"
+        className="pointer-events-none select-none object-cover object-center transition-transform duration-700 group-hover:scale-110"
       />
 
       <motion.div style={{ opacity: dimOpacity }} className="pointer-events-none absolute inset-0 bg-black" />

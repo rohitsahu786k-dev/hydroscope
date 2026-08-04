@@ -6,6 +6,11 @@ import { heroContent } from "@/lib/solutions-content";
 /* One icon per hero card, in the same order the guide lists them. */
 const cardIcons = [Droplets, Activity, ShieldCheck];
 
+const DESKTOP_BANNER = "/images/hero/hero-hydroscope-banner-desktop.webp";
+const MOBILE_BANNER = "/images/hero/hero-hydroscope-banner-mobile.webp";
+const BANNER_ALT =
+  "HydroPure electrochlorinator and a HydroSense handheld sensor on a plant bench, with the HydroSure dashboard on a screen behind them";
+
 type HeroSectionProps = {
   eyebrow?: string;
   title?: string;
@@ -24,46 +29,51 @@ export function HeroSection(props: HeroSectionProps) {
 
   const { eyebrow, subtitle, ctaLabel, ctaHref, cards } = heroContent;
 
-  const copy = (
-    <>
-      <p className="text-[clamp(11px,0.85vw,14px)] font-semibold uppercase tracking-[0.24em] text-hydro-blue2">
-        {eyebrow}
-      </p>
+  const eyebrowLine = (
+    <p className="text-[clamp(11px,0.85vw,14px)] font-semibold uppercase tracking-[0.24em] text-hydro-blue2">
+      {eyebrow}
+    </p>
+  );
 
-      {/* Two lines, exactly as the reference sets them. */}
-      <h1 className="mt-5 text-[clamp(34px,4.2vw,60px)] font-normal leading-[1.06] tracking-[-0.04em] text-hydro-navy">
-        Empowering. Smarter
-        <span className="block">Water Management.</span>
-      </h1>
+  const heading = (
+    <h1 className="mt-4 text-[clamp(29px,4.2vw,60px)] font-normal leading-[1.06] tracking-[-0.04em] text-hydro-navy sm:mt-5">
+      Empowering. Smarter
+      <span className="block">Water Management.</span>
+    </h1>
+  );
 
-      <p className="mt-6 max-w-[520px] text-[clamp(14px,1.05vw,17px)] leading-[1.7] text-hydro-muted">{subtitle}</p>
+  const cta = (
+    <a
+      href={ctaHref}
+      className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-hydro-blue2 px-7 text-[15px] font-bold text-white transition hover:-translate-y-0.5 hover:bg-hydro-navy sm:mt-8"
+    >
+      {ctaLabel}
+      <ArrowRight aria-hidden="true" size={16} />
+    </a>
+  );
 
-      <a
-        href={ctaHref}
-        className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-hydro-blue2 px-7 text-[15px] font-bold text-white transition hover:-translate-y-0.5 hover:bg-hydro-navy"
-      >
-        {ctaLabel}
-        <ArrowRight aria-hidden="true" size={16} />
-      </a>
-
-      <ul className="mt-9 grid max-w-[620px] grid-cols-3 gap-4 max-sm:grid-cols-1">
-        {cards.map((card, index) => {
-          const Icon = cardIcons[index] ?? Droplets;
-          return (
-            <li
-              key={card.title}
-              className="rounded-xl bg-white/85 px-5 py-4 text-center shadow-[0_18px_44px_-30px_rgba(9,36,76,0.8)] backdrop-blur"
-            >
-              <span className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-[#e8f1fd] text-hydro-blue2">
-                <Icon aria-hidden="true" className="h-[18px] w-[18px]" strokeWidth={1.8} />
-              </span>
-              <p className="mt-3 text-[15px] font-extrabold leading-tight text-hydro-navy">{card.title}</p>
-              <p className="mt-1 text-[12px] leading-tight text-hydro-muted">{card.subtitle}</p>
-            </li>
-          );
-        })}
-      </ul>
-    </>
+  const featureCards = (
+    <ul className="grid max-w-[620px] grid-cols-3 gap-3 sm:gap-4 max-sm:grid-cols-1">
+      {cards.map((card, index) => {
+        const Icon = cardIcons[index] ?? Droplets;
+        return (
+          <li
+            key={card.title}
+            className="flex items-center gap-3 rounded-xl border border-white/70 bg-white/85 px-4 py-3 text-left shadow-[0_18px_44px_-30px_rgba(9,36,76,0.8)] backdrop-blur sm:flex-col sm:px-5 sm:py-4 sm:text-center"
+          >
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#e8f1fd] text-hydro-blue2">
+              <Icon aria-hidden="true" className="h-[18px] w-[18px]" strokeWidth={1.8} />
+            </span>
+            <div className="min-w-0 sm:mt-3">
+              <p className="text-[14.5px] font-extrabold leading-tight text-hydro-navy sm:text-[15px]">
+                {card.title}
+              </p>
+              <p className="mt-0.5 text-[12px] leading-tight text-hydro-muted sm:mt-1">{card.subtitle}</p>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
   );
 
   return (
@@ -75,8 +85,8 @@ export function HeroSection(props: HeroSectionProps) {
              that. ---- */}
       <div className="relative isolate overflow-hidden max-lg:hidden">
         <Image
-          src="/images/hero/hero-hydroscope-banner-desktop.webp"
-          alt="HydroPure electrochlorinator and a HydroSense handheld sensor on a plant bench, with the HydroSure dashboard on a screen behind them"
+          src={DESKTOP_BANNER}
+          alt={BANNER_ALT}
           fill
           sizes="100vw"
           priority
@@ -85,28 +95,61 @@ export function HeroSection(props: HeroSectionProps) {
         />
         <Container>
           <div className="flex min-h-[clamp(560px,43vw,821px)] flex-col justify-center py-14">
-            <div className="max-w-[46%] max-xl:max-w-[52%]">{copy}</div>
+            <div className="max-w-[46%] max-xl:max-w-[52%]">
+              {eyebrowLine}
+              {heading}
+              <p className="mt-6 max-w-[520px] text-[clamp(14px,1.05vw,17px)] leading-[1.7] text-hydro-muted">
+                {subtitle}
+              </p>
+              {cta}
+              <div className="mt-9">{featureCards}</div>
+            </div>
           </div>
         </Container>
       </div>
 
-      {/* ---- Below lg the copy sits on white above the portrait crop. Overlaid
-             on a phone the paragraph and the three cards would cover most of
-             the artwork and land on the busy half of it, so the banner is shown
-             whole underneath instead. ---- */}
+      {/* ---- Below lg the copy sits on the banner itself. The portrait crop
+             was shot with its top 40% almost empty, so the headline lands
+             there; object-bottom keeps the unit and the dashboard anchored to
+             the foot of the frame however tall the box ends up.
+
+             The paragraph is dropped at this width on purpose: it is five
+             lines on a phone, which would push the headline down onto the
+             machine and leave nothing legible. The three cards move below the
+             image, where they have a plain background to sit on. ---- */}
       <div className="lg:hidden">
+        <div className="relative isolate overflow-hidden bg-[#eef5fb]">
+          <Image
+            src={MOBILE_BANNER}
+            alt={BANNER_ALT}
+            fill
+            sizes="100vw"
+            priority
+            draggable={false}
+            className="pointer-events-none -z-10 select-none object-cover object-bottom"
+          />
+          {/* Fades from near-solid at the top to clear before it reaches the
+              machine, so the type always has a background and the artwork is
+              never washed out. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(238,245,251,0.97)_0%,rgba(238,245,251,0.93)_26%,rgba(238,245,251,0.7)_44%,rgba(238,245,251,0.25)_60%,rgba(238,245,251,0)_74%)]"
+          />
+
+          <Container>
+            {/* Tracks the artwork's own 1122:1402 ratio, so the machine sits at
+                the foot of the frame rather than being cropped away. */}
+            <div className="flex min-h-[min(125vw,640px)] flex-col pt-9">
+              {eyebrowLine}
+              {heading}
+              {cta}
+            </div>
+          </Container>
+        </div>
+
         <Container>
-          <div className="py-12">{copy}</div>
+          <div className="py-8">{featureCards}</div>
         </Container>
-        <Image
-          src="/images/hero/hero-hydroscope-banner-mobile.webp"
-          alt=""
-          width={1122}
-          height={1402}
-          priority
-          draggable={false}
-          className="pointer-events-none h-auto w-full select-none"
-        />
       </div>
     </section>
   );

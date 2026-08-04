@@ -19,7 +19,7 @@ export function SolutionsSection() {
           text="An integrated ecosystem delivering real-time monitoring, automated water treatment, and intelligent infrastructure performance."
         />
 
-        <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-1">
+        <div className="grid grid-cols-3 gap-6 max-xl:gap-5 max-lg:grid-cols-2 max-md:grid-cols-1">
           {solutionEntries.map((entry) => (
             <article
               key={entry.slug}

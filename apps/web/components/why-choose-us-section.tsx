@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { SectionHeading } from "./section-heading";
 import { CarouselStacked } from "./ui/carousel-07";
 import { Container } from "./ui/container";
@@ -8,20 +7,9 @@ import { whyChooseUs } from "@/lib/solutions-content";
    as a stacked drag carousel - drag it, or use the arrows. */
 export function WhyChooseUsSection() {
   return (
-    <section id="why-choose-us" className="hydro-section bg-[#f7fbff]">
+    <section id="why-choose-us" className="overflow-hidden bg-[#f2f8fd] py-16 sm:py-20 lg:py-24">
       <Container>
         <SectionHeading eyebrow={whyChooseUs.eyebrow} title={whyChooseUs.title} text={whyChooseUs.text} />
-
-        <div className="mx-auto max-w-[760px] overflow-hidden rounded-2xl border border-hydro-line bg-white shadow-[0_28px_70px_-50px_rgba(9,36,76,0.8)]">
-          <Image
-            src="/images/seo/hydroscope-water-treatment-products-feature-collage.webp"
-            alt="HydroPure, HydroSense and HydroSure shown together as one water intelligence platform"
-            width={1600}
-            height={900}
-            draggable={false}
-            className="pointer-events-none h-auto w-full select-none"
-          />
-        </div>
 
         <dl className="mt-10 grid grid-cols-4 divide-x divide-hydro-line rounded-2xl border border-hydro-line bg-white max-md:grid-cols-2 max-md:divide-x-0">
           {whyChooseUs.stats.map((stat) => (
@@ -41,6 +29,7 @@ export function WhyChooseUsSection() {
       {/* Full width rather than inside the container: the stack fans out well
           past the centre card, and clipping it would cut the fan in half. */}
       <CarouselStacked
+        className="mt-2"
         slides={whyChooseUs.cards.map((card) => ({
           image: card.image,
           title: card.title,

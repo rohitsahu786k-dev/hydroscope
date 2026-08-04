@@ -16,7 +16,7 @@ const cards = [
     badge: "AI-powered",
     title: "Smarter analytics",
     description: "Turn monitoring data into useful trends, alerts and reports for field and leadership teams.",
-    image: "/images/seo/hydroscope-water-treatment-products-feature-collage.webp",
+    image: "/images/seo/operational-intelligence-ai-water-analytics-automation.webp",
     Icon: Activity
   },
   {

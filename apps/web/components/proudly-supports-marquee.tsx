@@ -8,8 +8,8 @@ import { proudlySupports } from "@/lib/solutions-content";
    caught and read. */
 export function ProudlySupportsMarquee({ heading = "HydroScope proudly supports" }: { heading?: string }) {
   return (
-    <section aria-label={heading} className="border-y border-hydro-line bg-white py-10">
-      <p className="mb-7 text-center text-xs font-extrabold uppercase tracking-[0.2em] text-hydro-blue">{heading}</p>
+    <section aria-label={heading} className="border-y border-hydro-line bg-white py-9">
+      <p className="mb-7 text-center text-[11px] font-extrabold uppercase tracking-[0.24em] text-hydro-blue2">{heading}</p>
       <div className="overflow-hidden">
         <div className="hydro-marquee">
           {[0, 1].map((copy) => (

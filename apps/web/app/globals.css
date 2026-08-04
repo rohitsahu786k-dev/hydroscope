@@ -61,8 +61,11 @@ select {
   background-size: 46px 46px;
 }
 
+/* Section rhythm scales with the viewport rather than sitting at a flat 96px:
+   on a phone that fixed gap eats most of a screen between two blocks of
+   content, and the page reads as mostly empty. */
 .hydro-section {
-  padding: 96px 0;
+  padding: clamp(48px, 6.5vw, 96px) 0;
 }
 
 .hydro-gradient {

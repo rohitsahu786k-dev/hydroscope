@@ -530,37 +530,37 @@ export const whyChooseUs = {
       title: "Engineered as One",
       text: "Sensors, treatment, automation, and software - perfectly integrated for seamless operation.",
       badge: "Integrated",
-      image: "/images/about/hydroscope-fully-automated-electrochlorinator.webp"
+      image: "/images/seo/engineered-as-one-integrated-water-solutions.webp"
     },
     {
       title: "Precision Monitoring",
       text: "High-accuracy water quality measurements with continuous data validation.",
       badge: "Accuracy",
-      image: "/images/about/hydroscope-inline-multi-parameter-water-quality-sensor.webp"
+      image: "/images/seo/precision-monitoring-water-quality-sensor-analytics.webp"
     },
     {
       title: "Intelligent Disinfection",
       text: "Optimized chlorine generation and dosing for safer, more efficient treatment.",
       badge: "Treatment",
-      image: "/images/hydroscope-industries/municipal-water-boards-treatment-facility.webp"
+      image: "/images/seo/intelligent-disinfection-chlorine-generation-dosing-system.webp"
     },
     {
       title: "Operational Intelligence",
       text: "AI transforms operational data into insights and automated decisions.",
       badge: "AI",
-      image: "/images/about/hydroscope-iot-water-monitoring-dashboard-laptop.webp"
+      image: "/images/seo/operational-intelligence-ai-water-analytics-automation.webp"
     },
     {
       title: "Connected Everywhere",
       text: "Unified cloud dashboard with live monitoring, alarms, trends, reports, and remote control.",
       badge: "Cloud",
-      image: "/images/about/hydroscope-automated-valve-and-pump-controller.webp"
+      image: "/images/seo/connected-everywhere-cloud-water-dashboard-remote-control.webp"
     },
     {
       title: "Ready for Scale",
       text: "Designed for municipalities, utilities, industries, and large distributed water networks.",
       badge: "Scale",
-      image: "/images/hydroscope-industries/state-phed-smart-cities-water-infrastructure.webp"
+      image: "/images/seo/ready-for-scale-municipal-industrial-water-network.webp"
     }
   ]
 };

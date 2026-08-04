@@ -15,26 +15,31 @@ export const aboutHero = {
   titleAccent: "Sustainable Tomorrow",
   subtitle:
     "Hydroscope develops intelligent water treatment, monitoring, and automation solutions that combine advanced engineering, IoT connectivity, and real-time analytics to ensure safe, efficient, and reliable water management.",
-  image: A + "hydroscope-smart-water-management-products-hero-banner.webp",
+  /* Shared with the homepage hero rather than duplicated: it is the same
+     photograph, and a second copy would only add weight and a second file to
+     keep in step. */
+  image: "/images/hero/hero-hydroscope-banner-desktop.webp",
   imageAlt:
-    "HydroPure electrochlorinator, HydroSense water quality sensor and the HydroSure monitoring dashboard shown together above treated water"
+    "HydroPure electrochlorinator and a HydroSense handheld water quality sensor on a stainless bench inside a treatment plant, with the HydroSure dashboard showing tanks online, alerts and residual chlorine on the screen behind"
 };
 
 export const whoWeAre = {
   eyebrow: "Who we are",
-  title: "About HydroScope",
   paragraphs: [
     "Hydroscope Technology Pvt. Ltd. is a water technology company dedicated to solving real-world water management challenges through innovation and engineering excellence.",
     "We develop integrated solutions that combine fully automated electrochlorination systems, intelligent water quality sensors, industrial automation, and cloud-based monitoring into one connected ecosystem."
   ],
-  image: A + "hydroscope-water-treatment-facility-city-skyline.webp",
-  imageAlt: "Water treatment facility clarifiers and storage tanks in front of a city skyline at dusk"
+  image: A + "hydroscope-municipal-water-treatment-plant-city-skyline.webp",
+  imageAlt:
+    "Aerial view of a municipal water treatment plant, its circular clarifiers and treatment buildings, with a city skyline on the horizon"
 };
 
 /* Reach figures as set out in the design. These are company claims, not
    readings from a dashboard - see the note rendered under the row. */
 export const impact = {
-  title: "From Har Ghar Jal to Har Ghar",
+  icon: A + "icon-har-ghar-jal.webp",
+  titleLine1: "From Har Ghar Jal",
+  titleLine2: "to Har Ghar",
   titleAccent: "Swachh Jal.",
   subtitle:
     "Empowering every community with intelligent water solutions for a safer and healthier tomorrow.",
@@ -53,31 +58,31 @@ export const whatWeBuild = {
     {
       title: "Fully Automated Electrochlorinator",
       href: "/solutions/hydropure",
-      image: A + "hydroscope-fully-automated-electrochlorinator.webp",
+      image: A + "product-fully-automated-electrochlorinator.webp",
       imageAlt: "HydroPure fully automated electrochlorinator cabinet with on-board controller"
     },
     {
       title: "Intelligent Multi Parametric Water Quality Sensor",
       href: "/solutions/hydrosense",
-      image: A + "hydroscope-inline-multi-parameter-water-quality-sensor.webp",
-      imageAlt: "HydroSense in-line multi-parameter water quality sensor assembly with flanged pipe section"
+      image: A + "product-multi-parameter-water-quality-sensor.webp",
+      imageAlt: "HydroSense handheld multi-parameter water quality sensor with its reading display"
     },
     {
       title: "IoT Dashboard",
       href: "/solutions/hydrosure",
-      image: A + "hydroscope-iot-water-monitoring-dashboard-laptop.webp",
+      image: A + "product-iot-water-monitoring-dashboard.webp",
       imageAlt: "HydroSure IoT water monitoring dashboard open on a laptop"
     },
     {
       title: "Fully Automated Valve and Pump Controller",
       href: "/solutions/other-iot-solutions#hydropilot",
-      image: A + "hydroscope-automated-valve-and-pump-controller.webp",
+      image: A + "product-automated-valve-and-pump-controller.webp",
       imageAlt: "HydroPilot automated valve and pump controller mounted on a stainless steel water line"
     },
     {
       title: "Tank Level Module",
       href: "/solutions/other-iot-solutions#hydroedge",
-      image: A + "hydroscope-iot-water-tank-level-module.webp",
+      image: A + "product-iot-water-tank-level-module.webp",
       imageAlt: "HydroEdge IoT water tank level module"
     }
   ]
