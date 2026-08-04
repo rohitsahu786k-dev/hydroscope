@@ -1,8 +1,10 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import AutoScroll from "embla-carousel-auto-scroll";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
 
 /* An item shows either a photo (`image`) or a Lucide icon (`Icon`) - both render
@@ -25,7 +27,18 @@ export interface Logos3Props {
   eyebrow?: string;
   logos?: Logo[];
   className?: string;
+  /* "chip" is the original icon-plus-label pill. "photo" makes each item a full
+     photograph with its name set into a white scrim along the bottom edge. */
+  variant?: "chip" | "photo";
 }
+
+/* A many-stop white gradient rather than Tailwind's three-stop
+   from/via/to: with only three stops the midpoint reads as a visible band
+   across a photograph. These stops ease the white out gradually, so the scrim
+   dissolves into the image and the card still ends in solid white where the
+   label sits. */
+const SCRIM =
+  "linear-gradient(to top, #ffffff 0%, #ffffff 26%, rgba(255,255,255,0.94) 40%, rgba(255,255,255,0.78) 54%, rgba(255,255,255,0.5) 68%, rgba(255,255,255,0.22) 82%, rgba(255,255,255,0) 100%)";
 
 /* AutoScroll is motion the visitor did not ask for, so it must not start when
    the OS asks for reduced motion. Read once on mount, then keep listening. */
@@ -44,43 +57,81 @@ function usePrefersReducedMotion() {
   return prefersReducedMotion;
 }
 
-const Logos3 = ({ heading = "Trusted by these companies", eyebrow, logos = [], className }: Logos3Props) => {
+const Logos3 = ({
+  heading = "Trusted by these companies",
+  eyebrow,
+  logos = [],
+  className,
+  variant = "chip"
+}: Logos3Props) => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
+  const isPhoto = variant === "photo";
+
   /* Re-created only when the motion preference flips, so embla is not torn down
-     and rebuilt on every parent render. */
+     and rebuilt on every parent render.
+   *
+   * stopOnMouseEnter pauses the strip while a visitor is reading a caption and
+   * resumes on leave; stopOnInteraction stays false so using the arrows does not
+   * kill autoplay for the rest of the session. */
   const plugins = React.useMemo(
-    () => [AutoScroll({ playOnInit: !prefersReducedMotion, speed: 1, stopOnInteraction: false })],
+    () => [
+      AutoScroll({
+        playOnInit: !prefersReducedMotion,
+        speed: 1,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true
+      })
+    ],
     [prefersReducedMotion]
   );
 
-  return (
-    <section className={cn("py-14", className)}>
-      <div className="flex flex-col items-center text-center">
-        {eyebrow ? (
-          <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-hydro-blue">{eyebrow}</p>
-        ) : null}
-        <h2 className="mt-3 text-[clamp(28px,3.4vw,44px)] font-normal tracking-tighter text-hydro-ink">
-          {heading}
-        </h2>
-      </div>
-
-      <div className="pt-10 md:pt-14">
-        <div className="relative mx-auto flex items-center justify-center">
-          <Carousel
-            /* The strip is decorative repetition of the list below it in the DOM
-               sense - embla still exposes it as a region, so name it. */
-            aria-label={heading}
-            opts={{ loop: true, align: "start", dragFree: true }}
-            plugins={plugins}
-            className="w-full"
-          >
-            <CarouselContent className="ml-0">
+  const strip = (
+    /* px-1 leaves room for the focus ring on the outermost cards, which the
+       carousel's own overflow:hidden would otherwise clip. */
+    <div className={cn("relative mx-auto flex items-center justify-center", isPhoto && "px-1")}>
+      <Carousel
+        /* The strip is decorative repetition of the list below it in the DOM
+           sense - embla still exposes it as a region, so name it. */
+        aria-label={heading}
+        opts={{ loop: true, align: "start", dragFree: !isPhoto }}
+        plugins={plugins}
+        className="w-full"
+      >
+        <CarouselContent className={isPhoto ? "-ml-[15px]" : "ml-0"}>
               {logos.map((logo) => (
                 <CarouselItem
                   key={logo.id}
-                  className="flex basis-1/2 justify-center pl-0 sm:basis-1/3 md:basis-1/4 lg:basis-1/5"
+                  className={cn(
+                    "flex justify-center",
+                    isPhoto
+                      ? "basis-4/5 pl-[15px] sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
+                      : "basis-1/2 pl-0 sm:basis-1/3 md:basis-1/4 lg:basis-1/5"
+                  )}
                 >
+                  {isPhoto && logo.image ? (
+                    <figure className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[#dcebfa] bg-[#eef7ff] shadow-[0_18px_44px_-30px_rgba(7,29,70,0.7)]">
+                      <Image
+                        src={logo.image}
+                        alt={logo.description}
+                        fill
+                        sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 80vw"
+                        loading="lazy"
+                        draggable={false}
+                        className="select-none object-cover"
+                      />
+                      {/* The scrim and the caption are one block, so the white
+                          always reaches exactly as far as the text needs. */}
+                      <figcaption
+                        className="absolute inset-x-0 bottom-0 flex min-h-[46%] items-end p-5"
+                        style={{ backgroundImage: SCRIM }}
+                      >
+                        <span className="text-[15px] font-extrabold leading-snug tracking-[-0.01em] text-hydro-navy">
+                          {logo.description}
+                        </span>
+                      </figcaption>
+                    </figure>
+                  ) : (
                   <div className="mx-4 flex shrink-0 items-center justify-center">
                     {logo.bareImage ? (
                       /* Plain <img>: a partner wordmark at a fixed height, so
@@ -106,13 +157,26 @@ const Logos3 = ({ heading = "Trusted by these companies", eyebrow, logos = [], c
                       </div>
                     )}
                   </div>
+                  )}
                 </CarouselItem>
               ))}
-            </CarouselContent>
-          </Carousel>
+        </CarouselContent>
 
-          {/* Tailwind v3 gradient utilities - the source snippet used the v4
-              `bg-linear-*` names, which do not exist in this project's v3.4. */}
+        {/* Arrows live inside <Carousel> so they can read its context. */}
+        {isPhoto ? (
+          <>
+            <CarouselPrevious className="left-3 h-11 w-11" />
+            <CarouselNext className="right-3 h-11 w-11" />
+          </>
+        ) : null}
+      </Carousel>
+
+      {/* Tailwind v3 gradient utilities - the source snippet used the v4
+          `bg-linear-*` names, which do not exist in this project's v3.4.
+          The photo strip is inset inside a container, so its own edges are
+          already clear and the fades would only dull the outer cards. */}
+      {isPhoto ? null : (
+        <>
           <div
             className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white to-transparent"
             aria-hidden="true"
@@ -121,8 +185,26 @@ const Logos3 = ({ heading = "Trusted by these companies", eyebrow, logos = [], c
             className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white to-transparent"
             aria-hidden="true"
           />
-        </div>
+        </>
+      )}
+    </div>
+  );
+
+  return (
+    <section className={cn("py-14", className)}>
+      <div className="flex flex-col items-center text-center">
+        {eyebrow ? (
+          <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-hydro-blue">{eyebrow}</p>
+        ) : null}
+        <h2 className="mt-3 text-[clamp(28px,3.4vw,44px)] font-normal tracking-tighter text-hydro-ink">
+          {heading}
+        </h2>
       </div>
+
+      {/* The photo strip sits inside the site container so it is offset from
+          both viewport edges like every other section; the chip strip stays
+          full-bleed, which is what its edge fades were designed for. */}
+      <div className="pt-10 md:pt-14">{isPhoto ? <Container>{strip}</Container> : strip}</div>
     </section>
   );
 };
