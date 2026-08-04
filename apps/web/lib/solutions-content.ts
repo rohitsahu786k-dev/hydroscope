@@ -552,13 +552,12 @@ export const trustPillars = [
   { title: "Expert Support", text: "We're with you, always" }
 ];
 
-/* Government programmes HYDROscope aligns its products with. Rendered as
-   wordmarks, not logos: the official emblems are not licensed assets in this
-   repo and a redrawn approximation would be a fabricated government mark. */
+/* Programmes HYDROscope aligns its products with. The artwork is the supplied
+   official logo for each, so `name` is only the accessible label. */
 export const proudlySupports = [
-  "Digital India",
-  "Make In India",
-  "Clean India",
-  "Jal Jeevan Mission",
-  "WHO Water Quality Guidelines"
+  { name: "Digital India", image: "/images/programmes/digital-india.webp" },
+  { name: "Make In India", image: "/images/programmes/make-in-india.webp" },
+  { name: "Swachh Bharat", image: "/images/programmes/swachh-bharat.webp" },
+  { name: "Har Ghar Jal - Jal Jeevan Mission", image: "/images/programmes/jal-jeevan-mission.webp" },
+  { name: "World Health Organization", image: "/images/programmes/world-health-organization.webp" }
 ];

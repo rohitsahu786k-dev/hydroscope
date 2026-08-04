@@ -1,13 +1,10 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Container } from "./ui/container";
 import { proudlySupports } from "@/lib/solutions-content";
 
 /* Closing call to action, followed by the programmes HYDROscope aligns its
-   products with. These are rendered as wordmarks rather than emblems: the
-   official Digital India, Make in India, Swachh Bharat, Jal Jeevan Mission and
-   WHO marks are not licensed assets in this repo, and a redrawn lookalike would
-   be a fabricated government mark. Drop the real files in and swap the <span>
-   for an <Image> when they are cleared for use. */
+   products with, using the supplied official logos. */
 export function RequestConsultationSection() {
   return (
     <>
@@ -40,10 +37,21 @@ export function RequestConsultationSection() {
             {[0, 1].map((copy) => (
               <ul key={copy} aria-hidden={copy === 1} className="flex shrink-0 items-center">
                 {proudlySupports.map((item) => (
-                  <li key={`${copy}-${item}`} className="px-8">
-                    <span className="whitespace-nowrap text-lg font-normal tracking-[-0.02em] text-hydro-muted">
-                      {item}
-                    </span>
+                  <li key={`${copy}-${item.name}`} className="px-10 max-sm:px-6">
+                    {/* Fixed height, auto width: the five marks have different
+                        proportions, so matching on height keeps the row
+                        optically even instead of letterboxing them. */}
+                    <Image
+                      src={item.image}
+                      /* The duplicate copy is aria-hidden, so only the first
+                         announces the programme name. */
+                      alt={copy === 0 ? item.name : ""}
+                      width={500}
+                      height={250}
+                      loading="lazy"
+                      draggable={false}
+                      className="pointer-events-none h-14 w-auto select-none object-contain max-sm:h-11"
+                    />
                   </li>
                 ))}
               </ul>
