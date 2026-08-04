@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
-import { ArrowRight, CircleCheckBig, Headphones, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { ArrowRight, CircleCheckBig, Headphones, Mail, MapPin, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ContactForm } from "@/components/contact-form";
 import { Container } from "@/components/ui/container";
@@ -24,6 +24,17 @@ const promises = [
    real contact record the rest of the site uses. */
 const telHref = `tel:${siteConfig.phone.replace(/\s/g, "")}`;
 const mapsQuery = encodeURIComponent(`${siteConfig.legalName}, ${siteConfig.location}`);
+/* wa.me needs the number with no punctuation and no leading plus. */
+const whatsappHref = `https://wa.me/${siteConfig.phone.replace(/\D/g, "")}`;
+
+/* The three direct-contact routes the content guide asks for, as one wide card
+   under the hero. Every value comes from siteConfig, so nothing here can drift
+   from the real contact record. */
+const directContact = [
+  { Icon: Phone, label: "Phone", value: siteConfig.phone, action: "Call Now", href: telHref },
+  { Icon: Mail, label: "Email", value: siteConfig.email, action: "Send email", href: `mailto:${siteConfig.email}` },
+  { Icon: MessageCircle, label: "WhatsApp", value: siteConfig.phone, action: "Chat on WhatsApp", href: whatsappHref }
+];
 
 export default function ContactPage() {
   return (
@@ -53,11 +64,11 @@ export default function ContactPage() {
                 Get in touch
               </p>
               <h1 className="mt-3 text-[clamp(38px,4.4vw,62px)] font-normal leading-[1.05] tracking-[-0.04em] text-hydro-navy">
-                Contact Us
+                Contact HydroScope Team
               </h1>
-              <p className="mt-4 max-w-[440px] text-base leading-7 text-hydro-muted">
-                Have a question or need assistance? Our team is here to help you with the best solution for
-                your water chlorination needs.
+              <p className="mt-4 max-w-[460px] text-base leading-7 text-hydro-muted">
+                For water project enquiries, technical consultations or general information, you can reach us
+                directly by phone, email or WhatsApp.
               </p>
 
               <ul className="mt-8 grid grid-cols-3 gap-4 max-sm:grid-cols-1">
@@ -94,9 +105,34 @@ export default function ContactPage() {
           then eases into the tint the cards sit on. */}
       <section className="bg-[linear-gradient(180deg,#ffffff_0%,#eef6ff_16%,#f7fbff_52%,#ffffff_100%)] pb-16 pt-12">
         <Container>
+          {/* Three direct-contact routes in one wide card, as the guide sets
+              out: call, email or WhatsApp without filling in a form first. */}
+          <ul className="mb-6 grid grid-cols-3 divide-x divide-hydro-line rounded-2xl border border-[#dcebfa] bg-white shadow-[0_18px_50px_-34px_rgba(9,36,76,0.5)] max-md:grid-cols-1 max-md:divide-x-0 max-md:divide-y">
+            {directContact.map(({ Icon, label, value, action, href }) => (
+              <li key={label} className="flex flex-col items-start gap-3 p-7">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#eaf3fd] text-hydro-blue">
+                  <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.8} />
+                </span>
+                <p className="text-sm font-extrabold text-hydro-navy">{label}</p>
+                <p className="break-all text-sm text-hydro-muted">{value}</p>
+                <a
+                  href={href}
+                  {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-extrabold text-hydro-blue"
+                >
+                  {action}
+                  <ArrowRight aria-hidden="true" size={15} />
+                </a>
+              </li>
+            ))}
+          </ul>
+
           <div className="grid grid-cols-[0.8fr_1.6fr] gap-6 max-lg:grid-cols-1">
             <div className="rounded-2xl border border-[#dcebfa] bg-white p-7 shadow-[0_18px_50px_-34px_rgba(9,36,76,0.5)]">
-              <h2 className="text-2xl font-normal tracking-[-0.02em] text-hydro-navy">Get In Touch</h2>
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-hydro-blue">
+                Administrative headquarters
+              </p>
+              <h2 className="mt-2 text-2xl font-normal tracking-[-0.02em] text-hydro-navy">Address Information</h2>
               <span className="mt-3 block h-1 w-10 rounded-full bg-hydro-blue" aria-hidden="true" />
 
               <ul className="mt-7 grid gap-6">

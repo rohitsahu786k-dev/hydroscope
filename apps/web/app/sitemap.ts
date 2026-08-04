@@ -9,6 +9,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/about",
     "/products",
     "/solutions",
+    /* The five range pages the content guide adds under Solutions. */
+    "/solutions/hydropure",
+    "/solutions/hydrosense",
+    "/solutions/hydrosure",
+    "/solutions/other-iot-solutions",
+    "/solutions/hydroverse",
     "/applications",
     "/how-it-works",
     "/dashboard-platform",

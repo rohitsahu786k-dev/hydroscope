@@ -11,9 +11,11 @@ type LinkItem = {
 
 type Media = { url?: string; alt?: string };
 
+type MenuItem = { label: string; href: string; openInNewTab?: boolean; children?: MenuItem[] };
+
 export type HeaderData = {
   logo?: Media;
-  menuItems: Array<{ label: string; href: string; openInNewTab?: boolean }>;
+  menuItems: MenuItem[];
   cta: { label: string; href: string };
 };
 
@@ -49,13 +51,16 @@ export async function getHeaderData(): Promise<HeaderData> {
   return tryPayload(async () => {
     const payload = await getPayloadClient();
     const header = (await payload.findGlobal({ slug: "header", depth: 2 })) as { logo?: Media; menuItems?: LinkItem[]; cta?: LinkItem };
-    const menuItems = normalizeLinks(header.menuItems).filter((item) => item.href !== "/");
+    /* The CMS menu is a flat link list and cannot express the Solutions
+       dropdown, so the structured code nav wins unless an editor has actually
+       filled the CMS list in. */
+    const menuItems = normalizeLinks(header.menuItems);
     return {
       logo: header.logo,
-      menuItems: menuItems.length ? menuItems : navItems.map((item) => ({ label: item.label, href: item.href })),
+      menuItems: menuItems.length ? menuItems : (navItems as unknown as MenuItem[]),
       cta: { label: header.cta?.label || "Get in touch", href: header.cta?.url || "/contact" }
     };
-  }, { logo: undefined, menuItems: navItems.map((item) => ({ label: item.label, href: item.href })), cta: { label: "Get in touch", href: "/contact" } });
+  }, { logo: undefined, menuItems: navItems as unknown as MenuItem[], cta: { label: "Get in touch", href: "/contact" } });
 }
 
 export async function getFooterData(): Promise<FooterData> {

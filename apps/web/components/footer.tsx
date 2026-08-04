@@ -1,16 +1,35 @@
-import { products, solutions } from "@/lib/content";
 import { getFooterData } from "@/lib/cms/globals";
 import { siteConfig } from "@/lib/site";
 import { MotionFooter } from "./ui/motion-footer";
 
+/* Footer link groups follow the content guide: Company, then the whole
+   Solutions range including the smaller IoT modules. Address, phone and email
+   are rendered separately by MotionFooter from siteConfig, which is the guide's
+   "Inquire" group. */
+const defaultColumns = [
+  {
+    heading: "Solutions",
+    links: [
+      { label: "HydroPure", href: "/solutions/hydropure" },
+      { label: "HydroSense", href: "/solutions/hydrosense" },
+      { label: "HydroSure", href: "/solutions/hydrosure" },
+      { label: "HydroPilot", href: "/solutions/other-iot-solutions#hydropilot" },
+      { label: "HydroEdge", href: "/solutions/other-iot-solutions#hydroedge" },
+      { label: "HydroVerse", href: "/solutions/hydroverse" }
+    ]
+  },
+  {
+    heading: "Company",
+    links: [
+      { label: "About us", href: "/about" },
+      { label: "Contact", href: "/contact" }
+    ]
+  }
+];
+
 export async function Footer() {
   const footer = await getFooterData();
-  const columns = footer.columns.length
-    ? footer.columns
-    : [
-        { heading: "Solutions", links: solutions.slice(0, 5).map((solution) => ({ label: solution.title, href: `/solutions/${solution.slug}` })) },
-        { heading: "Products", links: products.slice(0, 5).map((product) => ({ label: product.title, href: `/products/${product.slug}` })) }
-      ];
+  const columns = footer.columns.length ? footer.columns : defaultColumns;
 
   return (
     <MotionFooter

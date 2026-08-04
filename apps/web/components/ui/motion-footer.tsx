@@ -140,26 +140,32 @@ function MagneticLink({
   );
 }
 
+/* The strapline the content guide sets for every page footer. */
+const MARQUEE_ITEMS = [
+  "IoT Solutions",
+  "Water Quality Monitoring",
+  "Smart Electro-Chlorination",
+  "AI Water Analytics"
+];
+
 function MarqueeItem() {
   return (
     <div className="flex items-center gap-8 px-4">
-      <span>On-Site Chlorine Generation</span>
-      <span className="text-[#26b9e8]">+</span>
-      <span>IoT Water Monitoring</span>
-      <span className="text-[#26b9e8]">+</span>
-      <span>Solar Compatible</span>
-      <span className="text-[#26b9e8]">+</span>
-      <span>HydroPure</span>
-      <span className="text-[#26b9e8]">+</span>
-      <span>HydroSense</span>
-      <span className="text-[#26b9e8]">+</span>
-      <span>HydroSure</span>
+      {MARQUEE_ITEMS.map((item, index) => (
+        <span key={item} className="flex items-center gap-8">
+          {item}
+          {index < MARQUEE_ITEMS.length - 1 ? <span className="text-[#26b9e8]">&bull;</span> : null}
+        </span>
+      ))}
+      <span className="text-[#26b9e8]">&bull;</span>
     </div>
   );
 }
 
 export function MotionFooter({ description, columns, bottomText, email, phone, location, tagline }: MotionFooterProps) {
-  const quickLinks = columns.flatMap((column) => column.links).slice(0, 4);
+  /* The footer surfaces the whole Solutions range plus Company, so the cap is
+     high enough to fit both groups rather than truncating mid-range. */
+  const quickLinks = columns.flatMap((column) => column.links).slice(0, 10);
 
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });

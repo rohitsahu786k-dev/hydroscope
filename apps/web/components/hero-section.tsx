@@ -1,32 +1,10 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import clsx from "clsx";
+import { ArrowRight, Activity, Droplets, ShieldCheck } from "lucide-react";
+import { Container } from "./ui/container";
+import { heroContent } from "@/lib/solutions-content";
 
-/* The hero is now the supplied banner artwork. All copy is baked into the
-   images, so nothing is overlaid on top of them - each slide just needs an alt
-   that carries the same message for screen readers and search engines.
- *
- * Every slide ships two crops: a 1916x821 wide file for desktop and a square
- * 1254x1254 file for phones, picked with <source media> so only the needed one
- * is fetched. */
-const slides = [
-  {
-    id: "manual-dosing-to-measured-water-safety",
-    desktop: "/images/hero/hero-manual-dosing-desktop.webp",
-    mobile: "/images/hero/hero-manual-dosing-mobile.webp",
-    alt: "From manual dosing to measured water safety. HydroPure automates chlorination and HydroSense verifies water quality in real time, shown with the HP-100, HP-200/500/1000 and HP-1600/2000 models beside a village water tank."
-  },
-  {
-    id: "water-risk-to-daily-water-confidence",
-    desktop: "/images/hero/hero-water-confidence-desktop.webp",
-    mobile: "/images/hero/hero-water-confidence-mobile.webp",
-    alt: "From water risk to daily water confidence. Manual dosing, irregular chlorination and no real-time visibility replaced by automated HydroPure chlorination with live HydroSense quality checks."
-  }
-];
-
-const SLIDE_MS = 6000;
+/* One icon per hero card, in the same order the guide lists them. */
+const cardIcons = [Droplets, Activity, ShieldCheck];
 
 type HeroSectionProps = {
   eyebrow?: string;
@@ -39,72 +17,89 @@ type HeroSectionProps = {
 };
 
 export function HeroSection(props: HeroSectionProps) {
-  /* The CMS hero fields are unused while the banners carry their own copy. */
+  /* The hero copy is fixed by the content guide, so the CMS hero fields are not
+     read here. They stay in the signature so the CMS shape does not have to
+     change while the guide is being rolled out. */
   void props;
 
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (query.matches) return;
-
-    const timer = window.setInterval(() => {
-      setActive((current) => (current + 1) % slides.length);
-    }, SLIDE_MS);
-
-    return () => window.clearInterval(timer);
-  }, []);
+  const { eyebrow, title, subtitle, ctaLabel, ctaHref, cards } = heroContent;
 
   return (
-    <section aria-roledescription="carousel" aria-label="HYDROscope highlights" className="relative bg-white">
-      {/* Aspect ratio is reserved per breakpoint so the page never jumps while
-          the banner decodes: square on phones, 1916:821 from md up. */}
-      <div className="relative aspect-square w-full overflow-hidden md:aspect-[1916/821]">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            role="group"
-            aria-roledescription="slide"
-            aria-hidden={index !== active}
-            className={clsx(
-              "absolute inset-0 transition-opacity duration-700",
-              index === active ? "opacity-100" : "opacity-0"
-            )}
-          >
-            <picture>
-              <source media="(min-width: 768px)" srcSet={slide.desktop} />
-              <Image
-                src={slide.mobile}
-                alt={slide.alt}
-                fill
-                sizes="100vw"
-                priority={index === 0}
-                /* Background artwork: not a control and not a link, so it must
-                   not react to clicks or be draggable out of the page. */
-                draggable={false}
-                className="pointer-events-none select-none object-cover"
-              />
-            </picture>
-          </div>
-        ))}
-      </div>
+    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#eef5fb_0%,#f7fbff_38%,#e8f1f9_100%)]">
+      <div className="hydro-network pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true" />
 
-      {/* Dots are the only interactive part of the hero. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-4 flex justify-center gap-2 md:bottom-6">
-        {slides.map((slide, index) => (
-          <button
-            key={slide.id}
-            type="button"
-            onClick={() => setActive(index)}
-            aria-label={`Show slide ${index + 1}`}
-            aria-current={index === active}
-            className={clsx(
-              "pointer-events-auto h-2 rounded-full transition-all duration-300",
-              index === active ? "w-7 bg-white" : "w-2 bg-white/55 hover:bg-white/80"
-            )}
-          />
-        ))}
-      </div>
+      <Container className="relative">
+        <div className="grid grid-cols-[1.05fr_1fr] items-center gap-12 py-16 max-lg:grid-cols-1 max-lg:gap-10 max-lg:py-12">
+          <div>
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.24em] text-hydro-blue">{eyebrow}</p>
+
+            {/* Two lines, matching the banner: the first sits in ink and the
+                rest carries the brand blue. */}
+            <h1 className="mt-5 text-[clamp(38px,5vw,68px)] font-normal leading-[1.02] tracking-[-0.045em] text-hydro-ink">
+              Empowering.
+              <span className="block text-hydro-blue">Smarter Water</span>
+              <span className="block text-hydro-blue">Management.</span>
+            </h1>
+            <span className="sr-only">{title}</span>
+
+            <p className="mt-6 max-w-[540px] text-base leading-7 text-hydro-muted">{subtitle}</p>
+
+            <a
+              href={ctaHref}
+              className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-hydro-blue px-6 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-hydro-navy"
+            >
+              {ctaLabel}
+              <ArrowRight aria-hidden="true" size={16} />
+            </a>
+
+            <ul className="mt-10 grid grid-cols-3 gap-3 max-sm:grid-cols-1">
+              {cards.map((card, index) => {
+                const Icon = cardIcons[index] ?? Droplets;
+                return (
+                  <li
+                    key={card.title}
+                    className="flex items-center gap-3 rounded-xl border border-white bg-white/80 px-4 py-3 shadow-[0_16px_40px_-28px_rgba(9,36,76,0.7)] backdrop-blur"
+                  >
+                    <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-hydro-blue" strokeWidth={1.7} />
+                    <div className="min-w-0">
+                      <p className="text-[13px] font-extrabold leading-tight text-hydro-navy">{card.title}</p>
+                      <p className="mt-0.5 text-[11.5px] leading-tight text-hydro-muted">{card.subtitle}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {/* Right side is the product story the guide asks for: the live
+              dashboard next to the electrochlorinator it controls. */}
+          <div className="relative">
+            <div className="overflow-hidden rounded-2xl border border-white bg-white shadow-[0_40px_90px_-50px_rgba(9,36,76,0.8)]">
+              <Image
+                src="/images/hydrosure-dashboard/hydrosure-dashboard-cinematic.webp"
+                alt="HydroSure dashboard showing the assigned devices map, device counts, water quality, flow monitoring and active alerts"
+                width={1600}
+                height={900}
+                priority
+                draggable={false}
+                className="pointer-events-none h-auto w-full select-none"
+              />
+            </div>
+
+            <div className="absolute -bottom-6 -right-2 w-[34%] max-sm:static max-sm:mt-5 max-sm:w-1/2">
+              <Image
+                src="/images/hydroscope-products/hydropure-hp-100.webp"
+                alt="HydroPure HP-100 electrochlorinator unit"
+                width={800}
+                height={1000}
+                priority
+                draggable={false}
+                className="pointer-events-none h-auto w-full select-none drop-shadow-[0_30px_50px_rgba(9,36,76,0.35)]"
+              />
+            </div>
+          </div>
+        </div>
+      </Container>
     </section>
   );
 }

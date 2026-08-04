@@ -182,6 +182,29 @@ select {
   }
 }
 
+/* Text marquee. The track holds the list twice, so translating by exactly half
+   its width loops with no visible seam. The reduced-motion block below stops it
+   along with every other animation on the site. */
+.hydro-marquee {
+  display: flex;
+  width: max-content;
+  animation: hydro-marquee-scroll 26s linear infinite;
+}
+
+.hydro-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes hydro-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
