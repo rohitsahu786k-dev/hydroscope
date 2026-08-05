@@ -7,7 +7,6 @@ Production-oriented MERN-compatible rebuild for HYDROscope with a Next.js SEO-fi
 - `apps/web` - Next.js App Router, Payload CMS, TypeScript, Tailwind CSS, metadata API, sitemap, robots, JSON-LD via `next-seo` and `schema-dts`
 - `apps/api` - legacy Express API scaffold retained but no longer required for the Payload-powered site
 - `packages/types` - shared TypeScript content and API types
-- `index.html` - uploaded design reference preserved for visual direction
 
 ## Local Setup
 

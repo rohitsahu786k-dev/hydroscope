@@ -16,3 +16,6 @@ coverage
 # was 11 MB of embedded screenshots, and it is a record of feedback rather
 # than source the site builds from.
 /*.docx
+
+# Deployment bundle assembled by tools/bundle-standalone.mjs
+/deploy

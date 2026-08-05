@@ -12,7 +12,8 @@
     "dev:api": "npm run dev --workspace @hydroscope/api",
     "build": "npm run build --workspace @hydroscope/types && npm run build --workspace @hydroscope/api && npm run build --workspace @hydroscope/web",
     "lint": "npm run lint --workspace @hydroscope/web && npm run lint --workspace @hydroscope/api",
-    "typecheck": "npm run typecheck --workspace @hydroscope/types && npm run typecheck --workspace @hydroscope/api && npm run typecheck --workspace @hydroscope/web"
+    "typecheck": "npm run typecheck --workspace @hydroscope/types && npm run typecheck --workspace @hydroscope/api && npm run typecheck --workspace @hydroscope/web",
+    "bundle": "npm run build && node tools/bundle-standalone.mjs"
   },
   "engines": {
     "node": ">=20.11.0"
