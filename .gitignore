@@ -11,3 +11,8 @@ coverage
 .vercel
 .turbo
 .codex-screens
+
+# Review documents dropped in the repo root. Kept out of history: the last one
+# was 11 MB of embedded screenshots, and it is a record of feedback rather
+# than source the site builds from.
+/*.docx

@@ -4,6 +4,7 @@ import { HydroSureDashboardShowcase } from "@/components/hydrosure-dashboard-sho
 import { HydroVerseEcosystemSection } from "@/components/hydroverse-ecosystem-section";
 import { IndustryAdoptionSection } from "@/components/industry-adoption-section";
 import { FaqSchema } from "@/components/json-ld";
+import { ProudlySupportsMarquee } from "@/components/proudly-supports-marquee";
 import { RequestConsultationSection } from "@/components/request-consultation-section";
 import { SectorNavigation } from "@/components/sector-navigation";
 import { SolutionsSection } from "@/components/solutions-section";
@@ -21,11 +22,16 @@ export const metadata = createMetadata({
   path: "/"
 });
 
-/* Homepage order follows the content guide: hero, sector strip, solutions,
-   ecosystem, why choose us, capability marquee, industry adoption, FAQ and the
-   closing consultation call.
+/* Homepage order, as set by the website review:
+     hero, sector strip, solutions, the HydroSure screen, the capability
+     marquee, the ecosystem, why choose us, FAQ, industry adoption, the
+     programme marquee, and the closing consultation call.
 
-   The sections the feedback document asked to drop - Testimonials, SEO
+   Two placements come straight from that review: the capability marquee sits
+   between the HydroSure screen and the ecosystem block, and Proudly Supports
+   runs directly above Request a Consultation.
+
+   The sections the earlier feedback document asked to drop - Testimonials, SEO
    Resources, Risk Removed, From Enquiry to Running Site, Applications, the old
    Solutions carousel, Stakeholders, Key Features, Use Cases, Challenges,
    Current Process and The HydroPure Solution - are no longer rendered here.
@@ -39,15 +45,16 @@ export default async function HomePage() {
       <SectorNavigation />
       <SolutionsSection />
       <HydroSureDashboardShowcase />
+      <CapabilityMarquee />
       <HydroVerseEcosystemSection />
       <WhyChooseUsSection />
-      <CapabilityMarquee />
-      <IndustryAdoptionSection />
       <section className="hydro-section">
         <Container>
           <FaqMonochrome items={faqs} />
         </Container>
       </section>
+      <IndustryAdoptionSection />
+      <ProudlySupportsMarquee />
       <RequestConsultationSection />
       <FaqSchema faqs={faqs} />
     </main>

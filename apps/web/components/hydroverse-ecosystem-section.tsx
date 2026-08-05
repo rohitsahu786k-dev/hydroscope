@@ -4,14 +4,14 @@ import { SectionHeading } from "./section-heading";
 import { Container } from "./ui/container";
 import { trustPillars } from "@/lib/solutions-content";
 
-/* The ecosystem flow the guide draws: each product in the order water actually
-   moves through them, ending in the statement that they are one system. The
-   guide adds HydroPilot and HydroEdge to the original three. */
+/* The ecosystem flow, in the order water actually moves through the products:
+   HydroPure treats it, HydroPilot moves it, HydroEdge tracks what is stored,
+   HydroSense measures it on the way out, and HydroSure watches all of it. */
 const chain = [
-  { title: "HydroSense", text: "Measures water quality in real time", href: "/solutions/hydrosense", Icon: Gauge },
   { title: "HydroPure", text: "Automatically disinfects and ensures safe water", href: "/solutions/hydropure", Icon: Droplets },
   { title: "HydroPilot", text: "Automates valves and pumps across the network", href: "/solutions/other-iot-solutions#hydropilot", Icon: Settings },
   { title: "HydroEdge", text: "Tracks tank levels with IoT-enabled sensing", href: "/solutions/other-iot-solutions#hydroedge", Icon: Waves },
+  { title: "HydroSense", text: "Measures water quality in real time", href: "/solutions/hydrosense", Icon: Gauge },
   { title: "HydroSure", text: "Monitors, analyzes and manages your entire network", href: "/solutions/hydrosure", Icon: Cloud }
 ];
 
@@ -64,9 +64,12 @@ export function HydroVerseEcosystemSection() {
                 Our solutions work seamlessly together to deliver smarter, safer and more efficient water management.
               </p>
             </div>
+            {/* Solid rather than outlined: this is the one action in the
+                section, and as an outline it read as secondary to the five
+                product tiles beside it. */}
             <Link
               href="/solutions/hydroverse"
-              className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg border border-hydro-blue px-5 text-sm font-bold text-hydro-blue transition hover:bg-hydro-blue hover:text-white max-sm:ml-0"
+              className="ml-auto inline-flex min-h-12 shrink-0 items-center gap-2 rounded-lg bg-hydro-blue2 px-6 text-sm font-bold text-white shadow-[0_14px_30px_-14px_rgba(18,88,182,0.8)] transition hover:-translate-y-0.5 hover:bg-hydro-navy max-sm:ml-0 max-sm:w-full max-sm:justify-center"
             >
               Explore HydroVerse
               <ArrowRight aria-hidden="true" size={15} />

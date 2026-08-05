@@ -85,6 +85,13 @@ const industries: Logo[] = [
 
 export function IndustryAdoptionSection() {
   return (
-    <Logos3 variant="photo" eyebrow="Where HydroPure runs" heading="Industry adoption" logos={industries} />
+    <Logos3
+      variant="photo"
+      /* Not "Where HydroPure runs": on the homepage this row covers the whole
+         range, not one product. */
+      eyebrow="Reliable water intelligence across every sector"
+      heading="Industry adoption"
+      logos={industries}
+    />
   );
 }

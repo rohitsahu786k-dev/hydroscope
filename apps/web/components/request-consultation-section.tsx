@@ -1,12 +1,11 @@
 import { ArrowRight } from "lucide-react";
-import { ProudlySupportsMarquee } from "./proudly-supports-marquee";
 import { Container } from "./ui/container";
 
-/* Closing call to action, followed by the programme marquee. */
+/* Closing call to action. The programme marquee used to be bolted on here;
+   it is now placed by the page, so it can sit above this block. */
 export function RequestConsultationSection() {
   return (
-    <>
-      <section className="relative overflow-hidden bg-hydro-navy py-20 text-center text-white">
+    <section className="relative overflow-hidden bg-hydro-navy py-20 text-center text-white max-sm:py-14">
         <div className="hydro-network absolute inset-0 opacity-10" aria-hidden="true" />
         <Container className="relative">
           <h2 className="mx-auto max-w-3xl text-[clamp(30px,3.6vw,50px)] font-normal leading-[1.06] tracking-[-0.04em]">
@@ -22,11 +21,8 @@ export function RequestConsultationSection() {
           >
             Request a Consultation
             <ArrowRight aria-hidden="true" size={16} />
-          </a>
-        </Container>
-      </section>
-
-      <ProudlySupportsMarquee />
-    </>
+        </a>
+      </Container>
+    </section>
   );
 }

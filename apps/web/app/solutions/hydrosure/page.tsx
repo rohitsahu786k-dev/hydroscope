@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Activity, Check, Database, Lock, MapPin } from "lucide-react";
+import { LiveReadingsPanel } from "@/components/live-readings-panel";
 import { SectionHeading } from "@/components/section-heading";
 import {
   CoreFeaturesSection,
@@ -102,7 +103,7 @@ export default function HydroSurePage() {
         <Container>
           <SectionHeading
             eyebrow="Real-time monitoring"
-            title="Monitor every device. Every parameter. Every second."
+            title="Monitor every device. Every parameter. Every minute."
           />
           <div className="grid grid-cols-[1.35fr_1fr] items-center gap-9 max-lg:grid-cols-1">
             <div className="overflow-hidden rounded-2xl border border-hydro-line bg-white p-3">
@@ -116,28 +117,8 @@ export default function HydroSurePage() {
               />
             </div>
 
-            <ul className="grid gap-3">
-              {[
-                ["Device", "Active"],
-                ["Updated", "1 minute ago"],
-                ["Chlorine", "0.48"],
-                ["Alerts", "1"]
-              ].map(([label, value]) => (
-                <li
-                  key={label}
-                  className="flex items-center justify-between rounded-xl border border-hydro-line bg-[#f7fbff] px-6 py-5"
-                >
-                  <span className="text-[13px] font-extrabold uppercase tracking-[0.14em] text-hydro-muted">
-                    {label}
-                  </span>
-                  <span className="text-lg font-normal text-hydro-navy">{value}</span>
-                </li>
-              ))}
-            </ul>
+            <LiveReadingsPanel />
           </div>
-          <p className="mt-4 text-xs text-hydro-muted">
-            Values shown are an illustrative snapshot of the dashboard layout, not live site data.
-          </p>
         </Container>
       </section>
 

@@ -22,6 +22,12 @@ import { ProudlySupportsMarquee } from "@/components/proudly-supports-marquee";
 import { Container } from "@/components/ui/container";
 import { createMetadata } from "@/lib/seo";
 import {
+  PHOTO_CARD_CAPTION,
+  PHOTO_CARD_CAPTION_TEXT,
+  PHOTO_CARD_IMAGE,
+  PHOTO_CARD_VIGNETTE
+} from "@/lib/ui-classes";
+import {
   aboutHero,
   howWeThink,
   impact,
@@ -120,7 +126,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="relative overflow-hidden bg-white py-10 max-lg:py-12">
+      <section className="relative overflow-hidden bg-white py-16 max-lg:py-14">
         <Container className="relative z-10">
           <Reveal from="left" className="max-w-[42%] max-lg:max-w-none">
             <SectionTitle name={whoWeAre.eyebrow} />
@@ -163,7 +169,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="bg-white pb-4">
+      <section className="bg-white pb-10">
         <Container>
           <Reveal>
             <div className="grid grid-cols-[0.85fr_1.15fr] items-center gap-10 rounded-lg bg-[#eaf3fc] px-9 py-8 max-lg:grid-cols-1 max-lg:gap-8 max-sm:px-6">
@@ -203,9 +209,9 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-8">
+      <section className="bg-white py-14 max-sm:py-11">
         <Container>
-          <Reveal className="mb-5 text-center">
+          <Reveal className="mb-9 text-center">
             <SectionTitle name={whatWeBuild.eyebrow} kicker={whatWeBuild.title} />
           </Reveal>
 
@@ -235,9 +241,9 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-2 pb-8">
+      <section className="bg-white py-14 max-sm:py-11">
         <Container>
-          <Reveal className="mb-6 text-center">
+          <Reveal className="mb-9 text-center">
             <SectionTitle name={whyHydroscope.eyebrow} />
             <p className="mx-auto mt-4 max-w-3xl text-[14.5px] leading-7 text-hydro-muted">{whyHydroscope.intro}</p>
           </Reveal>
@@ -261,9 +267,9 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-4 pb-8">
+      <section className="bg-white py-14 max-sm:py-11">
         <Container>
-          <Reveal className="mb-5 text-center">
+          <Reveal className="mb-9 text-center">
             <SectionTitle name={industriesWeServe.eyebrow} />
           </Reveal>
 
@@ -278,12 +284,11 @@ export default function AboutPage() {
                     sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
                     loading="lazy"
                     draggable={false}
-                    className="select-none object-cover"
+                    className={`select-none object-cover ${PHOTO_CARD_IMAGE}`}
                   />
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgba(6,22,45,0.86)_0%,rgba(6,22,45,0.6)_45%,rgba(6,22,45,0)_100%)] px-3 pb-3 pt-8">
-                    <span className="text-[12.5px] font-extrabold leading-snug text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
-                      {item.title}
-                    </span>
+                  <span aria-hidden="true" className={PHOTO_CARD_VIGNETTE} />
+                  <figcaption className={PHOTO_CARD_CAPTION}>
+                    <span className={PHOTO_CARD_CAPTION_TEXT}>{item.title}</span>
                   </figcaption>
                 </figure>
               </RevealCard>
@@ -292,9 +297,9 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#e9f3fc_0%,#f4f9fe_100%)] py-8">
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#e9f3fc_0%,#f4f9fe_100%)] py-14 max-sm:py-11">
         <Container className="relative">
-          <Reveal className="mb-6 text-center">
+          <Reveal className="mb-9 text-center">
             <SectionTitle name={howWeThink.eyebrow} />
           </Reveal>
 

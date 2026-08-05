@@ -5,7 +5,12 @@ import Image from "next/image";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Container } from "@/components/ui/container";
-import { PHOTO_CARD_PILL } from "@/lib/ui-classes";
+import {
+  PHOTO_CARD_CAPTION,
+  PHOTO_CARD_CAPTION_TEXT,
+  PHOTO_CARD_IMAGE,
+  PHOTO_CARD_VIGNETTE
+} from "@/lib/ui-classes";
 import { cn } from "@/lib/utils";
 
 /* An item shows either a photo (`image`) or a Lucide icon (`Icon`) - both render
@@ -116,10 +121,11 @@ const Logos3 = ({
                         sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 80vw"
                         loading="lazy"
                         draggable={false}
-                        className="select-none object-cover"
+                        className={cn("select-none object-cover", PHOTO_CARD_IMAGE)}
                       />
-                      <figcaption className={cn("absolute right-3 top-3 z-10", PHOTO_CARD_PILL)}>
-                        {logo.description}
+                      <span aria-hidden="true" className={PHOTO_CARD_VIGNETTE} />
+                      <figcaption className={cn("z-10", PHOTO_CARD_CAPTION)}>
+                        <span className={PHOTO_CARD_CAPTION_TEXT}>{logo.description}</span>
                       </figcaption>
                     </figure>
                   ) : (

@@ -34,8 +34,10 @@ export const whoWeAre = {
     "Aerial view of a municipal water treatment plant, its circular clarifiers and treatment buildings, with a city skyline on the horizon"
 };
 
-/* Reach figures as set out in the design. These are company claims, not
-   readings from a dashboard - see the note rendered under the row. */
+/* Capability figures, not reach figures. The earlier set claimed 1,250+
+   installations across 142+ cities reaching 0.72 million people; the review
+   confirmed HYDROscope is not yet operating at that scale, so the row now
+   describes what the system does rather than how widely it is deployed. */
 export const impact = {
   icon: A + "icon-har-ghar-jal.webp",
   titleLine1: "From Har Ghar Jal",
@@ -44,10 +46,10 @@ export const impact = {
   subtitle:
     "Empowering every community with intelligent water solutions for a safer and healthier tomorrow.",
   stats: [
-    { value: "1,250+", label: "Installations", icon: A + "icon-water-installations.webp" },
-    { value: "142+", label: "Cities", icon: A + "icon-cities-covered.webp" },
-    { value: "0.72", label: "Million People Impacted", icon: A + "icon-people-impacted.webp" },
-    { value: "120+", label: "MLD Water Treated Daily", icon: A + "icon-water-treated-daily.webp" }
+    { value: "0.82", label: "PPM residual chlorine held", icon: A + "icon-water-installations.webp" },
+    { value: "120+", label: "KLitres water treated daily", icon: A + "icon-water-treated-daily.webp" },
+    { value: "24x7", label: "Continuous monitoring", icon: A + "icon-cities-covered.webp" },
+    { value: "Millions", label: "Of data points processed", icon: A + "icon-people-impacted.webp" }
   ]
 };
 

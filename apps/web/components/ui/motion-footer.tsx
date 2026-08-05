@@ -174,23 +174,26 @@ export function MotionFooter({ description, columns, bottomText, email, phone, l
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
-      <div className="relative h-screen w-full" style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}>
-        <footer className="hydro-cinematic-footer fixed bottom-0 left-0 flex h-screen w-full flex-col justify-between overflow-hidden bg-[#04152a] text-white">
-          <div className="hydro-footer-aurora pointer-events-none absolute left-1/2 top-1/2 z-0 h-[60vh] w-[80vw] rounded-[50%] bg-[radial-gradient(circle,rgba(38,185,232,0.28)_0%,rgba(22,120,232,0.16)_40%,transparent_70%)] blur-[88px]" />
-          <div className="hydro-footer-grid pointer-events-none absolute inset-0 z-0" />
+      {/* Ordinary flow footer. It used to be pinned with position:fixed inside
+          a clipped, screen-tall wrapper, which produced a parallax reveal and
+          forced the footer to occupy a whole viewport whatever it contained.
+          It now takes only the height its content needs. */}
+      <footer className="hydro-cinematic-footer relative w-full overflow-hidden bg-[#04152a] text-white">
+        <div className="hydro-footer-aurora pointer-events-none absolute left-1/2 top-1/2 z-0 h-[420px] w-[80%] rounded-[50%] bg-[radial-gradient(circle,rgba(38,185,232,0.28)_0%,rgba(22,120,232,0.16)_40%,transparent_70%)] blur-[88px]" />
+        <div className="hydro-footer-grid pointer-events-none absolute inset-0 z-0" />
 
-          <div className="pointer-events-none absolute -bottom-[5vh] left-1/2 z-0 -translate-x-1/2 select-none whitespace-nowrap text-[24vw] font-extrabold leading-[0.75] tracking-[-0.05em] text-white/[0.04]">
-            HYDRO
+        <div className="pointer-events-none absolute -bottom-6 left-1/2 z-0 -translate-x-1/2 select-none whitespace-nowrap text-[18vw] font-extrabold leading-[0.75] tracking-[-0.05em] text-white/[0.035]">
+          HYDRO
+        </div>
+
+        <div className="relative z-10 w-full overflow-hidden border-b border-white/10 bg-[#04152a]/70 py-3.5 backdrop-blur-md">
+          <div className="hydro-footer-marquee flex w-max text-[11px] font-extrabold uppercase tracking-[0.28em] text-[#b9cee6] md:text-xs">
+            <MarqueeItem />
+            <MarqueeItem />
           </div>
+        </div>
 
-          <div className="absolute left-0 top-12 z-10 w-full rotate-[-2deg] scale-110 overflow-hidden border-y border-white/10 bg-[#04152a]/70 py-4 shadow-2xl backdrop-blur-md">
-            <div className="hydro-footer-marquee flex w-max text-xs font-extrabold uppercase tracking-[0.28em] text-[#b9cee6] md:text-sm">
-              <MarqueeItem />
-              <MarqueeItem />
-            </div>
-          </div>
-
-          <div className="hydro-footer-rise relative z-10 mx-auto mt-20 flex w-[90%] flex-1 flex-col items-center justify-center text-center">
+        <div className="relative z-10 mx-auto flex w-[90%] flex-col items-center pt-14 text-center max-sm:pt-10">
             <Link href="/" className="mb-8 inline-flex items-center gap-4">
               <span className="hydro-footer-glass grid h-16 w-16 place-items-center rounded-full">
                 <Image src="/hydroscope-logo.png" alt="" width={52} height={52} className="h-[52px] w-[52px] object-contain" />
@@ -203,17 +206,17 @@ export function MotionFooter({ description, columns, bottomText, email, phone, l
               </span>
             </Link>
 
-            <h2 className="hydro-footer-text-glow text-5xl font-normal leading-none tracking-[-0.04em] md:text-8xl">
+            <h2 className="hydro-footer-text-glow text-[clamp(34px,5vw,64px)] font-normal leading-none tracking-[-0.04em]">
               Ready to begin?
             </h2>
             <p className="mt-6 max-w-2xl text-sm leading-7 text-[#cfe4ff] md:text-base">{description}</p>
 
-            <div className="mt-10 flex w-full flex-col items-center gap-5">
+            <div className="mt-8 flex w-full flex-col items-center gap-5">
               <div className="flex w-full flex-wrap justify-center gap-4">
-                <MagneticLink href="/request-demo" className="px-10 py-5 text-base text-white">
+                <MagneticLink href="/request-demo" className="px-8 py-4 text-[15px] text-white">
                   Request Demo
                 </MagneticLink>
-                <MagneticLink href="/contact" className="px-10 py-5 text-base">
+                <MagneticLink href="/contact" className="px-8 py-4 text-[15px]">
                   Talk to Sales
                 </MagneticLink>
               </div>
@@ -243,7 +246,7 @@ export function MotionFooter({ description, columns, bottomText, email, phone, l
             </div>
           </div>
 
-          <div className="relative z-20 mx-auto flex w-[90%] flex-col items-center justify-between gap-5 pb-8 text-center md:flex-row">
+        <div className="relative z-20 mx-auto mt-12 flex w-[90%] flex-col items-center justify-between gap-5 border-t border-white/10 py-7 text-center md:flex-row">
             <div className="order-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8194ad] md:order-1 md:text-xs">
               (c) 2026 HYDROscope. All rights reserved.
             </div>
@@ -263,8 +266,7 @@ export function MotionFooter({ description, columns, bottomText, email, phone, l
               <ArrowUp aria-hidden="true" size={18} />
             </button>
           </div>
-        </footer>
-      </div>
+      </footer>
     </>
   );
 }

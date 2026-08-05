@@ -1,6 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 /* The one place the HydroSure screen itself is shown at size. Swapping the
@@ -19,17 +17,13 @@ export function HydroSureDashboardShowcase() {
             <h2 className="mt-3 text-[clamp(28px,3.4vw,48px)] font-normal leading-[1.06] tracking-[-0.04em] text-hydro-ink">
               Your entire water network, on one screen.
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-hydro-muted">
+            {/* No call to action here: the solutions row above already sends
+                people to HydroSure, and the button sat on the moving card
+                where it was easy to miss. The screen carries the section. */}
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-hydro-muted max-sm:text-[14px]">
               Live device status, residual chlorine, dosing performance and water supplied - with alerts that reach
               you before a site visit would have.
             </p>
-            <Link
-              href="/solutions/hydrosure"
-              className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-lg border border-hydro-blue px-5 text-sm font-bold text-hydro-blue transition hover:bg-hydro-blue hover:text-white"
-            >
-              Explore HydroSure
-              <ArrowRight aria-hidden="true" size={15} />
-            </Link>
           </div>
         }
       >

@@ -49,9 +49,9 @@ export const solutionEntries: SolutionEntry[] = [
     speciality: ["99.99% Reliable Disinfection", "Reduced Operating Costs"],
     cardImage: "/images/hydroscope-products/hydropure-hp-100.webp",
     cardImageAlt: "HydroPure HP-100 electrochlorinator unit",
-    heroImage: "/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp",
+    heroImage: "/images/about/hydroscope-municipal-water-treatment-plant-city-skyline.webp",
     heroImageAlt:
-      "HydroPure electrochlorination skid feeding a village overhead tank and the distribution network",
+      "Municipal water treatment plant whose treated water feeds the HydroPure electrochlorination stage",
     heroSubtitle:
       "Fully automated, IoT enabled electrochlorination system designed for complete autonomy and reliability.",
     overview: [
@@ -418,8 +418,8 @@ export const otherIotSolutions: IotSolution[] = [
       "Suitable for commercial, industrial, and municipal applications",
       "Seamless integration with HydroVerse"
     ],
-    image: "/images/how-it-works/12-dosing-pump.webp",
-    imageAlt: "Automated valve and pump control assembly on a water main"
+    image: "/images/solutions/hydropilot-automatic-valve-and-flow-meter-assembly.webp",
+    imageAlt: "HydroPilot automatic valve and pump controller: a motorised valve and an in-line flow meter mounted on one skid, so the valve opens and the meter records the flow"
   },
   {
     slug: "hydroedge",
@@ -436,8 +436,8 @@ export const otherIotSolutions: IotSolution[] = [
       "Suitable for residential, commercial, industrial, and municipal applications",
       "Seamless integration with HydroVerse"
     ],
-    image: "/images/how-it-works/11-storage-tank.webp",
-    imageAlt: "IoT water tank level module mounted on a storage tank"
+    image: "/images/solutions/hydroedge-water-tank-level-module-installed.webp",
+    imageAlt: "HydroEdge module mounted on a water storage tank, its probe hanging inside and the display reading 68 per cent water level"
   }
 ];
 

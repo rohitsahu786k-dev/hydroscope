@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Cloud, Droplets, Gauge, Settings, Waves } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { ComparisonSection, CtaBand, OverviewSection, SolutionHero } from "@/components/solution-page-blocks";
 import { Container } from "@/components/ui/container";
@@ -13,6 +13,10 @@ export const metadata = createMetadata({
     "HydroVerse unifies HydroPilot, HydroEdge, HydroSense, HydroPure and HydroSure into one connected, cloud-monitored water management ecosystem.",
   path: "/solutions/hydroverse"
 });
+
+/* Matches the order of hydroVerse.integrated: HydroPilot, HydroEdge,
+   HydroSense, HydroPure, HydroSure. */
+const integratedIcons = [Settings, Waves, Gauge, Droplets, Cloud];
 
 export default function HydroVersePage() {
   return (
@@ -28,22 +32,38 @@ export default function HydroVersePage() {
 
       <OverviewSection paragraphs={[hydroVerse.overview]} />
 
-      {/* Five products, one card each, in parallel as the guide specifies. */}
+      {/* Five products as one connected run rather than five loose cards: a
+          rule threads through the icon row so the set reads as an ecosystem a
+          customer buys together, not a menu to pick one item from. */}
       <section className="hydro-section bg-[#f7fbff]">
         <Container>
           <SectionHeading title="HydroVerse Integrated Solutions" />
-          <div className="grid grid-cols-5 gap-4 max-xl:grid-cols-3 max-md:grid-cols-1">
-            {hydroVerse.integrated.map((item) => (
-              <Link
-                key={item.title}
-                href={item.href}
-                className="flex flex-col rounded-2xl border border-hydro-line bg-white p-6 transition hover:-translate-y-1 hover:border-hydro-blue"
-              >
-                <h3 className="text-lg font-normal tracking-[-0.02em] text-hydro-navy">{item.title}</h3>
-                <p className="mt-2 text-[13px] leading-6 text-hydro-muted">{item.subtitle}</p>
-                <ArrowRight aria-hidden="true" size={16} className="mt-auto pt-5 text-hydro-blue" />
-              </Link>
-            ))}
+          <div className="relative">
+            {/* The connector. Hidden below xl, where the cards stack and a
+                horizontal rule would run through empty space. */}
+            <span
+              aria-hidden="true"
+              className="absolute left-[10%] right-[10%] top-[62px] hidden h-px bg-[linear-gradient(90deg,transparent,#a9cdf2_12%,#a9cdf2_88%,transparent)] xl:block"
+            />
+            <div className="relative grid grid-cols-5 gap-4 max-xl:grid-cols-3 max-md:grid-cols-1">
+              {hydroVerse.integrated.map((item, index) => {
+                const Icon = integratedIcons[index] ?? Droplets;
+                return (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="group flex flex-col items-center rounded-2xl border border-hydro-line bg-white p-6 text-center transition hover:-translate-y-1 hover:border-hydro-blue2 hover:shadow-[0_28px_60px_-40px_rgba(9,36,76,0.7)]"
+                  >
+                    <span className="grid h-14 w-14 place-items-center rounded-full border border-hydro-line bg-[#eaf3fd] text-hydro-blue2 transition group-hover:border-hydro-blue2 group-hover:bg-hydro-blue2 group-hover:text-white">
+                      <Icon aria-hidden="true" className="h-6 w-6" strokeWidth={1.7} />
+                    </span>
+                    <h3 className="mt-5 text-lg font-normal tracking-[-0.02em] text-hydro-navy">{item.title}</h3>
+                    <p className="mt-2 text-[13px] leading-6 text-hydro-muted">{item.subtitle}</p>
+                    <ArrowRight aria-hidden="true" size={16} className="mt-auto pt-5 text-hydro-blue2" />
+                  </Link>
+                );
+              })}
+            </div>
           </div>
 
           <div className="mt-8 overflow-hidden rounded-2xl border border-hydro-line bg-white p-3">

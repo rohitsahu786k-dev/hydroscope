@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Check, ShieldCheck } from "lucide-react";
+import { Boxes, Check, ShieldCheck, SlidersHorizontal, TrendingUp } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import {
   ComparisonSection,
@@ -22,6 +22,9 @@ import {
 } from "@/lib/solutions-content";
 
 const entry = findSolutionEntry("hydropure")!;
+/* Scalable, Customizable, Modular - in the order hydroPureVariants.badges
+   lists them. */
+const variantBadgeIcons = [TrendingUp, SlidersHorizontal, Boxes];
 
 export const metadata = createMetadata({
   title: "HydroPure Electrochlorinator | Automated On-Site Chlorination",
@@ -61,12 +64,14 @@ export default function HydroPurePage() {
             eyebrow="The HydroPure solution"
             title="Automated, intelligent and reliable chlorination workflow"
           />
+          {/* The real unit, not a generic diagrammed one. The workflow it used
+              to illustrate is now the flow diagram further down the page. */}
           <div className="overflow-hidden rounded-2xl border border-hydro-line bg-white p-3">
             <Image
-              src="/images/hydropure-infographic/hydropure-automated-process-flow.webp"
-              alt="HydroPure workflow: water source, HydroPure unit, automatic chlorination, sensors and monitoring, cloud dashboard, safe drinking water"
-              width={1600}
-              height={520}
+              src="/images/hydroscope-products/hydropure-hp-100.webp"
+              alt="HydroPure HP-100 electrochlorinator installed beside process pipework, generating and dosing sodium hypochlorite on site"
+              width={1672}
+              height={941}
               draggable={false}
               className="pointer-events-none h-auto w-full select-none rounded-lg"
             />
@@ -87,12 +92,18 @@ export default function HydroPurePage() {
           <SectionHeading title="How HydroPure works" align="left" />
           <p className="max-w-4xl text-base leading-7 text-hydro-muted">{hydroPureHowItWorks}</p>
 
+          {/* Flow diagram rather than a product photo: this section answers
+              "where does the unit sit in the network", which a photograph of
+              the unit cannot. Treated water arrives from the plant, HydroPure
+              doses it, the dosed water fills the ESR, and the distribution
+              mains carry it to each house - with the IoT dashboard reading
+              every stage. */}
           <div className="mt-9 overflow-hidden rounded-2xl border border-hydro-line bg-white p-3">
             <Image
-              src="/images/hydropure-infographic/hydropure-smart-automated-water-safety-solution.webp"
-              alt="Raw water source feeding a HydroPure system, optimized chlorine dosing into an overhead reservoir, distribution to consumers and an IoT dashboard receiving live device data"
-              width={1600}
-              height={900}
+              src="/images/solutions/hydropure-water-flow-source-to-consumer-diagram.webp"
+              alt="HydroPure water flow: raw water source, the HydroPure system, optimized chlorine dosing into the ESR overhead tank, distribution pipelines to consumers, and an IoT dashboard receiving analytics, alarms, reports and device health from every stage"
+              width={1536}
+              height={1024}
               draggable={false}
               className="pointer-events-none h-auto w-full select-none rounded-lg"
             />
@@ -163,14 +174,20 @@ export default function HydroPurePage() {
           </div>
 
           <ul className="mt-6 grid grid-cols-3 gap-4 max-sm:grid-cols-1">
-            {hydroPureVariants.badges.map((badge) => (
-              <li
-                key={badge}
-                className="rounded-xl border border-hydro-line bg-white px-5 py-5 text-center text-sm font-extrabold text-hydro-navy"
-              >
-                {badge}
-              </li>
-            ))}
+            {hydroPureVariants.badges.map((badge, index) => {
+              const Icon = variantBadgeIcons[index] ?? Boxes;
+              return (
+                <li
+                  key={badge}
+                  className="flex items-center justify-center gap-3 rounded-xl border border-hydro-line bg-white px-5 py-5 text-center text-sm font-extrabold text-hydro-navy transition hover:-translate-y-1 hover:border-hydro-blue2"
+                >
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#eaf3fd] text-hydro-blue2">
+                    <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.8} />
+                  </span>
+                  {badge}
+                </li>
+              );
+            })}
           </ul>
         </Container>
       </section>
