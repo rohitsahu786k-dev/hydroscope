@@ -78,14 +78,14 @@ export const whatWeBuild = {
     {
       title: "Fully Automated Valve and Pump Controller",
       href: "/solutions/other-iot-solutions#hydropilot",
-      image: A + "product-automated-valve-and-pump-controller.webp",
-      imageAlt: "HydroPilot automated valve and pump controller mounted on a stainless steel water line"
+      image: "/images/solutions/hydropilot-automatic-valve-and-flow-meter-assembly.webp",
+      imageAlt: "HydroPilot automatic valve and pump controller: a motorised valve and an in-line flow meter on one skid, so the valve opens and the meter records the flow"
     },
     {
       title: "Tank Level Module",
       href: "/solutions/other-iot-solutions#hydroedge",
-      image: A + "product-iot-water-tank-level-module.webp",
-      imageAlt: "HydroEdge IoT water tank level module"
+      image: "/images/solutions/hydroedge-iot-water-tank-level-module.webp",
+      imageAlt: "HydroEdge IoT water tank level module with its submersible probe, the display reading 68 per cent water level"
     }
   ]
 };

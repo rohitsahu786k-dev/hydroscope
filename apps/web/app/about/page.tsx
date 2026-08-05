@@ -222,12 +222,17 @@ export default function AboutPage() {
                   href={item.href}
                   className="group flex h-full flex-col items-center rounded-lg border border-hydro-line bg-white p-6 text-center shadow-[0_8px_22px_rgba(9,36,76,0.05)] transition hover:border-hydro-blue2 hover:shadow-[0_28px_60px_-40px_rgba(9,36,76,0.7)]"
                 >
-                  <div className="relative h-40 w-1/2 min-w-[112px]">
+                  {/* A tile rather than a bare half-width slot. Two of the five
+                      products are photographed on a dark studio backdrop and
+                      three are cut out on white; contained inside a tinted,
+                      rounded frame both read as product shots instead of one
+                      pair floating as dark rectangles. */}
+                  <div className="relative h-40 w-full overflow-hidden rounded-xl bg-white">
                     <Image
                       src={item.image}
                       alt={item.imageAlt}
                       fill
-                      sizes="(min-width: 1280px) 9vw, (min-width: 768px) 15vw, 45vw"
+                      sizes="(min-width: 1280px) 18vw, (min-width: 768px) 30vw, 45vw"
                       loading="lazy"
                       draggable={false}
                       className="select-none object-contain transition duration-500 group-hover:scale-105"
