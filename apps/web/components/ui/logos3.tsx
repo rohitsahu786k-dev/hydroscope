@@ -125,7 +125,10 @@ const Logos3 = ({
                   )}
                 >
                   {isPhoto && logo.image ? (
-                    <figure className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[#dcebfa] bg-[#eef7ff] shadow-[0_18px_44px_-30px_rgba(7,29,70,0.7)]">
+                    /* 1:1 rather than the 4:5 this started at - the taller
+                       card gave each photograph more room than it earned and
+                       made the strip dominate the section. */
+                    <figure className="relative aspect-square w-full overflow-hidden rounded-2xl border border-[#dcebfa] bg-[#eef7ff] shadow-[0_18px_44px_-30px_rgba(7,29,70,0.7)]">
                       <Image
                         src={logo.image}
                         alt={logo.description}

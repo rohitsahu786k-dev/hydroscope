@@ -1,29 +1,33 @@
 import Image from "next/image";
-import { Activity, ArrowRight, Bell, ChevronDown, FileText, Home, Waves } from "lucide-react";
+import { Activity, ArrowRight, Bell, ChevronDown, FileText } from "lucide-react";
 
-/* Where HydroPure sits in a scheme, from the treatment plant to the tap.
+/* Where HydroPure sits in a scheme, from the source to the tap.
  *
  * This used to be a single generated illustration. The artwork was only ever
  * supplied as a sketch of the idea, and its labels came out as garbled
  * lookalike words - "RAM WATER SOURCE", "OPTINIZED CHLARINEDOGNG". Baked-in
  * text also cannot be translated, searched, read by a screen reader or resized,
- * and it goes blurry on a phone.
+ * and it goes blurry on a phone. So the stages are markup.
  *
- * So the stages are markup and the only images are the two real renders: the
- * unit itself and the ESR, the latter lifted out of that same illustration,
- * which is the one part of it that was worth keeping. */
+ * Every stage carries a photograph, not two photographs and two icons: mixing
+ * the two made the row look like two finished cards and two waiting for art.
+ * They share one aspect ratio and one fit, so all four crop to the same shape
+ * whatever their sources measure. */
 
 const stages = [
   {
     step: "01",
-    title: "Raw water source",
-    body: "Treated water arriving from the treatment plant. This is what feeds the electrochlorinator.",
-    icon: Waves
+    title: "Raw Water Source",
+    body: "Raw water from the source feeds the electrochlorinator for on-site chlorine generation.",
+    image: {
+      src: "/images/hydrosense/hydrosense-water-distribution-network-valve-chamber.webp",
+      alt: "A large water main running through a valve chamber, feeding the scheme"
+    }
   },
   {
     step: "02",
     title: "HydroPure",
-    body: "Generates sodium hypochlorite on site from salt, water and power, and doses it to the set residual.",
+    body: "Generates sodium hypochlorite on site from salt, water and electricity, then doses it to achieve the target chlorine residual.",
     image: {
       src: "/images/hydroscope-products/hydropure-hp-100.webp",
       alt: "A HydroPure electrochlorinator standing beside process pipework in a treatment hall"
@@ -31,18 +35,21 @@ const stages = [
   },
   {
     step: "03",
-    title: "ESR overhead tank",
-    body: "Chlorinated water is dosed into the elevated service reservoir, where the residual holds during storage.",
+    title: "Elevated Service Reservoir (ESR)",
+    body: "Chlorinated water is stored in the ESR, where the target chlorine residual is maintained before distribution.",
     image: {
-      src: "/images/solutions/esr-overhead-service-reservoir-tank.webp",
-      alt: "An elevated service reservoir on a steel support structure"
+      src: "/images/about/industry-rural-water-scheme-village-overhead-tank.webp",
+      alt: "An elevated service reservoir standing over a village it supplies"
     }
   },
   {
     step: "04",
-    title: "Distribution to homes",
-    body: "Distribution mains carry the water from the ESR to every household on the scheme.",
-    icon: Home
+    title: "Distribution to Homes",
+    body: "Distribution mains deliver safe chlorinated water from the ESR to every household on the scheme.",
+    image: {
+      src: "/images/hydroscope-industries/residential-communities-water-infrastructure.webp",
+      alt: "Houses on a residential scheme served by the distribution network"
+    }
   }
 ] as const;
 
@@ -54,24 +61,19 @@ const telemetry = [
 ];
 
 function StageCard({ stage }: { stage: (typeof stages)[number] }) {
-  const Icon = "icon" in stage ? stage.icon : null;
-
   return (
     <div className="flex h-full flex-col rounded-2xl border border-hydro-line bg-white p-5 shadow-[0_16px_38px_-30px_rgba(9,36,76,0.55)]">
-      {/* One fixed-height media slot whichever form the stage takes, so the
-          titles line up across the row. */}
-      <div className="relative mb-4 grid h-[132px] place-items-center overflow-hidden rounded-xl bg-hydro-soft">
-        {"image" in stage ? (
-          <Image
-            src={stage.image.src}
-            alt={stage.image.alt}
-            fill
-            sizes="(min-width: 1024px) 22vw, (min-width: 640px) 44vw, 88vw"
-            className="object-contain p-2"
-          />
-        ) : Icon ? (
-          <Icon className="h-12 w-12 text-hydro-blue2" strokeWidth={1.4} aria-hidden="true" />
-        ) : null}
+      {/* A ratio rather than a fixed height, so the four photographs are the
+          same shape at every breakpoint, and object-cover so each fills its
+          frame edge to edge instead of floating on a coloured backing. */}
+      <div className="relative mb-4 aspect-[3/2] overflow-hidden rounded-xl bg-hydro-soft">
+        <Image
+          src={stage.image.src}
+          alt={stage.image.alt}
+          fill
+          sizes="(min-width: 1024px) 22vw, (min-width: 640px) 44vw, 88vw"
+          className="object-cover"
+        />
       </div>
 
       <span className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-hydro-blue2">
@@ -125,11 +127,12 @@ export function HydroPureFlowDiagram() {
               Across every stage
             </span>
             <h3 className="mt-1.5 text-lg font-bold leading-tight text-hydro-navy">
-              HydroSure reads the whole line
+              Provides end-to-end visibility
             </h3>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-hydro-muted">
-              Every stage above reports to the HydroSure cloud dashboard - flow, residual chlorine, dosing and
-              device health - so the scheme can be seen and adjusted without a site visit.
+              HydroSure brings together data from every stage of the treatment process - including flow, residual
+              chlorine, dosing, and device health - enabling operators to monitor performance and make adjustments
+              remotely without a site visit.
             </p>
           </div>
 
