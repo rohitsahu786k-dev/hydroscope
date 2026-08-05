@@ -524,43 +524,46 @@ export const whyChooseUs = {
   /* Rendered as the stacked drag carousel, so each entry also carries the
      photograph it sits on and a one-word category for its badge.
    *
-   * The six photographs were all shot in the same place - the same treatment
-   * basins, the same wet grey floor, the same blue sky - so the stack read as
-   * one picture shuffling rather than six reasons. Each now comes from a
-   * different scene: a village install, a valve chamber close-up, a
-   * chlorination skid, the dashboard itself, an overhead tank in open country,
-   * and a city-scale plant. They still crop to the 2:3 card from the centre,
-   * which is where each subject sits. */
+   * A purpose-shot set, one photograph per card, each showing the real
+   * products in the setting that card is about: the range together, the sensor
+   * at the sample point, the unit dosing, an operator reading the dashboard at
+   * night, a plant-wide screen, and a row of units at city scale. They are
+   * portrait, and the 2:3 card crops from the centre, which is where every
+   * subject sits.
+   *
+   * The set this replaced was all one scene - the same treatment basins, the
+   * same wet grey floor, the same blue sky - so the stack read as one picture
+   * shuffling rather than six reasons. */
   cards: [
     {
       title: "Engineered as One",
       text: "Sensors, treatment, automation, and software - perfectly integrated for seamless operation.",
       badge: "Integrated",
-      image: "/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp"
+      image: "/images/seo/engineered-as-one-integrated-water-management-system.webp"
     },
     {
       title: "Precision Monitoring",
       text: "High-accuracy water quality measurements with continuous data validation.",
       badge: "Accuracy",
-      image: "/images/hydrosense/hydrosense-water-distribution-network-valve-chamber.webp"
+      image: "/images/seo/precision-monitoring-water-quality-sensor-system.webp"
     },
     {
       title: "Intelligent Disinfection",
       text: "Optimized chlorine generation and dosing for safer, more efficient treatment.",
       badge: "Treatment",
-      image: "/images/seo/hydropure-modular-chlorination-unit-village-water-tank.webp"
+      image: "/images/seo/intelligent-disinfection-electrochlorination-system.webp"
     },
     {
       title: "Operational Intelligence",
       text: "AI transforms operational data into insights and automated decisions.",
       badge: "AI",
-      image: "/images/hydrosure-dashboard/hydrosure-dashboard-cinematic.webp"
+      image: "/images/seo/operational-intelligence-ai-water-dashboard.webp"
     },
     {
       title: "Connected Everywhere",
       text: "Unified cloud dashboard with live monitoring, alarms, trends, reports, and remote control.",
       badge: "Cloud",
-      image: "/images/about/industry-rural-water-scheme-village-overhead-tank.webp"
+      image: "/images/seo/connected-everywhere-cloud-water-monitoring.webp"
     },
     {
       title: "Ready for Scale",
