@@ -24,12 +24,13 @@ export const metadata = createMetadata({
 
 /* Homepage order, as set by the website review:
      hero, sector strip, solutions, the HydroSure screen, the capability
-     marquee, the ecosystem, why choose us, FAQ, industry adoption, the
-     programme marquee, and the closing consultation call.
+     marquee, the ecosystem, why choose us, industry adoption, the programme
+     marquee, the closing consultation call, and the FAQ last.
 
-   Two placements come straight from that review: the capability marquee sits
-   between the HydroSure screen and the ecosystem block, and Proudly Supports
-   runs directly above Request a Consultation.
+   Three placements come straight from that review: the capability marquee
+   sits between the HydroSure screen and the ecosystem block, Proudly Supports
+   runs directly above Request a Consultation, and the FAQ closes the page
+   immediately above the footer.
 
    The sections the earlier feedback document asked to drop - Testimonials, SEO
    Resources, Risk Removed, From Enquiry to Running Site, Applications, the old
@@ -48,14 +49,14 @@ export default async function HomePage() {
       <CapabilityMarquee />
       <HydroVerseEcosystemSection />
       <WhyChooseUsSection />
+      <IndustryAdoptionSection />
+      <ProudlySupportsMarquee />
+      <RequestConsultationSection />
       <section className="hydro-section">
         <Container>
           <FaqMonochrome items={faqs} />
         </Container>
       </section>
-      <IndustryAdoptionSection />
-      <ProudlySupportsMarquee />
-      <RequestConsultationSection />
       <FaqSchema faqs={faqs} />
     </main>
   );
