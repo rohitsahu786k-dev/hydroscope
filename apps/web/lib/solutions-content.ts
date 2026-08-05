@@ -274,32 +274,32 @@ export const hydroSenseApplications = [
   {
     title: "Water Distribution Network",
     text: "Continuous multi-parameter monitoring with cloud connectivity for real-time visibility across distribution networks. Detect leaks, contamination, and abnormal water conditions early.",
-    image: "/images/seo/hydrosense-water-quality-sensors-product-only-shot.webp"
+    image: "/images/hydrosense/hydrosense-water-distribution-network-valve-chamber.webp"
   },
   {
     title: "Swimming Pool",
     text: "Maintain optimal water quality with continuous pH and disinfectant monitoring. Improve sanitation while protecting pool equipment.",
-    image: "/images/seo/hydroscope-water-treatment-products-feature-collage.webp"
+    image: "/images/hydrosense/hydrosense-swimming-pool-water-quality-monitoring.webp"
   },
   {
     title: "Wastewater",
     text: "Monitor critical water quality parameters throughout the treatment process. Optimize treatment efficiency while reducing operational costs.",
-    image: "/images/seo/hydropure-water-treatment-facility-village-tank-banner.webp"
+    image: "/images/hydrosense/hydrosense-wastewater-treatment-plant-monitoring.webp"
   },
   {
     title: "Groundwater",
     text: "Continuously monitor groundwater quality parameters and other contaminants. Enable early warning and informed treatment decisions.",
-    image: "/images/how-it-works/13-water-sensor-probe.webp"
+    image: "/images/hydrosense/hydrosense-groundwater-borewell-pump-house-monitoring.webp"
   },
   {
     title: "Irrigation",
     text: "Monitor irrigation water quality to support efficient water and nutrient management. Improve crop productivity while optimizing resource utilization.",
-    image: "/images/seo/hydropure-modular-chlorination-unit-village-water-tank.webp"
+    image: "/images/hydrosense/hydrosense-irrigation-water-quality-monitoring-farmland.webp"
   },
   {
     title: "Residential Water Quality Monitoring",
     text: "Monitor water quality directly within residential plumbing systems using continuous multi-parameter sensing, enabling real-time monitoring, remote access, and intelligent alerts for improved water safety.",
-    image: "/images/applications/village-water-tanks.webp"
+    image: "/images/hydrosense/hydrosense-residential-water-quality-monitoring.webp"
   }
 ];
 
