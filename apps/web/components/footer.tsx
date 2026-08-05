@@ -1,10 +1,10 @@
 import { getFooterData } from "@/lib/cms/globals";
 import { siteConfig } from "@/lib/site";
-import { MotionFooter } from "./ui/motion-footer";
+import { SiteFooter } from "./ui/site-footer";
 
 /* Footer link groups follow the content guide: Company, then the whole
    Solutions range including the smaller IoT modules. Address, phone and email
-   are rendered separately by MotionFooter from siteConfig, which is the guide's
+   are rendered separately by SiteFooter from siteConfig, which is the guide's
    "Inquire" group. */
 const defaultColumns = [
   {
@@ -32,7 +32,7 @@ export async function Footer() {
   const columns = footer.columns.length ? footer.columns : defaultColumns;
 
   return (
-    <MotionFooter
+    <SiteFooter
       description={footer.description}
       columns={columns}
       bottomText={footer.bottomText}

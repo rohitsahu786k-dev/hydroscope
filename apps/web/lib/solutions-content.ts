@@ -522,39 +522,45 @@ export const whyChooseUs = {
     { value: "100%", label: "Remote Accessibility" }
   ],
   /* Rendered as the stacked drag carousel, so each entry also carries the
-     photograph it sits on and a one-word category for its badge. Portrait
-     sources throughout: the cards are 2:3, and a landscape photo cropped to
-     that loses its subject. */
+     photograph it sits on and a one-word category for its badge.
+   *
+   * The six photographs were all shot in the same place - the same treatment
+   * basins, the same wet grey floor, the same blue sky - so the stack read as
+   * one picture shuffling rather than six reasons. Each now comes from a
+   * different scene: a village install, a valve chamber close-up, a
+   * chlorination skid, the dashboard itself, an overhead tank in open country,
+   * and a city-scale plant. They still crop to the 2:3 card from the centre,
+   * which is where each subject sits. */
   cards: [
     {
       title: "Engineered as One",
       text: "Sensors, treatment, automation, and software - perfectly integrated for seamless operation.",
       badge: "Integrated",
-      image: "/images/seo/engineered-as-one-integrated-water-solutions.webp"
+      image: "/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp"
     },
     {
       title: "Precision Monitoring",
       text: "High-accuracy water quality measurements with continuous data validation.",
       badge: "Accuracy",
-      image: "/images/seo/precision-monitoring-water-quality-sensor-analytics.webp"
+      image: "/images/hydrosense/hydrosense-water-distribution-network-valve-chamber.webp"
     },
     {
       title: "Intelligent Disinfection",
       text: "Optimized chlorine generation and dosing for safer, more efficient treatment.",
       badge: "Treatment",
-      image: "/images/seo/intelligent-disinfection-chlorine-generation-dosing-system.webp"
+      image: "/images/seo/hydropure-modular-chlorination-unit-village-water-tank.webp"
     },
     {
       title: "Operational Intelligence",
       text: "AI transforms operational data into insights and automated decisions.",
       badge: "AI",
-      image: "/images/seo/operational-intelligence-ai-water-analytics-automation.webp"
+      image: "/images/hydrosure-dashboard/hydrosure-dashboard-cinematic.webp"
     },
     {
       title: "Connected Everywhere",
       text: "Unified cloud dashboard with live monitoring, alarms, trends, reports, and remote control.",
       badge: "Cloud",
-      image: "/images/seo/connected-everywhere-cloud-water-dashboard-remote-control.webp"
+      image: "/images/about/industry-rural-water-scheme-village-overhead-tank.webp"
     },
     {
       title: "Ready for Scale",

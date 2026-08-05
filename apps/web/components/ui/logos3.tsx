@@ -36,6 +36,10 @@ export interface Logos3Props {
   /* "chip" is the original icon-plus-label pill. "photo" makes each item a full
      photograph with its name set into a white scrim along the bottom edge. */
   variant?: "chip" | "photo";
+  /* Off makes the strip a manual carousel: the arrows and dragging still work,
+     nothing moves on its own. The photo strip uses this - continuous drift
+     across large photographs reads as restless rather than alive. */
+  autoScroll?: boolean;
 }
 
 /* AutoScroll is motion the visitor did not ask for, so it must not start when
@@ -60,30 +64,36 @@ const Logos3 = ({
   eyebrow,
   logos = [],
   className,
-  variant = "chip"
+  variant = "chip",
+  autoScroll = true
 }: Logos3Props) => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const isPhoto = variant === "photo";
+  const scrolls = autoScroll && !prefersReducedMotion;
 
   /* Re-created only when the motion preference flips, so embla is not torn down
-     and rebuilt on every parent render.
+     and rebuilt on every parent render. The plugin is left off entirely rather
+     than started paused, so a still strip carries none of its machinery.
    *
-   * Nothing stops the scroll except a reduced-motion preference: an earlier
-   * version paused on mouse enter, which read as broken autoplay whenever the
-   * pointer happened to rest over the strip. stopOnInteraction stays false so
-   * the arrows nudge the strip without ending playback. */
+   * When it is on, nothing stops the scroll but a reduced-motion preference: an
+   * earlier version paused on mouse enter, which read as broken autoplay
+   * whenever the pointer happened to rest over the strip. stopOnInteraction
+   * stays false so the arrows nudge the strip without ending playback. */
   const plugins = React.useMemo(
-    () => [
-      AutoScroll({
-        playOnInit: !prefersReducedMotion,
-        speed: 1,
-        stopOnInteraction: false,
-        stopOnFocusIn: false,
-        stopOnMouseEnter: false
-      })
-    ],
-    [prefersReducedMotion]
+    () =>
+      scrolls
+        ? [
+            AutoScroll({
+              playOnInit: true,
+              speed: 1,
+              stopOnInteraction: false,
+              stopOnFocusIn: false,
+              stopOnMouseEnter: false
+            })
+          ]
+        : [],
+    [scrolls]
   );
 
   const strip = (
@@ -94,10 +104,12 @@ const Logos3 = ({
         /* The strip is decorative repetition of the list below it in the DOM
            sense - embla still exposes it as a region, so name it. */
         aria-label={heading}
-        /* dragFree must stay on for both variants: with snapping enabled the
-           engine keeps pulling back to the nearest snap point and fights
-           AutoScroll, which leaves the strip standing still. */
-        opts={{ loop: true, align: "start", dragFree: true }}
+        /* dragFree has to stay on while AutoScroll runs: with snapping enabled
+           the engine keeps pulling back to the nearest snap point and fights
+           the plugin, which leaves the strip standing still. With the plugin
+           off there is nothing to fight, and snapping gives the arrows a
+           definite card-to-card step instead of a loose glide. */
+        opts={{ loop: true, align: "start", dragFree: scrolls }}
         plugins={plugins}
         className="w-full"
       >

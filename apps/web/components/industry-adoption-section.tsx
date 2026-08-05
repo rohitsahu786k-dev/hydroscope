@@ -87,6 +87,10 @@ export function IndustryAdoptionSection() {
   return (
     <Logos3
       variant="photo"
+      /* Still by default. Fourteen large photographs drifting continuously
+         pulled the eye away from the rest of the page; the arrows and dragging
+         still move it, on the visitor's own initiative. */
+      autoScroll={false}
       /* Not "Where HydroPure runs": on the homepage this row covers the whole
          range, not one product. */
       eyebrow="Reliable water intelligence across every sector"

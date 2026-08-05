@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Boxes, Check, ShieldCheck, SlidersHorizontal, TrendingUp } from "lucide-react";
+import { HydroPureFlowDiagram } from "@/components/hydropure-flow-diagram";
 import { SectionHeading } from "@/components/section-heading";
 import {
   ComparisonSection,
@@ -92,21 +93,14 @@ export default function HydroPurePage() {
           <SectionHeading title="How HydroPure works" align="left" />
           <p className="max-w-4xl text-base leading-7 text-hydro-muted">{hydroPureHowItWorks}</p>
 
-          {/* Flow diagram rather than a product photo: this section answers
+          {/* A flow diagram rather than a product photo: this section answers
               "where does the unit sit in the network", which a photograph of
               the unit cannot. Treated water arrives from the plant, HydroPure
               doses it, the dosed water fills the ESR, and the distribution
-              mains carry it to each house - with the IoT dashboard reading
-              every stage. */}
-          <div className="mt-9 overflow-hidden rounded-2xl border border-hydro-line bg-white p-3">
-            <Image
-              src="/images/solutions/hydropure-water-flow-source-to-consumer-diagram.webp"
-              alt="HydroPure water flow: raw water source, the HydroPure system, optimized chlorine dosing into the ESR overhead tank, distribution pipelines to consumers, and an IoT dashboard receiving analytics, alarms, reports and device health from every stage"
-              width={1536}
-              height={1024}
-              draggable={false}
-              className="pointer-events-none h-auto w-full select-none rounded-lg"
-            />
+              mains carry it to each house - with HydroSure reading every
+              stage. */}
+          <div className="mt-9">
+            <HydroPureFlowDiagram />
           </div>
         </Container>
       </section>
