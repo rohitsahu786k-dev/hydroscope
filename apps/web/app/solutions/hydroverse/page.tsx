@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Cloud, Droplets, Gauge, Settings, Waves } from "lucide-react";
+import { HydroVerseSchemeDiagram } from "@/components/hydroverse-scheme-diagram";
 import { SectionHeading } from "@/components/section-heading";
 import { ComparisonSection, CtaBand, OverviewSection, SolutionHero } from "@/components/solution-page-blocks";
 import { Container } from "@/components/ui/container";
@@ -66,15 +66,21 @@ export default function HydroVersePage() {
             </div>
           </div>
 
-          <div className="mt-8 overflow-hidden rounded-2xl border border-hydro-line bg-white p-3">
-            <Image
-              src="/images/seo/hydroscope-all-products-rural-water-treatment-banner.webp"
-              alt="Complete HydroVerse ecosystem connection across pumps, tanks, sensors, chlorination and the cloud dashboard"
-              width={1600}
-              height={900}
-              draggable={false}
-              className="pointer-events-none h-auto w-full select-none rounded-lg"
-            />
+          {/* Where those five products sit on a real scheme. The banner that
+              used to close this section showed an electrochlorinator we do not
+              sell and none of the other four products, which left the row above
+              as the only evidence the set connects. */}
+          <div className="mt-14">
+            <h3 className="text-center text-xl font-normal tracking-[-0.02em] text-hydro-navy">
+              One ecosystem, from the source to the tap
+            </h3>
+            <p className="mx-auto mt-3 max-w-3xl text-center text-base leading-7 text-hydro-muted">
+              Every product has a place on the same scheme, in the order the water reaches it.
+            </p>
+
+            <div className="mt-9">
+              <HydroVerseSchemeDiagram />
+            </div>
           </div>
         </Container>
       </section>
