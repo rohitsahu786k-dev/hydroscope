@@ -81,7 +81,7 @@ site now, and anything left in the web root can take precedence over it.
 ## 6. Check it worked
 
 ```
-https://hydroscope.in            -> the new home page, hero reads "Empowering. Smarter Water Management."
+https://hydroscope.in            -> the new home page, hero reads "Empowering Smarter Water Management"
 https://hydroscope.in/solutions  -> the three-card range
 https://hydroscope.in/admin      -> Payload login
 ```

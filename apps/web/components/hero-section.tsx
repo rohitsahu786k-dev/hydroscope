@@ -37,8 +37,8 @@ export function HeroSection(props: HeroSectionProps) {
 
   const heading = (
     <h1 className="mt-4 text-[clamp(29px,4.2vw,60px)] font-normal leading-[1.06] tracking-[-0.04em] text-hydro-navy sm:mt-5">
-      Empowering. Smarter
-      <span className="block">Water Management.</span>
+      Empowering Smarter
+      <span className="block">Water Management</span>
     </h1>
   );
 

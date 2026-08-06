@@ -499,7 +499,7 @@ export const sectorNavigation = [
 
 export const heroContent = {
   eyebrow: "AI driven technologies for safe water",
-  title: "Empowering. Smarter Water Management.",
+  title: "Empowering Smarter Water Management",
   subtitle:
     "We deliver next-generation IoT enabled, fully automated water management solutions and AI-powered intelligence for utilities, industries and communities - making water systems safer, smarter and more sustainable.",
   ctaLabel: "Explore solutions",
