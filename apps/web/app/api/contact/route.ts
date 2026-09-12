@@ -102,7 +102,7 @@ function enquiryEmailTemplate(data: z.infer<typeof enquirySchema>) {
 }
 
 async function sendNotification(data: z.infer<typeof enquirySchema>) {
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) return;
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) return false;
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -121,21 +121,42 @@ async function sendNotification(data: z.infer<typeof enquirySchema>) {
     subject: `New HYDROscope enquiry from ${data.name}`,
     html: enquiryEmailTemplate(data)
   });
+
+  return true;
 }
 
 export async function POST(request: Request) {
   const payload = enquirySchema.parse(await request.json());
   if (payload.website) return NextResponse.json({ ok: true });
 
-  const cms = await getPayloadClient();
-  await cms.create({
-    collection: "enquiries",
-    data: {
-      ...payload,
-      status: "new"
-    }
-  });
+  let storedInCms = false;
+  let notifiedByEmail = false;
 
-  await sendNotification(payload);
+  if (process.env.DATABASE_URI || process.env.MONGODB_URI) {
+    try {
+      const cms = await getPayloadClient();
+      await cms.create({
+        collection: "enquiries",
+        data: {
+          ...payload,
+          status: "new"
+        }
+      });
+      storedInCms = true;
+    } catch (error) {
+      console.error("Unable to store enquiry in CMS", error);
+    }
+  }
+
+  try {
+    notifiedByEmail = await sendNotification(payload);
+  } catch (error) {
+    console.error("Unable to send enquiry notification email", error);
+  }
+
+  if (!storedInCms && !notifiedByEmail) {
+    return NextResponse.json({ ok: false, message: "Unable to receive enquiry" }, { status: 500 });
+  }
+
   return NextResponse.json({ ok: true, message: "Enquiry received" });
 }
