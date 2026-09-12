@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { z } from "zod";
 import { getPayloadClient } from "@/lib/cms/payload";
+import { siteConfig } from "@/lib/site";
+
+const leadNotificationEmail = process.env.CONTACT_NOTIFICATION_EMAIL || siteConfig.email;
 
 const enquirySchema = z.object({
   name: z.string().min(2),
@@ -99,7 +102,7 @@ function enquiryEmailTemplate(data: z.infer<typeof enquirySchema>) {
 }
 
 async function sendNotification(data: z.infer<typeof enquirySchema>) {
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.CONTACT_NOTIFICATION_EMAIL) return;
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) return;
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -113,7 +116,7 @@ async function sendNotification(data: z.infer<typeof enquirySchema>) {
 
   await transporter.sendMail({
     from: process.env.SMTP_FROM || process.env.SMTP_USER,
-    to: process.env.CONTACT_NOTIFICATION_EMAIL,
+    to: leadNotificationEmail,
     replyTo: data.email,
     subject: `New HYDROscope enquiry from ${data.name}`,
     html: enquiryEmailTemplate(data)

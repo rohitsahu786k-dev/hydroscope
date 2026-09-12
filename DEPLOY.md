@@ -66,8 +66,8 @@ lists them all; these are the ones the site will not work correctly without:
 | `DATABASE_URI` / `MONGODB_URI` | MongoDB connection string for Payload |
 | `PAYLOAD_SECRET` | long random string |
 | `PAYLOAD_PUBLIC_SERVER_URL` | `https://hydroscope.in` |
-| `CONTACT_NOTIFICATION_EMAIL` | where the contact form sends to |
-| `SMTP_*` or `RESEND_API_KEY` | whichever mail route you use |
+| `CONTACT_NOTIFICATION_EMAIL` | where the contact form sends to; defaults to `contact@hydroscope.in` in code |
+| `SMTP_*` or `RESEND_API_KEY` | whichever mail route you use; for Microsoft 365/Outlook use `SMTP_HOST=smtp.office365.com`, `SMTP_PORT=587`, `SMTP_SECURE=false`, `SMTP_USER=contact@hydroscope.in`, and set `SMTP_PASS` only in the server/hosting secret store |
 
 Do not set `PORT`. Passenger assigns it.
 
