@@ -5,6 +5,7 @@ import { getPayloadClient } from "@/lib/cms/payload";
 import { siteConfig } from "@/lib/site";
 
 const leadNotificationEmail = process.env.CONTACT_NOTIFICATION_EMAIL || siteConfig.email;
+const resendFromEmail = process.env.RESEND_FROM || process.env.SMTP_FROM || process.env.SMTP_USER || siteConfig.email;
 const allowedOrigins = new Set(["https://hydroscope.in", "https://www.hydroscope.in"]);
 
 function responseHeaders(request: Request) {
@@ -117,7 +118,39 @@ function enquiryEmailTemplate(data: z.infer<typeof enquirySchema>) {
 }
 
 async function sendNotification(data: z.infer<typeof enquirySchema>) {
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) return false;
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const response = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          from: resendFromEmail,
+          to: [leadNotificationEmail],
+          reply_to: data.email,
+          subject: `New HYDROscope enquiry from ${data.name}`,
+          html: enquiryEmailTemplate(data)
+        })
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Resend enquiry notification failed: ${response.status} ${errorText}`);
+      }
+
+      console.info("Enquiry notification email sent with Resend");
+      return true;
+    } catch (error) {
+      console.error("Resend enquiry notification failed", error);
+    }
+  }
+
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    console.error("No enquiry email provider configured. Set RESEND_API_KEY or SMTP_HOST/SMTP_USER/SMTP_PASS.");
+    return false;
+  }
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -137,6 +170,7 @@ async function sendNotification(data: z.infer<typeof enquirySchema>) {
     html: enquiryEmailTemplate(data)
   });
 
+  console.info("Enquiry notification email sent with SMTP");
   return true;
 }
 
@@ -177,14 +211,22 @@ export async function POST(request: Request) {
     console.error("Unable to send enquiry notification email", error);
   }
 
-  if (!storedInCms && !notifiedByEmail) {
+  if (!notifiedByEmail) {
     return NextResponse.json(
-      { ok: false, message: "Unable to receive enquiry" },
-      { status: 500, headers: responseHeaders(request) }
+      {
+        ok: false,
+        message: storedInCms
+          ? "Enquiry was saved, but email notification failed. Please email contact@hydroscope.in."
+          : "Unable to receive enquiry"
+      },
+      { status: 502, headers: responseHeaders(request) }
     );
   }
 
-  return NextResponse.json({ ok: true, message: "Enquiry received" }, { headers: responseHeaders(request) });
+  return NextResponse.json(
+    { ok: true, message: storedInCms ? "Enquiry received and email sent" : "Enquiry email sent" },
+    { headers: responseHeaders(request) }
+  );
 }
 
 export async function OPTIONS(request: Request) {
