@@ -11,13 +11,22 @@ export function ContactForm() {
     const form = event.currentTarget;
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
+    const body = JSON.stringify({ ...payload, consent: formData.get("consent") === "on", sourcePage: window.location.pathname });
 
     try {
-      const response = await fetch("/api/contact", {
+      let response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...payload, consent: formData.get("consent") === "on", sourcePage: window.location.pathname })
+        body
       });
+
+      if (!response.ok && window.location.hostname === "hydroscope.in") {
+        response = await fetch("https://www.hydroscope.in/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body
+        });
+      }
 
       if (!response.ok) throw new Error("Unable to submit enquiry");
       form.reset();

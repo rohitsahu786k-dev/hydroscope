@@ -5,6 +5,21 @@ import { getPayloadClient } from "@/lib/cms/payload";
 import { siteConfig } from "@/lib/site";
 
 const leadNotificationEmail = process.env.CONTACT_NOTIFICATION_EMAIL || siteConfig.email;
+const allowedOrigins = new Set(["https://hydroscope.in", "https://www.hydroscope.in"]);
+
+function responseHeaders(request: Request) {
+  const origin = request.headers.get("origin");
+  const headers = new Headers();
+
+  if (origin && allowedOrigins.has(origin)) {
+    headers.set("Access-Control-Allow-Origin", origin);
+    headers.set("Vary", "Origin");
+  }
+
+  headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  headers.set("Access-Control-Allow-Headers", "Content-Type");
+  return headers;
+}
 
 const enquirySchema = z.object({
   name: z.string().min(2),
@@ -127,7 +142,7 @@ async function sendNotification(data: z.infer<typeof enquirySchema>) {
 
 export async function POST(request: Request) {
   const payload = enquirySchema.parse(await request.json());
-  if (payload.website) return NextResponse.json({ ok: true });
+  if (payload.website) return NextResponse.json({ ok: true }, { headers: responseHeaders(request) });
 
   let storedInCms = false;
   let notifiedByEmail = false;
@@ -155,8 +170,15 @@ export async function POST(request: Request) {
   }
 
   if (!storedInCms && !notifiedByEmail) {
-    return NextResponse.json({ ok: false, message: "Unable to receive enquiry" }, { status: 500 });
+    return NextResponse.json(
+      { ok: false, message: "Unable to receive enquiry" },
+      { status: 500, headers: responseHeaders(request) }
+    );
   }
 
-  return NextResponse.json({ ok: true, message: "Enquiry received" });
+  return NextResponse.json({ ok: true, message: "Enquiry received" }, { headers: responseHeaders(request) });
+}
+
+export async function OPTIONS(request: Request) {
+  return new NextResponse(null, { status: 204, headers: responseHeaders(request) });
 }
