@@ -37,7 +37,7 @@ const enquirySchema = z.object({
   solarRequirement: z.string().optional(),
   interest: z.string().optional(),
   sourcePage: z.string().optional(),
-  message: z.string().min(10),
+  message: z.string().min(2),
   consent: z.literal(true),
   website: z.string().optional()
 });
@@ -141,7 +141,15 @@ async function sendNotification(data: z.infer<typeof enquirySchema>) {
 }
 
 export async function POST(request: Request) {
-  const payload = enquirySchema.parse(await request.json());
+  const result = enquirySchema.safeParse(await request.json());
+  if (!result.success) {
+    return NextResponse.json(
+      { ok: false, message: "Please check the form details and try again." },
+      { status: 422, headers: responseHeaders(request) }
+    );
+  }
+
+  const payload = result.data;
   if (payload.website) return NextResponse.json({ ok: true }, { headers: responseHeaders(request) });
 
   let storedInCms = false;

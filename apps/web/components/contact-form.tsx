@@ -70,7 +70,7 @@ export function ContactForm() {
       <Field label="Monitoring requirement" name="interest" />
       <label className="grid gap-2 text-sm font-bold">
         Message
-        <textarea name="message" required rows={5} className="rounded-md border border-hydro-line px-3 py-3 font-medium text-hydro-ink" />
+        <textarea name="message" required minLength={2} rows={5} className="rounded-md border border-hydro-line px-3 py-3 font-medium text-hydro-ink" />
       </label>
       <label className="flex gap-3 text-sm text-hydro-muted">
         <input name="consent" type="checkbox" required className="mt-1 h-4 w-4" />
