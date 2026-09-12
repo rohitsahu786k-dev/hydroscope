@@ -192,11 +192,11 @@ export const hydroPureIndustryApplications = [
 export const hydroPureVariants = {
   subtitle: "One Platform. Multiple Capacities. Unlimited Possibilities.",
   intro:
-    "Whether you're treating water for a village, municipality, industrial facility, or large utility network, HydroPure offers scalable solutions tailored to your requirements. Standard models range from HP-100 to HP-2000, with custom-built variants available for specialized applications.",
-  models: ["HP-100", "HP-200", "HP-500", "HP-1000", "HP-2000"],
+    "Whether you're treating water for a village, municipality, industrial facility, or large utility network, HydroPure offers scalable solutions tailored to your requirements. Standard models range from HP-100 to HP-1600, with custom-built variants available for specialized applications.",
+  models: ["HP-100", "HP-200", "HP-400", "HP-800", "HP-1600"],
   rows: [
-    { label: "Production rate (gm/batch)", values: ["50", "50", "125", "250", "500"] },
-    { label: "Max Production per day (g)", values: ["100", "200", "500", "1000", "2000"] }
+    { label: "Production rate (gm/batch)", values: ["100", "100", "200", "200", "400"] },
+    { label: "Max Production per day (g)", values: ["100", "200", "400", "800", "1600"] }
   ],
   ticks: ["Solar Compatible", "IoT Monitoring", "AI Analytics"],
   badges: ["Scalable", "Customizable", "Modular"]

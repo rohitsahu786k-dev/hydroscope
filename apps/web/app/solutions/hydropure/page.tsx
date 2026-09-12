@@ -30,7 +30,7 @@ const variantBadgeIcons = [TrendingUp, SlidersHorizontal, Boxes];
 export const metadata = createMetadata({
   title: "HydroPure Electrochlorinator | Automated On-Site Chlorination",
   description:
-    "HydroPure is a fully automated, IoT enabled electrochlorination system with on-site chlorine generation, adaptive dosing and real-time monitoring. HP-100 to HP-2000.",
+    "HydroPure is a fully automated, IoT enabled electrochlorination system with on-site chlorine generation, adaptive dosing and real-time monitoring. HP-100 to HP-1600.",
   path: "/solutions/hydropure"
 });
 
